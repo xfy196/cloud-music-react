@@ -2,6 +2,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
 module.exports = {
   entry: {
     "scripts/index": path.resolve(__dirname, "../src/index.js"),
@@ -20,23 +21,24 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              [
-                '@babel/preset-env',
-                {
-                  "targets": {
-                    "chrome": "58",
-                    "ie": "11"
-                  },
-                  "useBuiltIns": "usage",
-                  "corejs": 3
-                }
-              ],
-              "@babel/preset-react"
+              /*               [
+                              '@babel/preset-env',
+                              {
+                                "targets": {
+                                  "chrome": "58",
+                                  "ie": "11"
+                                },
+                                "useBuiltIns": "usage",
+                                "corejs": 3
+                              }
+                            ],
+                            "@babel/preset-react" */
+              "react-app"
             ],
-            plugins: [
-              ["@babel/plugin-proposal-decorators", { "legacy": true }],
-              ["@babel/plugin-proposal-class-properties", { "loose": true }]
-            ]
+            /*             plugins: [
+                          ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                          ["@babel/plugin-proposal-class-properties", { "loose": true }]
+                        ] */
           }
         }
       },
@@ -54,7 +56,32 @@ module.exports = {
             loader: "postcss-loader",
             options: {
               ident: "postcss",
-              plugins: () => [require('postcss-preset-env')()]
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                require('postcss-preset-env')({
+                  autoprefixer: {
+                    "overrideBrowserslist": [
+                      "Android 4.1",
+                      "iOS 7.1"
+                    ],
+                    flexbox: 'no-2009',
+                  },
+                  "browserslist": [
+                    "> 1%",
+                    "last 2 versions",
+                    "not dead"
+                  ],
+                  stage: 3,
+                }),
+                require('postcss-pxtorem')({
+                  "rootValue": 100,
+                  "propList": [
+                    "*"
+                  ]
+                }),
+                require("cssnano")
+              ],
+
             }
           },
           {
@@ -78,7 +105,9 @@ module.exports = {
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "../src/component"),
-      "api" : path.resolve(__dirname, "../src/api")
+      "api": path.resolve(__dirname, "../src/api"),
+      "assets" : path.resolve(__dirname, "../src/assets/"),
+      "layouts" : path.resolve(__dirname, "../src/layouts/")
     },
     extensions: [".js", ".css", ".jsx"]
   },

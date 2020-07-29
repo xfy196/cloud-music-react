@@ -10,16 +10,24 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "amfe-flexible": "^2.2.1",
     "babel-loader": "^8.1.0",
+    "babel-preset-react-app": "^9.1.2",
     "clean-webpack-plugin": "^3.0.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "css-loader": "^4.0.0",
+    "cssnano": "^4.1.10",
     "html-webpack-plugin": "^4.3.0",
+    "lib-flexible": "^0.3.2",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-preset-env": "6.6.0",
+    "postcss-pxtorem": "^5.1.1",
+    "postcss-safe-parser": "4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
@@ -29,11 +37,23 @@
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
+    "better-scroll": "^1.15.2",
+    "fastclick": "^1.0.6",
+    "immutable": "^4.0.0-rc.12",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-router": "^5.2.0",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.2.0",
+    "react-transition-group": "^4.4.1",
+    "redux": "^4.0.5",
+    "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
-    "build" : "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./config/webpack.config.js"
   }
 }
