@@ -53,11 +53,6 @@ module.exports = {
                   },
                   stage: 3,
                 }),
-                require("postcss-pxtorem")({
-                  rootValue : 100,
-                  propWhiteList: [],
-                  minPixelValue : 2
-                }),
                 require("cssnano")
               ],
 

@@ -13,12 +13,16 @@ export const changePlayList = (data) => ({
   type: actionTypes.CHANGE_PLAY_LIST,
   data: fromJS(data)
 })
+export const changeEnterLoading = (data) => ({
+  type : actionTypes.CHANGE_ENTER_LOADING,
+  data : fromJS(data)
+})
 export const getBannerList = () => {
   return async (dispatch) => {
     try {
       const data = await getBannerRequest();
-      const action = changeBanner(data.banners);
-      dispatch(action);
+      dispatch(changeBanner(data.banners));
+      dispatch(changeEnterLoading(false))
 
     } catch (error) {
       console.log("轮播图获取数据失败")
@@ -39,9 +43,9 @@ export const getRecommendList = () => {
 export const getPlayList = () => {
   return async (dispatch) => {
     try {
-        const data = await getPlayListRequest();
+      const data = await getPlayListRequest();
     } catch (error) {
-      
+
     }
   }
 }

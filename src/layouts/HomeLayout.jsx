@@ -1,7 +1,6 @@
 import React from 'react'
 import { renderRoutes } from "react-router-config"
 import { Top, Tab, TabItem } from "./HomeLayout.style"
-import { Tabs, Badge } from 'antd-mobile';
 import {NavLink} from "react-router-dom"
 export default function HomeLayout(props) {
 
@@ -11,14 +10,12 @@ export default function HomeLayout(props) {
       <Top>
         <span className="iconfont menu" onClick={() => alert("该功能正在研发之中，敬请等待")}>
           &#xe65c;
-
         </span>
         <span className="title">
           云音乐
         </span>
         <span className="iconfont search" onClick={() => props.history.push("/search")}>
           &#xe62b;
-
         </span>
       </Top>
         <Tab>
