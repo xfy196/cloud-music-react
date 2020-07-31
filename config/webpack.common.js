@@ -53,10 +53,10 @@ module.exports = {
                   },
                   stage: 3,
                 }),
-                require('postcss-pxtorem')({
-                  rootValue: 100,
-                  selectorBlackList: [], //过滤
-                  propList: ['*'],
+                require("postcss-pxtorem")({
+                  rootValue : 100,
+                  propWhiteList: [],
+                  minPixelValue : 2
                 }),
                 require("cssnano")
               ],
@@ -74,14 +74,17 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|png|gif)$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            limit: 512000,
-            name: '[name]-[hash:6].[ext]',
-            outputPath: "images/"
-          }
-        }
+        use: 
+          [
+            {
+              loader: "url-loader",
+              options: {
+                limit: 8192,
+                name: '[name]-[hash:6].[ext]',
+                outputPath: "images/"
+              }
+            },
+          ]
       },
     ]
   },

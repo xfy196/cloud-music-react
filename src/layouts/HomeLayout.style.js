@@ -29,7 +29,6 @@ export const Tab = styled.div`
   z-index: 10;
   a {
     flex: 1;
-    padding: .02rem 0;
     font-size: .14rem;
     color: #e4e4e4;
     &.selected {

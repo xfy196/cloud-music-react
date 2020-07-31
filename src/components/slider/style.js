@@ -5,6 +5,9 @@ export const Swipe = styled.div`
   height: 1.6rem;
   margin: 0 auto;
   border-radius: .06rem;
+  div{
+    border-radius : .06rem;
+  }
   img{
     height: 1.6rem;
     border-radius : .06rem
