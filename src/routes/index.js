@@ -11,6 +11,7 @@ const SuspenseComponent = Component => props => {
   )
 }
 
+const RecommendComponent = lazy(() => import("application/Recommend"))
 // 导入路由
 export default [
   {
@@ -19,8 +20,19 @@ export default [
       {
         path: "/",
         component: HomeLayout,
-        // render: () => <Redirect to={"/recommend"} />
-      }
+        routes: [
+          {
+            path: "/",
+            exact: true,
+            render: () => <Redirect to={"/recommend"} />
+
+          },
+          {
+            path: '/recommend',
+            component: SuspenseComponent(RecommendComponent),
+          }
+        ]
+      },
     ]
   }
 ]

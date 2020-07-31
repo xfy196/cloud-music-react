@@ -21,29 +21,18 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              /*               [
-                              '@babel/preset-env',
-                              {
-                                "targets": {
-                                  "chrome": "58",
-                                  "ie": "11"
-                                },
-                                "useBuiltIns": "usage",
-                                "corejs": 3
-                              }
-                            ],
-                            "@babel/preset-react" */
               "react-app"
             ],
-            /*             plugins: [
-                          ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                          ["@babel/plugin-proposal-class-properties", { "loose": true }]
-                        ] */
+            plugins: [
+              ["@babel/plugin-proposal-decorators", { "legacy": true }],
+              ["@babel/plugin-proposal-class-properties", { "loose": true }],
+              ["import", { libraryName: "antd-mobile", style: "css" }]
+            ]
           }
         }
       },
       {
-        test: /\.(scss|sass|css)$/,
+        test: /\.(scss|sass)$/,
         exclude: /(node_modules|bower_components)/,
         use: [
           {
@@ -60,24 +49,14 @@ module.exports = {
                 require('postcss-flexbugs-fixes'),
                 require('postcss-preset-env')({
                   autoprefixer: {
-                    "overrideBrowserslist": [
-                      "Android 4.1",
-                      "iOS 7.1"
-                    ],
                     flexbox: 'no-2009',
                   },
-                  "browserslist": [
-                    "> 1%",
-                    "last 2 versions",
-                    "not dead"
-                  ],
                   stage: 3,
                 }),
                 require('postcss-pxtorem')({
-                  "rootValue": 100,
-                  "propList": [
-                    "*"
-                  ]
+                  rootValue: 100,
+                  selectorBlackList: [], //过滤
+                  propList: ['*'],
                 }),
                 require("cssnano")
               ],
@@ -88,6 +67,10 @@ module.exports = {
             loader: "sass-loader"
           }
         ]
+      },
+      {
+        test: /\.(less|css)$/,
+        loaders: ['style-loader', 'css-loader', 'less-loader']
       },
       {
         test: /\.(jpg|jpeg|png|gif)$/,
@@ -104,10 +87,13 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "../src/component"),
+      "@": path.resolve(__dirname, "../src/components"),
       "api": path.resolve(__dirname, "../src/api"),
-      "assets" : path.resolve(__dirname, "../src/assets/"),
-      "layouts" : path.resolve(__dirname, "../src/layouts/")
+      "assets": path.resolve(__dirname, "../src/assets/"),
+      "layouts": path.resolve(__dirname, "../src/layouts/"),
+      "application": path.resolve(__dirname, "../src/application/"),
+      "baseUI": path.resolve(__dirname, "../src/baseUI/"),
+      "utils": path.resolve(__dirname, "../src/utils/")
     },
     extensions: [".js", ".css", ".jsx"]
   },
