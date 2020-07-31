@@ -12,3 +12,10 @@ export const getBannerRequest = () => {
 export const getRecommendRequest = () => {
   return axiosInstance.get("/api/personalized")
 }
+
+/* 
+  获取热榜明星数据
+*/
+export const getHotSingerListRequest = (offset) => {
+  return axiosInstance.get(`/api//artist/list?offset=${offset}`)
+} 
