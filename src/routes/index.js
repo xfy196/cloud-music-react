@@ -13,6 +13,7 @@ const SuspenseComponent = Component => props => {
 
 const RecommendComponent = lazy(() => import("application/Recommend"));
 const SingersComponent = lazy(() => import("application/Singers"));
+const RankComponent = lazy(() => import("application/Rank"));
 // 导入路由
 export default [
   {
@@ -35,6 +36,10 @@ export default [
           {
             path: "/singers",
             component : SuspenseComponent(SingersComponent)
+          },
+          {
+            path : "/rank",
+            component : SuspenseComponent(RankComponent)
           }
         ]
       },

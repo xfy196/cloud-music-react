@@ -3,6 +3,8 @@ import BScroll from "better-scroll"
 import PropTypes from "prop-types"
 import Styled from "styled-components"
 import { debounce } from "utils/"
+import Loading from "../loading"
+import Loading2 from "../loading-v2"
 
 const ScrollContainer = Styled.div`
     width: 100%;
@@ -118,15 +120,15 @@ const Scroll = forwardRef((props, ref) => {
             }
         }
     }));
-    const PullUpdisplayStyle = pullUpLoading ? { display: "" } : { display: "none" };
-    const PullDowndisplayStyle = pullDownLoading ? { display: "" } : { display: "none" };
+    const PullUpDisplayStyle = pullUpLoading ? { display: "" } : { display: "none" };
+    const PullDownDisplayStyle = pullDownLoading ? { display: "" } : { display: "none" };
     return (
         <ScrollContainer ref={scrollContaninerRef} >
             {props.children}
             {/* 滑到底部加载动画 */}
-            <PullUpLoading style={PullUpdisplayStyle}></PullUpLoading>
+            <PullUpLoading style={PullUpDisplayStyle}><Loading></Loading></PullUpLoading>
             {/* 顶部下拉刷新动画 */}
-            <PullDownLoading style={PullDowndisplayStyle}></PullDownLoading>
+            <PullDownLoading style={PullDownDisplayStyle}><Loading2></Loading2></PullDownLoading>
         </ScrollContainer >
     )
 

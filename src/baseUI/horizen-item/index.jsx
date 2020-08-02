@@ -29,7 +29,7 @@ function Horizen(props) {
     setRefreshCategoryScroll(true);
   }, [refreshCategoryScroll]);
 
-  const { title, list, handleClick, currentCateKey } = props;
+  const { title, list, handleClick, currentKey } = props;
   const clickHandle = (item) => {
     handleClick(item.key)
   }
@@ -42,7 +42,7 @@ function Horizen(props) {
             list.map(item => (
               <ListItem key={item.key}
                 onClick={() => clickHandle(item)}
-                className={ currentCateKey===item.key ? "selected" : ""}
+                className={ currentKey===item.key ? "selected border" : ""}
               >
                 {item.name}
               </ListItem>

@@ -21,7 +21,8 @@ const LoadingWrapper = Styled.div`
     opacity : 0.6;
     border-radius : 50%;
     background-color: ${globalStyle["theme-color"]};
-    animation : ${loading} 1.4s infinite ease-in
+    animation : ${loading} 1.4s infinite ease-in;
+    z-index: 10
   }
 `
 function Loading() {

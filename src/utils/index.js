@@ -28,7 +28,9 @@ export const getName = list => {
 
 //处理数据，找出第一个没有歌名的排行榜的索引
 export const filterIndex = rankList => {
+  // 首先遍历数据
   for (let i = 0; i < rankList.length - 1; i++) {
+    // 然后判断当前的tracks数据里面是否存在歌名和判断这个帮航数据下面一个数据的tracks是否存在数据 如果下一下不存在track是我们直接返回下一个的下标
     if (rankList[i].tracks.length && !rankList[i + 1].tracks.length) {
       return i + 1;
     }
