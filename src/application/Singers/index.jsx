@@ -6,9 +6,8 @@ import { NavContainer } from "./style"
 import {changeCategory, getHotSingerList} from "./store/actionCreator"
 function Singers(props) {
 
-  const { category } = props;
+  const { category, singersList } = props;
   const { updateCategory, getHotSinger } = props;
-
   useEffect(() => {
     if(!category){
       getHotSinger();
@@ -30,13 +29,19 @@ function Singers(props) {
   return (
     <>
       <NavContainer>
-        <Horizen title={"分类(默认热门):"} handleClick={(key) => handleUpdateCategory(key)} list={categoryTypes}></Horizen>
+        <Horizen title={"分类(默认热门):"} handleClick={(key) => handleUpdateCategory(key)} list={categoryTypes} currentCateKey={category}></Horizen>
       </NavContainer>
+      {
+        singersList.map(item => (
+          <h4 key={item.id}>{item.name}</h4>
+        ))
+      }
     </>
   )
 }
 const mapStateToProps = state => ({
-  category: state.getIn(["singers", "category"])
+  category: state.getIn(["singers", "category"]),
+  singersList : state.getIn(["singers", "singersList"])
 })
 const mapDispatchTProps = dispatch => ({
   updateCategory(id) {

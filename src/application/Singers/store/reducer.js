@@ -11,6 +11,12 @@ export default (state = defaultStates, action) => {
     case actionTypes.CHANGE_CATEGORY:
       return state.merge({
         "category" : action.data,
+      });
+    case actionTypes.CHANGE_SINGER_LIST:
+      return state.merge({
+        "singersList": action.data
       })
+    default:
+      return state
   }
 }

@@ -31,7 +31,7 @@ export const getHotSingerList = () => {
 
       let result = await getHotSingerListRequest(0)
       const list = result.artists;
-      console.log(list)
+      dispatch(changeSingerList(list));
     } catch (error) {
       console.log("请求热榜明星错误")
     }

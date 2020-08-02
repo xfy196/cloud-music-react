@@ -17,5 +17,5 @@ export const getRecommendRequest = () => {
   获取热榜明星数据
 */
 export const getHotSingerListRequest = (offset) => {
-  return axiosInstance.get(`/api//artist/list?offset=${offset}`)
+  return axiosInstance.get(`/api/artist/list?offset=${offset}`)
 } 
