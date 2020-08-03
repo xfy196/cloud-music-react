@@ -7,7 +7,6 @@ export const Top = styled.div`
   align-items : center;
   flex-direction: row;
   padding: .05rem .1rem;
-  position: relative;
   z-index : 2;
   background: ${style["theme-color"]};
   & > span{
@@ -25,7 +24,6 @@ export const Tab = styled.div`
   flex-direction: row;
   justify-content: space-around;
   background: ${style["theme-color"]};
-  position : relative;
   z-index: 10;
   a {
     flex: 1;

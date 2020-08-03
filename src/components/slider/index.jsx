@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Carousel } from "antd-mobile"
-import { Swipe as SwipeStyle, Before } from "./style"
+import { Swipe as SwipeStyle, Before, SliderContainer } from "./style"
 export default React.memo(function index(props) {
   const { bannerList } = props
   return (
-    <div>
+    <SliderContainer>
       <Before></Before>
       <SwipeStyle>
         {
@@ -34,7 +34,7 @@ export default React.memo(function index(props) {
         }
 
       </SwipeStyle>
-    </div>
+    </SliderContainer>
   )
 }
 )
