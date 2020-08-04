@@ -32,7 +32,7 @@ export const PullDownLoading = Styled.div`
 
 
 const Scroll = forwardRef((props, ref) => {
-    /* 可以通过dispatch怕发BScroll的对象 然后通过useState拿到这个BScroll对象 */
+    /* 可以通过dispatch派发BScroll的对象 然后通过useState拿到这个BScroll对象 */
     const [bScroll, setBScroll] = useState();
     const { direction, click, refresh, pullUpLoading, pullDownLoading, bounceTop, bounceBottom } = props
     const { pullUp, pullDown, onScroll } = props;
@@ -106,7 +106,6 @@ const Scroll = forwardRef((props, ref) => {
             bScroll.refresh();
         }
     });
-
     useImperativeHandle(ref, () => ({
         refresh() {
             if (bScroll) {

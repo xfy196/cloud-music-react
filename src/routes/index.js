@@ -33,20 +33,21 @@ export default [
           {
             path: '/recommend',
             component: SuspenseComponent(RecommendComponent),
-            routes : [
+            routes: [
               {
-                path : "/recommend/:id",
-                component : SuspenseComponent(AlbumComponent)
+                path: "/recommend/:id",
+                exact : true,
+                component: SuspenseComponent(AlbumComponent)
               }
             ]
           },
           {
             path: "/singers",
-            component : SuspenseComponent(SingersComponent)
+            component: SuspenseComponent(SingersComponent)
           },
           {
-            path : "/rank",
-            component : SuspenseComponent(RankComponent)
+            path: "/rank",
+            component: SuspenseComponent(RankComponent)
           }
         ]
       },

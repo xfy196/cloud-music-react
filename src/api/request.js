@@ -27,6 +27,11 @@ export const getSingerListRequest = (category, alpha, offset) => {
   return axiosInstance.get(`/api/artist/list?cat=${category}&initial=${alpha.toLowerCase()}&offset=${offset}`);
 }
 
+// 排行榜请求接口
 export const getRankListRequest = () => {
   return axiosInstance.get(`/api/toplist/detail`);
+}
+// 获取歌单的请求接口
+export const getAlbumListRequest = (id) => {
+  return axiosInstance.get("/api/playlist/detail?id=" + id)
 }

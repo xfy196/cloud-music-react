@@ -18,7 +18,8 @@ const ContainerHeader = Styled.header`
   }
   >h1{
     font-size: .16rem;
-    font-weight: 700
+    font-weight: 700;
+    margin : 0;
   }
 `
 const Header = forwardRef((props, ref) => {

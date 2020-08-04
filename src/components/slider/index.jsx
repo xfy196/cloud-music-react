@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Carousel } from "antd-mobile"
 import { Swipe as SwipeStyle, Before, SliderContainer } from "./style"
+// import ('antd-mobile/dist/antd-mobile')
 export default React.memo(function index(props) {
   const { bannerList } = props
   return (

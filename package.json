@@ -10,7 +10,6 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "amfe-flexible": "^2.2.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.0",
     "babel-preset-react-app": "^9.1.2",
