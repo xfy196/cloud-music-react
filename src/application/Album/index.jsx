@@ -14,8 +14,8 @@ function Album(props) {
   const id = props.match.params.id;
   const { getAlbumListDispatch } = props;
   const { songsCount, pullUpLoading, currentAlbum } = props;
+  const currentAlbumJS = currentAlbum.toJS();
   // 将immutable的数据转换出来
-  // const albums = currentAlbum.toJS();
   const handleBack = useCallback(() => {
     setShowStatus(false);
   }, []);
@@ -24,10 +24,8 @@ function Album(props) {
 
   }
   useEffect(() => {
-    if (!currentAlbum.size) {
-      getAlbumListDispatch(id);
-    }
-  }, [])
+    getAlbumListDispatch(id);
+  }, [getAlbumListDispatch, id])
   return (
     <CSSTransition
       in={showStatus}
@@ -48,7 +46,7 @@ function Album(props) {
           pullUpLoading={pullUpLoading}
           bounceTop={false}
         >
-          <AlbumDetail currentAlbum={currentAlbum}></AlbumDetail>
+          <AlbumDetail currentAlbum={currentAlbumJS}></AlbumDetail>
         </Scroll>
       </Container>
     </CSSTransition>

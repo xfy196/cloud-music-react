@@ -15,8 +15,8 @@ export const TopDesc = Styled.div`
   position: relative;
   .background {
     z-index: -1;
-    background: url(http://p1.music.126.net/hE-8I3SZIpTc9krlr9hxjw==/109951164813179109.jpg) left top no-repeat;
     background: contain;
+    background: url(${props => props.background}) left top no-repeat;
     background-position: 0 0;
     background-size: 100% 100%;
     position: absolute;

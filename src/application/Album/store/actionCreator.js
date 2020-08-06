@@ -1,11 +1,11 @@
 import * as actionTypes from "./actionTypes"
 import {getAlbumListRequest} from "api/request"
-import {Map} from "immutable"
+import {fromJS} from "immutable"
 // 改变album的值
 export const changeAlbumList = (data) => {
   return {
     type : actionTypes.CHANGE_ALBUM_LIST,
-    data : Map(data)
+    data : fromJS(data)
   }
 }
 // 请求album数据的异步操作

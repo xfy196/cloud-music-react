@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes"
-import { fromJS, Map } from "immutable"
-const defaultState = Map({
+import { fromJS } from "immutable"
+const defaultState = fromJS({
   currentAlbum: []
 })
 export default (state = defaultState, action) => {

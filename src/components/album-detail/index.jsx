@@ -2,14 +2,15 @@ import React from 'react'
 import { TopDesc, Menu } from './style'
 import SongList from "application/SongList"
 function AlbumDetail(props) {
-  console.log(props.currentAlbum);
+  const {currentAlbum} = props;
+  const tracks = currentAlbum.tracks || [];
   const renderTopDesc = () => {
     return (
       <TopDesc>
-        <div className="background"></div>
+        <div className="background" background={currentAlbum.coverImgUrl}></div>
         <div className="img_wrapper">
           <div className="decorate"></div>
-          <img src="https://p1.music.126.net/hE-8I3SZIpTc9krlr9hxjw==/109951164813179109.jpg" alt="" />
+          <img src={currentAlbum.coverImgUrl} alt="" />
           <div className="play_count">
             <i className="iconfont play">&#xe885;</i>
             <span className="count">0.1万</span>
@@ -53,7 +54,7 @@ function AlbumDetail(props) {
   }
   const renderSongList = () => {
     return (
-     <SongList></SongList>
+     <SongList songs={tracks}></SongList>
     )
   }
   return (
