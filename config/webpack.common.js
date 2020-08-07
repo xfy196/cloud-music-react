@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../dist"),
-    publicPath : "/",
+    publicPath: "/",
     filename: "[name]-[chunkHash].js"
   },
   module: {
@@ -55,11 +55,10 @@ module.exports = {
                   stage: 3,
                 }),
                 require("postcss-pxtorem")({
-                  rootValue : 100,
+                  rootValue: 100,
                   propWhiteList: [],
-                  minPixelValue : 2
+                  minPixelValue: 2
                 }),
-                require("cssnano")
               ],
 
             }
@@ -70,12 +69,39 @@ module.exports = {
         ]
       },
       {
-        test: /\.(less|css)$/,
-        loaders: ['style-loader', 'css-loader', 'less-loader']
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              ident: "postcss",
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                require('postcss-preset-env')({
+                  autoprefixer: {
+                    flexbox: 'no-2009',
+                  },
+                  stage: 3,
+                }),
+                require("postcss-pxtorem")({
+                  rootValue: 100,
+                  propWhiteList: [],
+                  minPixelValue: 2
+                }),
+              ],
+            }
+          },
+        ]
       },
       {
         test: /\.(jpg|jpeg|png|gif)$/,
-        use: 
+        use:
           [
             {
               loader: "url-loader",

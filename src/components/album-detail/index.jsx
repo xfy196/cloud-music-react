@@ -2,12 +2,12 @@ import React from 'react'
 import { TopDesc, Menu } from './style'
 import SongList from "application/SongList"
 function AlbumDetail(props) {
-  const {currentAlbum} = props;
+  const { currentAlbum } = props;
   const tracks = currentAlbum.tracks || [];
   const renderTopDesc = () => {
     return (
-      <TopDesc>
-        <div className="background" background={currentAlbum.coverImgUrl}></div>
+       <TopDesc background = { currentAlbum.coverImgUrl } >
+        <div className="background"></div>
         <div className="img_wrapper">
           <div className="decorate"></div>
           <img src={currentAlbum.coverImgUrl} alt="" />
@@ -17,52 +17,53 @@ function AlbumDetail(props) {
           </div>
         </div>
         <div className="desc_wrapper">
-          <div className="title">心情寄存馆／生活很难 那我用旋律祝你快乐</div>
+          <div className="title">{currentAlbum.name}</div>
           <div className="person">
             <div className="avatar">
-              <img src="https://p1.music.126.net/hxe8FOzaJY4GrJ8ufYGemw==/109951164672471643.jpg" alt="" />
+              <img src={currentAlbum.creator.avatarUrl} alt="" />
             </div>
-            <div className="name">宇宙播报机</div>
+            <div className="name">{currentAlbum.creator.nickname}</div>
           </div>
         </div>
-      </TopDesc>
+    </TopDesc>
+
     )
   }
 
-  /* menu菜单的布局 */
-  const renderMenu = () => {
-    return (
-      <Menu>
-        <div>
-          <i className="iconfont">&#xe6ad;</i>
+/* menu菜单的布局 */
+const renderMenu = () => {
+  return (
+    <Menu>
+      <div>
+        <i className="iconfont">&#xe6ad;</i>
           评论
         </div>
-        <div>
-          <i className="iconfont">&#xe86f;</i>
+      <div>
+        <i className="iconfont">&#xe86f;</i>
           点赞
         </div>
-        <div>
-          <i className="iconfont">&#xe62d;</i>
+      <div>
+        <i className="iconfont">&#xe62d;</i>
           收藏
         </div>
-        <div>
-          <i className="iconfont">&#xe606;</i>
+      <div>
+        <i className="iconfont">&#xe606;</i>
           更多
         </div>
-      </Menu>
-    )
-  }
-  const renderSongList = () => {
-    return (
-     <SongList songs={tracks}></SongList>
-    )
-  }
-  return (
-    <div>
-      {renderTopDesc()}
-      {renderMenu()}
-      {renderSongList()}
-    </div>
+    </Menu>
   )
+}
+const renderSongList = () => {
+  return (
+    <SongList songs={tracks}></SongList>
+  )
+}
+return (
+  <div>
+    {renderTopDesc()}
+    {renderMenu()}
+    {renderSongList()}
+  </div>
+)
 }
 export default React.memo(AlbumDetail)

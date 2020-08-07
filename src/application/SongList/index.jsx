@@ -6,7 +6,7 @@ const SongListCom = React.forwardRef((props, refs) => {
     return (
       <SongItem>
         {
-          list.length && list.map((item, index) => (
+          list.length !== 0 && list.map((item, index) => (
             <li key={item.id}>
               <span className="index">{index + 1}</span>
               <div className="info">
