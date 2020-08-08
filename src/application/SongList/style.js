@@ -85,6 +85,9 @@ export const SongItem = Styled.ul`
       overflow : hidden;
       white-space : nowrap; 
       >span{
+        text-overflow : ellipsis;
+        overflow: hidden;
+        white-space : nowrap;
         &:first-child {
           font-size : .16rem;
           color : ${style["font-color-desc"]};

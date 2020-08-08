@@ -13,7 +13,7 @@ function AlbumDetail(props) {
           <img src={currentAlbum.coverImgUrl} alt="" />
           <div className="play_count">
             <i className="iconfont play">&#xe885;</i>
-            <span className="count">0.1万</span>
+            <span className="count">{parseInt(currentAlbum.playCount/10000)}万</span>
           </div>
         </div>
         <div className="desc_wrapper">

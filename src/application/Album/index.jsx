@@ -4,10 +4,11 @@ import { CSSTransition } from "react-transition-group"
 import Header from "baseUI/header"
 import { Container } from "./style"
 import Scroll from "baseUI/scroll"
-import { forceCheck } from "react-lazyload"
 import AlbumDetail from "@/album-detail"
-import { getAlbumList } from "./store/actionCreator"
+import { getAlbumList, changeEnterLoading } from "./store/actionCreator"
 import { isEmptyObject } from "utils"
+import EnterLoading from "utils/EnterLoading";
+import Loading from "baseUI/loading"
 import style from "assets/global-style"
 
 function Album(props) {
@@ -20,7 +21,7 @@ function Album(props) {
   const id = props.match.params.id;
   const headEl = useRef();
   const { getAlbumListDispatch } = props;
-  const { songsCount, pullUpLoading, currentAlbum } = props;
+  const { songsCount, pullUpLoading, currentAlbum, enterLoading } = props;
   const currentAlbumJS = currentAlbum.toJS();
   // 将immutable的数据转换出来
   const handleBack = useCallback(() => {
@@ -37,15 +38,15 @@ function Album(props) {
   const handleScroll = useCallback((pos) => {
     let headDOM = headEl.current;
     let minHeight = -headDOM.getBoundingClientRect().height;
-    let percent = Math.abs(pos.y/minHeight);
-    if(pos.y < minHeight){
+    let percent = Math.abs(pos.y / minHeight);
+    if (pos.y < minHeight) {
       headDOM.style.backgroundColor = style["theme-color"];
       // 加入动画效果
       headDOM.style.opacity = Math.min(1, (percent - 1) / 2);
       // 这只title文字
-      setTitle(currentAlbumJS&&currentAlbumJS.name);
+      setTitle(currentAlbumJS && currentAlbumJS.name);
       setMarquee(true);
-    }else {
+    } else {
       headDOM.style.backgroundColor = '';
       headDOM.style.opacity = 1;
       // 设置title的值
@@ -65,30 +66,35 @@ function Album(props) {
     >
       {/* 整个内容区域 */}
       <Container play={songsCount}>
-        {/* 头部 */}
-        <Header ref={headEl} title={title} isMarquee={marquee} handleClick={handleBack}></Header>
         {
-          !isEmptyObject(currentAlbumJS) && (<Scroll
-            onScroll={handleScroll}
-            pullUp={handlePullUp}
-            pullUpLoading={pullUpLoading}
-            bounceTop={false}
-          >
-            <AlbumDetail currentAlbum={currentAlbumJS}></AlbumDetail>
-          </Scroll>)
+          enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> :
+            <>
+              <Header ref={headEl} title={title} isMarquee={marquee} handleClick={handleBack}></Header>
+              {
+                !isEmptyObject(currentAlbumJS) && (<Scroll
+                  onScroll={handleScroll}
+                  pullUp={handlePullUp}
+                  pullUpLoading={pullUpLoading}
+                  bounceTop={false}
+                >
+                  <AlbumDetail currentAlbum={currentAlbumJS}></AlbumDetail>
+                </Scroll>)
+              }
+            </>
         }
-
       </Container>
     </CSSTransition>
   )
 }
 const mapStateToProps = state => ({
-  currentAlbum: state.getIn(["album", "currentAlbum"])
+  currentAlbum: state.getIn(["album", "currentAlbum"]),
+  enterLoading: state.getIn(["album", "enterLoading"])
 })
 const mapDispatchProps = (dispatch) => {
   return {
     // 通过id拿到该id对应的歌单数据
     getAlbumListDispatch(id) {
+      dispatch(changeEnterLoading(true))
       dispatch(getAlbumList(id));
     }
   }
