@@ -1,0 +1,2 @@
+export const CHANGE_SINGER_ARTISTS = "singer/CHANGE_SINGER_ARTISTS";
+export const CHANGE_SINGER_SONGS = "singer/CHANGE_SINGER_SONGS";

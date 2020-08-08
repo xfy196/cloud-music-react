@@ -6,14 +6,14 @@ function AlbumDetail(props) {
   const tracks = currentAlbum.tracks || [];
   const renderTopDesc = () => {
     return (
-       <TopDesc background = { currentAlbum.coverImgUrl } >
+      <TopDesc background={currentAlbum.coverImgUrl} >
         <div className="background"></div>
         <div className="img_wrapper">
           <div className="decorate"></div>
           <img src={currentAlbum.coverImgUrl} alt="" />
           <div className="play_count">
             <i className="iconfont play">&#xe885;</i>
-            <span className="count">{parseInt(currentAlbum.playCount/10000)}万</span>
+            <span className="count">{parseInt(currentAlbum.playCount / 10000)}万</span>
           </div>
         </div>
         <div className="desc_wrapper">
@@ -25,45 +25,46 @@ function AlbumDetail(props) {
             <div className="name">{currentAlbum.creator.nickname}</div>
           </div>
         </div>
-    </TopDesc>
+      </TopDesc>
 
     )
   }
 
-/* menu菜单的布局 */
-const renderMenu = () => {
-  return (
-    <Menu>
-      <div>
-        <i className="iconfont">&#xe6ad;</i>
+  /* menu菜单的布局 */
+  const renderMenu = () => {
+    return (
+      <Menu>
+        <div>
+          <i className="iconfont">&#xe6ad;</i>
           评论
         </div>
-      <div>
-        <i className="iconfont">&#xe86f;</i>
+        <div>
+          <i className="iconfont">&#xe86f;</i>
           点赞
         </div>
-      <div>
-        <i className="iconfont">&#xe62d;</i>
+        <div>
+          <i className="iconfont">&#xe62d;</i>
           收藏
         </div>
-      <div>
-        <i className="iconfont">&#xe606;</i>
+        <div>
+          <i className="iconfont">&#xe606;</i>
           更多
         </div>
-    </Menu>
-  )
-}
-const renderSongList = () => {
+      </Menu>
+    )
+  }
+  const renderSongList = () => {
+    return (
+      <SongList songs={tracks} collectCount={currentAlbum.subscribedCount}
+        showCollect={true}></SongList>
+    )
+  }
   return (
-    <SongList songs={tracks}></SongList>
+    <div>
+      {renderTopDesc()}
+      {renderMenu()}
+      {renderSongList()}
+    </div>
   )
-}
-return (
-  <div>
-    {renderTopDesc()}
-    {renderMenu()}
-    {renderSongList()}
-  </div>
-)
 }
 export default React.memo(AlbumDetail)

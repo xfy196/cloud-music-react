@@ -1,4 +1,4 @@
-import {axiosInstance} from "./config"
+import { axiosInstance } from "./config"
 
 /* 
 获取轮播图
@@ -18,7 +18,7 @@ export const getRecommendRequest = () => {
 */
 export const getHotSingerListRequest = (offset) => {
   return axiosInstance.get(`/api/top/artists/?offset=${offset}`)
-} 
+}
 
 /* 
  通过分类信息和姓名首字母和页码数获取歌手数据
@@ -34,4 +34,8 @@ export const getRankListRequest = () => {
 // 获取歌单的请求接口
 export const getAlbumListRequest = (id) => {
   return axiosInstance.get("/api/playlist/detail?id=" + id)
+}
+// 获取歌手的歌单数据
+export const getSingerDataRequest = id => {
+  return axiosInstance.get("/api/artists?id=" + id);
 }

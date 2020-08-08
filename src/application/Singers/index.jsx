@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useCallback } from 'react'
 import { connect } from "react-redux"
 import Horizen from "baseUI/horizen-item"
 import { categoryTypes, alphaTypes } from "api/config"
 import { NavContainer, ListContainer, List, ListItem } from "./style"
-import { changeCategory, getHotSingerList, changeAlpha, getSingerList, changePullUpLoading, refreshMoreHotSingerList, changeListOffset, changePullDownLoading,refreshMoreSingerList } from "./store/actionCreator"
+import { changeCategory, getHotSingerList, changeAlpha, getSingerList, changePullUpLoading, refreshMoreHotSingerList, changeListOffset, changePullDownLoading, refreshMoreSingerList } from "./store/actionCreator"
 import Scroll from "baseUI/scroll"
 import LazyLoad, { forceCheck } from "react-lazyload"
 import singerLazyLoadImg from "./singer.png"
 import Loading from "baseUI/loading"
 import EnterLoading from "utils/EnterLoading"
+import {renderRoutes} from "react-router-config"
 function Singers(props) {
 
   const scrollRef = useRef(null);
@@ -52,6 +53,10 @@ function Singers(props) {
     pullDownRefresh(category, alpha);
   }
 
+  // 进入详情页面的函数
+  const enterDetail = useCallback((id) => {
+    props.history.push(`/singers/${id}`)
+  })
   // 渲染歌手的数据
   const renderSingerList = () => {
     // 拿到歌手的数据
@@ -62,7 +67,7 @@ function Singers(props) {
         {
           singersList.map((item, index) => {
             return (
-              <ListItem key={item.id} className="border-bottom">
+              <ListItem key={item.id} className="border-bottom" onClick={() => enterDetail(item.id)}>
                 <div className="img_container">
                   <LazyLoad placeholder={<img src={singerLazyLoadImg} alt="歌手" width="100%" height="100%" />}>
                     <img src={`${item.picUrl}?param=300x300`} width="100%" height="100%" alt="歌手" />
@@ -97,6 +102,7 @@ function Singers(props) {
         </Scroll>
       </ListContainer>
       {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
+      {renderRoutes(props.route.routes)}
     </>
   )
 }
@@ -104,9 +110,9 @@ const mapStateToProps = state => ({
   category: state.getIn(["singers", "category"]),
   singersList: state.getIn(["singers", "singersList"]),
   alpha: state.getIn(["singers", "alpha"]),
-  enterLoading : state.getIn(["singers", "enterLoading"]),
-  pullUpLoading : state.getIn(["singers", "pullUpLoading"]),
-  pullDownLoading : state.getIn(["singers", "pullDownLoading"]),
+  enterLoading: state.getIn(["singers", "enterLoading"]),
+  pullUpLoading: state.getIn(["singers", "pullUpLoading"]),
+  pullDownLoading: state.getIn(["singers", "pullDownLoading"]),
 })
 const mapDispatchTProps = dispatch => ({
   updateCategory(id) {
@@ -123,24 +129,24 @@ const mapDispatchTProps = dispatch => ({
     dispatch(getHotSingerList())
   },
   // 滑动的函数
-  pullUpRefresh(hotFlag){
+  pullUpRefresh(hotFlag) {
     // 更新正在加载更多的动画标识
     dispatch(changePullUpLoading(true));
     // 通过判断是否为加载热门歌手还是分类歌手派发不同的方法
-    if(hotFlag){
+    if (hotFlag) {
       // 重新加载更多热门歌手数据
       dispatch(refreshMoreHotSingerList());
-    }else {
+    } else {
       dispatch(refreshMoreSingerList());
     }
   },
-  pullDownRefresh(category, alpha){
+  pullDownRefresh(category, alpha) {
     dispatch(changePullDownLoading(true));
     dispatch(changeListOffset(0));
-    if(category === "" && alpha === ""){
+    if (category === "" && alpha === "") {
       // 说明这是热门数据的刷新
       dispatch(getHotSingerList());
-    }else {
+    } else {
       // 否则说明含有分类和字母分类的数据刷新
       dispatch(getSingerList());
     }

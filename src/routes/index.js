@@ -15,6 +15,7 @@ const RecommendComponent = lazy(() => import("application/Recommend"));
 const SingersComponent = lazy(() => import("application/Singers"));
 const RankComponent = lazy(() => import("application/Rank"));
 const AlbumComponent = lazy(() => import("application/Album"))
+const SingerComponent = lazy(() => import("application/Singer"))
 // 导入路由
 export default [
   {
@@ -43,7 +44,14 @@ export default [
           },
           {
             path: "/singers",
-            component: SuspenseComponent(SingersComponent)
+            component: SuspenseComponent(SingersComponent),
+            routes : [
+              {
+                path : "/singers/:id",
+                exact : true,
+                component : SuspenseComponent(SingerComponent)
+              }
+            ]
           },
           {
             path: "/rank",

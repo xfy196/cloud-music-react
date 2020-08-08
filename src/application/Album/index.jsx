@@ -22,6 +22,7 @@ function Album(props) {
   const headEl = useRef();
   const { getAlbumListDispatch } = props;
   const { songsCount, pullUpLoading, currentAlbum, enterLoading } = props;
+  console.log(currentAlbum);
   const currentAlbumJS = currentAlbum.toJS();
   // 将immutable的数据转换出来
   const handleBack = useCallback(() => {
@@ -90,7 +91,7 @@ const mapStateToProps = state => ({
   currentAlbum: state.getIn(["album", "currentAlbum"]),
   enterLoading: state.getIn(["album", "enterLoading"])
 })
-const mapDispatchProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     // 通过id拿到该id对应的歌单数据
     getAlbumListDispatch(id) {
@@ -99,4 +100,4 @@ const mapDispatchProps = (dispatch) => {
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchProps)(React.memo(Album))
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Album))
