@@ -13,6 +13,10 @@ export const changeSingerSongs = (data) => ({
   data: fromJS(data)
 })
 
+export const changeSingerEnterLoading = (data) => ({
+  type : actionTypes.CHANGE_SINGER_ENTER_LOADING,
+  data
+})
 /* 
   通过id获取歌手歌单的数据
 */
@@ -22,7 +26,7 @@ export const getSingerInfo = id => {
       let result = await getSingerDataRequest(id);
       dispatch(changeSingerArtists(result.artist));
       dispatch(changeSingerSongs(result.hotSongs));
-      
+      dispatch(changeSingerEnterLoading(false));
     } catch (error) {
       console.log("获取歌手歌单数据失败")
     }

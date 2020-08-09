@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { SongItem, SongList } from "./style"
 import { getName } from "utils"
 const SongListCom = React.forwardRef((props, refs) => {
-  const { songs, collectCount, showCollect } = props;
+  const { songs, collectCount, showCollect, musicAnimation } = props;
   const totalCount = songs.length;
+  const selectItem = (e, index) => {
+    musicAnimation(e.nativeEvent.clientX, e.nativeEvent.clientY);
+  }
   const renderSongItem = (list) => {
     return (
       <SongItem>
         {
           list.length !== 0 && list.map((item, index) => (
-            <li key={item.id}>
+            <li key={item.id} onClick={(e) => selectItem(e, index)}>
               <span className="index">{index + 1}</span>
               <div className="info">
                 <span>{item.name}</span>
@@ -35,7 +38,7 @@ const SongListCom = React.forwardRef((props, refs) => {
   return (
     <SongList>
       <div className="first_line border-bottom">
-        <div className="play_all">
+        <div className="play_all" onClick={(e) => selectItem(e, 0)}>
           <i className="iconfont">&#xe6e3;</i>
           <span>
             播放全部
