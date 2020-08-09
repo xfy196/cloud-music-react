@@ -35,27 +35,43 @@ const MusicNote = forwardRef((props, ref) => {
     return tempNode.firstChild;
   }
 
-
+/* 
+  第一次创建动画的盒子
+*/
   useEffect(() => {
+    // 首先创建10个存放iconfont图标的盒子，创建10个的原因是首屏展示的做多不会超过10个
     for (let i = 0; i < ICON_NUMBER; i++) {
+      // 循环创建存放iconfont的盒子
       let node = createNode(`<div class="iconfont">&#xe642;</div>`);
+      // 放入到icon_wrapper盒子之中
       iconsRef.current.appendChild(node);
     }
+    // 将伪数组转为标准数组
     let domArray = [].slice.call(iconsRef.current.children)
+    // 伪数组循环
     domArray.forEach(item => {
+      // 每一个iconfont的节点设置是否在运动状态 默认为false
       item.running = false;
+      // 加入动画监听 动画结束的监听
       item.addEventListener('transitionend', function () {
+        // 动画结束节点隐藏
         this.style['display'] = 'none';
+        // 动画移动位置回复初始状态
         this.style["transform"] = `translate3d(0, 0, 0)`;
+        // 动画运行标识设置为false
         this.running = false;
 
         let icon = this.querySelector('div');
+        // 找到这个运动的icon设置动画移动的位置为初始值
         icon.style["transform"] = `translate3d(0, 0, 0)`;
       }, false);
     });
   }, []);
 
   
+  /* 
+    开启动画的操作
+  */
   const startAnimation = ({x, y}) => {
     for(let i = 0; i < ICON_NUMBER; i++) {
       let domArray = [].slice.call(iconsRef.current.children)
@@ -67,8 +83,10 @@ const MusicNote = forwardRef((props, ref) => {
         item.style.display = "inline-block";
         setTimeout(() => {
           item.running = true;
-          item.style["transform"] = `translate3d(0, 7.5rem, 0)`;
+          // 外部的盒子实现落下的一个动画 盒子没有固定的宽度所以没法将两个动画放在一起
+          item.style["transform"] = `translate3d(-.4rem, 7.5rem, 0)`;
           let icon = item.querySelector("div");
+          // icon实现向左移动的效果
           icon.style["transform"] = `translate3d(-.4rem, 0, 0)`;
         }, 20);
         break;
@@ -76,6 +94,9 @@ const MusicNote = forwardRef((props, ref) => {
     }
   };
 
+  /* 
+    科技将该ref组件的方法提供给外部使用
+  */
   useImperativeHandle(ref, () => ({
     startAnimation
   }));
