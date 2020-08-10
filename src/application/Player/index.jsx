@@ -1,9 +1,22 @@
-import React from './node_modules/react'
-import {connect} from "./node_modules/react-redux"
-function Player() {
+import React, {useCallback} from 'react'
+import {connect} from "react-redux"
+import MiniPlayer from "./min-player"
+function Player(props) {
+  
+  const clickPlaying = useCallback((e, bool) => {
+    console.log("clickPlaying")
+  });
+
+  const handleTogglePlayList = useCallback(() => {
+    console.log("handleTogglePlayList");
+  })
   return (
     <>
-      
+      <MiniPlayer
+        playing={false}
+        clickPlaying={clickPlaying}
+        handleTogglePlayList={handleTogglePlayList}
+      ></MiniPlayer>
     </>
   )
 }

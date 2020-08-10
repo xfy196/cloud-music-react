@@ -12,7 +12,7 @@ const SongListCom = React.forwardRef((props, refs) => {
       <SongItem>
         {
           list.length !== 0 && list.map((item, index) => (
-            <li key={item.id} onClick={(e) => selectItem(e, index)}>
+            <li key={item.id} onClick={(e) => selectItem(e, item.al.id)}>
               <span className="index">{index + 1}</span>
               <div className="info">
                 <span>{item.name}</span>

@@ -10,7 +10,7 @@ import { isEmptyObject } from "utils"
 import EnterLoading from "utils/EnterLoading";
 import Loading from "baseUI/loading"
 import style from "assets/global-style"
-
+import MusicNote from "baseUI/music-note"
 function Album(props) {
   // 默认开始的时候为true但是点击返回的上一层的时候为false
   const [showStatus, setShowStatus] = useState(true);
@@ -20,9 +20,9 @@ function Album(props) {
   // 拿到传过来的id值
   const id = props.match.params.id;
   const headEl = useRef();
+  const musicNoteRef = useRef();
   const { getAlbumListDispatch } = props;
   const { songsCount, pullUpLoading, currentAlbum, enterLoading } = props;
-  console.log(currentAlbum);
   const currentAlbumJS = currentAlbum.toJS();
   // 将immutable的数据转换出来
   const handleBack = useCallback(() => {
@@ -32,6 +32,13 @@ function Album(props) {
   const handlePullUp = () => {
 
   }
+
+  /* 
+    点击歌曲出现的动画
+  */
+  const musicAnimation = (x, y) => {
+    musicNoteRef.current.startAnimation({ x, y });
+  };
   useEffect(() => {
     getAlbumListDispatch(id);
   }, [getAlbumListDispatch, id]);
@@ -78,11 +85,12 @@ function Album(props) {
                   pullUpLoading={pullUpLoading}
                   bounceTop={false}
                 >
-                  <AlbumDetail currentAlbum={currentAlbumJS}></AlbumDetail>
+                  <AlbumDetail currentAlbum={currentAlbumJS} musicAnimation={musicAnimation}></AlbumDetail>
                 </Scroll>)
               }
             </>
         }
+        <MusicNote ref={musicNoteRef}></MusicNote>
       </Container>
     </CSSTransition>
   )
