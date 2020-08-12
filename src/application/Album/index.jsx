@@ -97,7 +97,8 @@ function Album(props) {
 }
 const mapStateToProps = state => ({
   currentAlbum: state.getIn(["album", "currentAlbum"]),
-  enterLoading: state.getIn(["album", "enterLoading"])
+  enterLoading: state.getIn(["album", "enterLoading"]),
+  songsCount : state.getIn(["player", "playList"]).size
 })
 const mapDispatchToProps = (dispatch) => {
   return {

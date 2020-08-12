@@ -27,8 +27,8 @@ function index(props) {
   const recommendListJS = recommendList ? recommendList.toJS() : [];
   return (
     <>
-      <Content>
-        <Scroll play={songsCount} onScroll={forceCheck}>
+      <Content play={songsCount}>
+        <Scroll onScroll={forceCheck}>
           <div>
             <Slider bannerList={bannerListJS}></Slider>
             <RecommendList recommendList={recommendListJS}></RecommendList>
@@ -44,7 +44,7 @@ const mapStateToProps = state => {
   return {
     bannerList: state.getIn(["recommend", "bannerList"]),
     recommendList: state.getIn(["recommend", "recommendList"]),
-    // songsCount : state.getIn(["play", "playList"]).size,
+    songsCount : state.getIn(["player", "playList"]).size,
     enterLoading: state.getIn(["recommend", "enterLoading"])
   }
 }

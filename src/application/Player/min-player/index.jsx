@@ -21,13 +21,13 @@ function MiniPlayer(props) {
         <MiniPlayerContainer ref={miniPlayerContainer}>
           <div className="icon">
             <div className="imgWrapper" ref={miniWrapperRef}>
-              <img className={`play ${playing ? "" : "pause"}`} ref={miniImageRef} src="https://p4.music.126.net/dE3BEAkOBI8WW84DOYKZ8A==/109951164159332447.jpg" alt="img" />
+              <img className={`play ${playing ? "" : "pause"}`} ref={miniImageRef} src={song.al.picUrl} alt="img" />
             </div>
           </div>
-          <div className="text"><h2 className="name">Like You!</h2><p className="desc">Danny Shark</p></div>
+          <div className="text"><h2 className="name">{song.name}</h2><p className="desc">{song.ar[0].name}</p></div>
           {/* 播放的进度条 */}
           <div className="control">
-            <ProgressCircle radius={32} percent={.5}>
+            <ProgressCircle radius={32} percent={percent}>
               {playing ?
                 <i className="icon-mini iconfont icon-pause" onClick={e => clickPlaying(e, false)}>&#xe650;</i>
                 :

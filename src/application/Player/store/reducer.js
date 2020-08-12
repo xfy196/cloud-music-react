@@ -3,7 +3,9 @@ import {fromJS} from "immutable";
 const defaultState = fromJS({
   playList : [],
   currentIndex : -1,
-  currentSong : {}
+  currentSong : {},
+  playing : false,
+  speed : 1
 })
 export default (state = defaultState, action) => {
   switch(action.type){
@@ -13,6 +15,8 @@ export default (state = defaultState, action) => {
       return state.set("currentIndex", action.data);
     case actionTypes.CHANGE_CURRENT_SONG:
       return state.set("currentSong", action.data)
+    case actionTypes.CHANGE_PLAYING:
+      return state.set("playing", action.data)
     default:
       return state;
   }

@@ -113,6 +113,7 @@ const mapStateToProps = state => ({
   enterLoading: state.getIn(["singers", "enterLoading"]),
   pullUpLoading: state.getIn(["singers", "pullUpLoading"]),
   pullDownLoading: state.getIn(["singers", "pullDownLoading"]),
+  songsCount : state.getIn(["player", "playList"]).size
 })
 const mapDispatchTProps = dispatch => ({
   updateCategory(id) {

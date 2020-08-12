@@ -9,13 +9,22 @@ export const changePlayList = (data) => ({
   data : fromJS(data)
 });
 
+/* 
+  改变当前选中歌曲的下标
+*/
 export const changeCurrentIndex = (data) => ({
   type : actionTypes.CHANGE_CURRENT_INDEX,
   data
 });
 
-
+/* 
+  改变当前播放的歌曲
+*/
 export const changeCurrentSong = data => ({
   type : actionTypes.CHANGE_CURRENT_SONG,
   data : fromJS(data)
+})
+export const changePlayingState = data => ({
+  type : actionTypes.CHANGE_PLAYING,
+  data
 })

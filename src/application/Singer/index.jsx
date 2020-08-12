@@ -108,7 +108,7 @@ function Singer(props) {
       onExited={props.history.goBack}
     >
       {/* 整个内容区域 */}
-      <Container>
+      <Container play={songsCount}>
         {
           enterLoading ? <EnterLoading><Loading style={{ zIndex: 100 }}></Loading></EnterLoading> : (
             <>
@@ -148,7 +148,7 @@ function Singer(props) {
 const mapStateToProps = state => ({
   artist: state.getIn(["singerInfo", "artist"]),
   hotSongs: state.getIn(["singerInfo", "hotSongs"]),
-  songsCount: state.getIn(["player", "playList"]),
+  songsCount: state.getIn(["player", "playList"]).size,
   enterLoading: state.getIn(["singerInfo", "enterLoading"])
 });
 const mapDispatchToProps = dispatch => ({

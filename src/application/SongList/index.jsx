@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { SongItem, SongList } from "./style"
 import { getName } from "utils"
-import {connect} from "react-redux"
-import {changePlayList, changeCurrentIndex} from "application/Player/store/actionCreator"
+import { connect } from "react-redux"
+import { changePlayList, changeCurrentIndex } from "application/Player/store/actionCreator"
 const SongListCom = React.forwardRef((props, refs) => {
   const { songs, collectCount, showCollect, musicAnimation } = props;
-  const {changePlayListDispatch, changeCurrentIndexDispatch} = props;
+  const { changePlayListDispatch, changeCurrentIndexDispatch } = props;
   const totalCount = songs.length;
   const selectItem = (e, index) => {
     changePlayListDispatch(songs);
@@ -36,7 +36,7 @@ const SongListCom = React.forwardRef((props, refs) => {
     return (
       <div className="add_list">
         <i className="iconfont">&#xe62d;</i>
-        <span>收藏({Math.floor(collectCount/1000)/10}万)</span>
+        <span>收藏({Math.floor(collectCount / 1000) / 10}万)</span>
       </div>
     )
   }
@@ -60,10 +60,10 @@ const mapStateToProps = state => ({
 
 });
 const mapDispatchToProps = dispatch => ({
-  changePlayListDispatch(data){
+  changePlayListDispatch(data) {
     dispatch(changePlayList(data));
   },
-  changeCurrentIndexDispatch(data){
+  changeCurrentIndexDispatch(data) {
     dispatch(changeCurrentIndex(data));
   }
 })
