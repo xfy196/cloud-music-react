@@ -39,3 +39,22 @@ export const getAlbumListRequest = (id) => {
 export const getSingerDataRequest = id => {
   return axiosInstance.get("/api/artists?id=" + id);
 }
+
+// 获取热点关键字的内容
+export const getHotKeyWordsRequest = () => {
+  return axiosInstance.get("/api/search/hot");
+}
+
+// 获取热点关键字的数据
+export const getSuggestListRequest = (query) => {
+  return axiosInstance.get("/api/search/suggest?keywords=" + query);
+}
+// 获取关键字查询的结果数据
+export const getResultSongsListRequest = (query) => {
+  return axiosInstance.get("/api/search?keywords=" + query);
+}
+
+// 获取歌曲详细信息
+export const getSongDetailRequest = id => {
+  return axiosInstance.get(`/api/song/detail?ids=${id}`);
+};
