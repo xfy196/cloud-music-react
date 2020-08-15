@@ -82,7 +82,7 @@ function Search(props) {
 
   const selectItem = (e, id) => {
     getSongsDetailDispatch(id);
-    musicNoteRef.current.startAnimation(e.nativeEvent.clientX, e.nativeEvent.clientY);
+    musicNoteRef.current.startAnimation({x : e.nativeEvent.clientX, y : e.nativeEvent.clientY});
   }
 
   const renderSongs = () => {
