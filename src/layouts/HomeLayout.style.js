@@ -10,7 +10,7 @@ export const Top = styled.div`
   z-index : 2;
   background: ${style["theme-color"]};
   & > span{
-    line-height : 40px;
+    line-height : .4rem;
     color : #f1f1f1;
     font-size : .2rem;
     &.iconfont {
