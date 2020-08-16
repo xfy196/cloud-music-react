@@ -6,6 +6,7 @@ import { getRankList } from "./store/actionCreator"
 import { filterIndex } from "utils"
 import Loading from "baseUI/loading"
 import EnterLoading from "utils/EnterLoading"
+import {renderRoutes} from "react-router-config"
 function Rank(props) {
   const { rankList, loading } = props;
   const { getRankListDispatch } = props;
@@ -14,23 +15,29 @@ function Rank(props) {
       getRankListDispatch();
     }
   }, []);
+  const enterDetail = (id) => {
+    props.history.push(`/rank/${id}`);
+  }
   const renderSongList = (list) => {
     return list.length !== 0 && (
       <SongList>
         {
-          list.map((item, index) => (
-            <li key={index}>{index + 1}. {item.first} {item.second}</li>
-          ))
+          list.map((item, index) => {
+            return (
+              <li key={index}>{index + 1}. {item.first} {item.second}</li>
+            )
+          })
         }
       </SongList>
     )
   }
+
   const renderRankList = (list, global) => {
     return (
       <List globalRank={global}>
         {
           list.map(item => (
-            <ListItem key={item.id} className="border-bottom" tracks={item.tracks}>
+            <ListItem key={item.id} className="border-bottom" onClick={() => enterDetail(item.id)} tracks={item.tracks}>
               <div className="img_wrapper">
                 <img src={item.coverImgUrl} alt="" />
                 <div className="decorate"></div>
@@ -62,6 +69,8 @@ function Rank(props) {
           {loading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
         </div>
       </Scroll>
+      {renderRoutes(props.route.routes)}
+
     </Container>
   )
 }

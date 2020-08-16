@@ -56,8 +56,15 @@ export default [
           },
           {
             path: "/rank",
-            exact : true,
-            component: SuspenseComponent(RankComponent)
+            component: SuspenseComponent(RankComponent),
+            routes : [
+              {
+
+                path : "/rank/:id",
+                exact : true,
+                component : SuspenseComponent(AlbumComponent)
+              }
+            ]
           },
           {
             path : "/search",
