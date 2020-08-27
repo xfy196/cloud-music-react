@@ -1,0 +1,202 @@
+{
+  "errors": [
+    "./src/index.js 10:2\nModule parse failed: Unexpected token (10:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n| fastclick.attach(document.body);\n| ReactDOM.render(\n>   <App></App>,\n|   document.getElementById(\"root\")\n| )"
+  ],
+  "warnings": [],
+  "version": "4.44.0",
+  "hash": "ad100b25e1f011203731",
+  "time": 85,
+  "builtAt": 1598534538073,
+  "publicPath": "",
+  "outputPath": "E:\\1000phone\\资源\\code\\1000phone\\gp19\\react\\项目\\cloud-music-xxy\\dist",
+  "assetsByChunkName": {
+    "main": [
+      "main.js",
+      "main.js.map"
+    ]
+  },
+  "assets": [
+    {
+      "name": "main.js",
+      "size": 4186,
+      "chunks": [
+        "main"
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "info": {},
+      "emitted": true
+    },
+    {
+      "name": "main.js.map",
+      "size": 3606,
+      "chunks": [
+        "main"
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": true
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        "main"
+      ],
+      "assets": [
+        "main.js",
+        "main.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        "main"
+      ],
+      "assets": [
+        "main.js",
+        "main.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "chunks": [
+    {
+      "id": "main",
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 346,
+      "names": [
+        "main"
+      ],
+      "files": [
+        "main.js",
+        "main.js.map"
+      ],
+      "hash": "42d7074207c7ccfd09da",
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "childrenByOrder": {},
+      "modules": [
+        {
+          "id": "./src/index.js",
+          "identifier": "E:\\1000phone\\资源\\code\\1000phone\\gp19\\react\\项目\\cloud-music-xxy\\src\\index.js",
+          "name": "./src/index.js",
+          "index": 0,
+          "index2": 0,
+          "size": 346,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "main"
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 29,
+            "building": 9
+          },
+          "failed": true,
+          "errors": 1,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src",
+              "loc": "main"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 0,
+          "source": "throw new Error(\"Module parse failed: Unexpected token (10:2)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| fastclick.attach(document.body);\\n| ReactDOM.render(\\n>   <App></App>,\\n|   document.getElementById(\\\"root\\\")\\n| )\");"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "./src",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": "./src/index.js",
+      "identifier": "E:\\1000phone\\资源\\code\\1000phone\\gp19\\react\\项目\\cloud-music-xxy\\src\\index.js",
+      "name": "./src/index.js",
+      "index": 0,
+      "index2": 0,
+      "size": 346,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "main"
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "profile": {
+        "factory": 29,
+        "building": 9
+      },
+      "failed": true,
+      "errors": 1,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src",
+          "loc": "main"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 0,
+      "source": "throw new Error(\"Module parse failed: Unexpected token (10:2)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| fastclick.attach(document.body);\\n| ReactDOM.render(\\n>   <App></App>,\\n|   document.getElementById(\\\"root\\\")\\n| )\");"
+    }
+  ],
+  "filteredModules": 0,
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 2,
+      "debug": false
+    }
+  },
+  "children": []
+}

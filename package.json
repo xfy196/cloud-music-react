@@ -57,6 +57,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./config/webpack.config.js"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./config/webpack.config.js",
+    "dll": "webpack -p --progress --config ./config/webpack.dll.conf.js"
   }
 }
