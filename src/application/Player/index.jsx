@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { connect } from "react-redux"
 import MiniPlayer from "./min-player"
-import { changeCurrentSong, changePlayingState } from "./store/actionCreator"
+import { changeCurrentSong, changePlayingState, changePlayListStatus } from "./store/actionCreator"
 import { getSongUrl, isEmptyObject } from "utils"
+import PlayList from "./play-list/index"
 function Player(props) {
   const { speed, playList: immutablePlayList, currentIndex, currentSong: immutableCurrentSong, playing } = props;
-  const { changeCurrentSongDispatch, togglePlayingDispatch } = props;
+  const { changeCurrentSongDispatch, togglePlayingDispatch, togglePlayListStatus, playListStatus } = props;
   // 当前播放歌曲的数据
   const [preSong, setPreSong] = useState({});
   const [playLyric, setPlayLyric] = useState("");
@@ -52,8 +53,10 @@ function Player(props) {
     togglePlayingDispatch(state);
   });
 
+  // 改变播放列表状态
   const handleTogglePlayList = useCallback(() => {
-    console.log("handleTogglePlayList");
+    // 改变状态
+    togglePlayListStatus(!playListStatus)
   });
 
 
@@ -89,6 +92,10 @@ function Player(props) {
             percent={percent}
           ></MiniPlayer>
       }
+
+
+      {/* playList的组件 */}
+      <PlayList></PlayList>
       <audio
         ref={audioRef}
         onTimeUpdate={updateTime}
@@ -103,7 +110,8 @@ const mapStateToProps = state => ({
   currentIndex: state.getIn(["player", "currentIndex"]),
   currentSong: state.getIn(["player", "currentSong"]),
   playing: state.getIn(["player", "playing"]),
-  speed: state.getIn(["player", "speed"])
+  speed: state.getIn(["player", "speed"]),
+  playListStatus: state.getIn(["player", "playListStatus"])
 });
 const mapDispatchToProps = dispatch => ({
   changeCurrentSongDispatch(data) {
@@ -111,6 +119,9 @@ const mapDispatchToProps = dispatch => ({
   },
   togglePlayingDispatch(data) {
     dispatch(changePlayingState(data))
+  },
+  togglePlayListStatus(data){
+    dispatch(changePlayListStatus(data))
   }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Player))

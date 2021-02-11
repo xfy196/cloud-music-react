@@ -47,3 +47,11 @@ export const getSongsDetail = id => {
     dispatch(insertSong(song));
   }
 }
+
+// 改变播放列表的状态
+export const changePlayListStatus = data => {
+  return {
+    type: actionTypes.CHANGE_PLAY_LIST_STATUS,
+    data
+  }
+}

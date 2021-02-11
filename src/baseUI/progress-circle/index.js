@@ -26,7 +26,6 @@ function ProgressCircle(props) {
   const dashArray = Math.PI * 100;
   // 通过传入的百分比去计算高亮部分和未高亮部分
   const dashOffset = (1 - percent) * dashArray;
-
   return (
     <>
       <CircleWrapper>

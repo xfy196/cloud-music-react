@@ -3,3 +3,4 @@ export const CHANGE_CURRENT_INDEX = "player/CHANGE_CURRENT_INDEX";
 export const CHANGE_CURRENT_SONG = "player/CHANGE_CURRENT_SONG";
 export const CHANGE_PLAYING = "player/CHANGE_PLAYING";
 export const INSERT_SONG = "player/INSERT_SONG";
+export const CHANGE_PLAY_LIST_STATUS = "player/CHANGE_PLAY_LIST_STATUS"

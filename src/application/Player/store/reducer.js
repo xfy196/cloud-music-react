@@ -7,7 +7,8 @@ const defaultState = fromJS({
   currentSong: {},
   playing: false,
   speed: 1,
-  sequencePlayList : []
+  sequencePlayList : [],
+  playListStatus: false
 })
 
 
@@ -65,6 +66,8 @@ export default (state = defaultState, action) => {
       return state.set("playing", action.data)
     case actionTypes.INSERT_SONG:
       return handleInsertSong(state, action.data)
+    case actionTypes.CHANGE_PLAY_LIST_STATUS:
+      return state.set("playListStatus", action.data)
     default:
       return state;
   }
