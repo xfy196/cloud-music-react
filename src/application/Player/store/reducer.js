@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes"
 import { fromJS } from "immutable";
 import {findIndex} from "utils"
+import {playMode} from "../../../api/config"
 const defaultState = fromJS({
   playList: [],
   currentIndex: -1,
@@ -8,7 +9,8 @@ const defaultState = fromJS({
   playing: false,
   speed: 1,
   sequencePlayList : [],
-  playListStatus: false
+  playListStatus: false,
+  mode: playMode.sequence
 })
 
 

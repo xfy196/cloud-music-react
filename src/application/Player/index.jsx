@@ -5,7 +5,7 @@ import { changeCurrentSong, changePlayingState, changePlayListStatus } from "./s
 import { getSongUrl, isEmptyObject } from "utils"
 import PlayList from "./play-list/index"
 function Player(props) {
-  const { speed, playList: immutablePlayList, currentIndex, currentSong: immutableCurrentSong, playing } = props;
+  const { speed, playList: immutablePlayList, currentIndex, currentSong: immutableCurrentSong, playing, mode } = props;
   const { changeCurrentSongDispatch, togglePlayingDispatch, togglePlayListStatus, playListStatus } = props;
   // 当前播放歌曲的数据
   const [preSong, setPreSong] = useState({});
@@ -95,7 +95,7 @@ function Player(props) {
 
 
       {/* playList的组件 */}
-      <PlayList></PlayList>
+      <PlayList mode={mode}></PlayList>
       <audio
         ref={audioRef}
         onTimeUpdate={updateTime}
@@ -111,7 +111,8 @@ const mapStateToProps = state => ({
   currentSong: state.getIn(["player", "currentSong"]),
   playing: state.getIn(["player", "playing"]),
   speed: state.getIn(["player", "speed"]),
-  playListStatus: state.getIn(["player", "playListStatus"])
+  playListStatus: state.getIn(["player", "playListStatus"]),
+  mode: state.getIn(["player", "mode"])
 });
 const mapDispatchToProps = dispatch => ({
   changeCurrentSongDispatch(data) {

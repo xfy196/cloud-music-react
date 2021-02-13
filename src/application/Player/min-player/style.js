@@ -84,7 +84,7 @@ export const MiniPlayerContainer = Styled.div`
       position : absolute;
       left: 50%;
       top: 50%;
-      transform: translate3d(-45%,-55%, 0)
+      transform: translate3d(-45%,-63%, 0)
     }
   }
 `
