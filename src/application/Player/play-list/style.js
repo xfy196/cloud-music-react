@@ -69,12 +69,31 @@ export const ScrollWrapper = styled.div`
 `
 
 export const ListContent = styled.div`
+overflow: hidden;
+height: 400px;
 .item{
     display: flex;
     align-items: center;
     padding: 0 30px 0 20px;
     height: 40px;
     overflow: hidden;
+    .current{
+        color: #d44439;
+        width: 20px;
+        font-size: 12px;
+        font-weight: normal;
+    }
+    .like{
+        position: relative;
+        font-size: 14px;
+        margin-right: 15px;
+        color: #d44439;
+    }
+    .delete{
+        font-weight: normal;
+        color: #d44439;
+        position: relative;
+    }
     .text{
         font-size: 14px;
         flex: 1;

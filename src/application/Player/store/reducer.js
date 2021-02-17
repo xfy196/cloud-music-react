@@ -2,6 +2,7 @@ import * as actionTypes from "./actionTypes"
 import { fromJS } from "immutable";
 import {findIndex} from "utils"
 import {playMode} from "../../../api/config"
+import { useCallback } from "react";
 const defaultState = fromJS({
   playList: [],
   currentIndex: -1,
@@ -10,7 +11,8 @@ const defaultState = fromJS({
   speed: 1,
   sequencePlayList : [],
   playListStatus: false,
-  mode: playMode.sequence
+  mode: playMode.sequence,
+  fullScreen: false
 })
 
 
@@ -56,6 +58,12 @@ const handleInsertSong = (state, song) => {
     'currentIndex': fromJS(currentIndex),
   });
 }
+
+// 删除某一个歌曲
+const handleDeleteSong = (state, song) => {
+  console.log(state.get("playList").toJS())
+  return state
+}
 export default (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_PLAY_LIST:
@@ -70,6 +78,14 @@ export default (state = defaultState, action) => {
       return handleInsertSong(state, action.data)
     case actionTypes.CHANGE_PLAY_LIST_STATUS:
       return state.set("playListStatus", action.data)
+    case actionTypes.SET_SEQUECE_PLAYLIST:
+      return state.set('sequencePlayList', action.data);
+    case actionTypes.CHANGE_MODE:
+      return state.set("mode", action.data)
+    case actionTypes.DELETE_SONG:
+      return handleDeleteSong(state, action.data)
+    case actionTypes.CHANGE_FULL_SCREEN:
+      return state.set("fullScreen", action.data)
     default:
       return state;
   }

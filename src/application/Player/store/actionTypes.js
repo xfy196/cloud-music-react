@@ -4,3 +4,7 @@ export const CHANGE_CURRENT_SONG = "player/CHANGE_CURRENT_SONG";
 export const CHANGE_PLAYING = "player/CHANGE_PLAYING";
 export const INSERT_SONG = "player/INSERT_SONG";
 export const CHANGE_PLAY_LIST_STATUS = "player/CHANGE_PLAY_LIST_STATUS"
+export const SET_SEQUECE_PLAYLIST = "player/SET_SEQUECE_PLAYLIST"
+export const CHANGE_MODE = "player/CHANGE_MODE"
+export const DELETE_SONG = "player/DELETE_SONG"
+export const CHANGE_FULL_SCREEN = "player/CHANGE_FULL_SCREEN"

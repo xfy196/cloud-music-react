@@ -10,6 +10,10 @@ export const changePlayList = (data) => ({
   data : fromJS(data)
 });
 
+export const changeSequecePlayList = (data) => ({
+  type: actionTypes.SET_SEQUECE_PLAYLIST,
+  data: fromJS(data)
+});
 /* 
   改变当前选中歌曲的下标
 */
@@ -52,6 +56,25 @@ export const getSongsDetail = id => {
 export const changePlayListStatus = data => {
   return {
     type: actionTypes.CHANGE_PLAY_LIST_STATUS,
+    data
+  }
+}
+export const changeMode = data => {
+  return {
+    type: actionTypes.CHANGE_MODE,
+    data
+  }
+}
+// 删除某一个歌曲
+export const deleteSong = data => {
+  return {
+    type: actionTypes.DELETE_SONG,
+    data
+  }
+}
+export const changeFullScreen = data => {
+  return {
+    type: actionTypes.CHANGE_FULL_SCREEN,
     data
   }
 }

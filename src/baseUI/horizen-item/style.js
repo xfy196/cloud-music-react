@@ -26,4 +26,7 @@ export const ListItem = Styled.span`
     border: 1px solid ${globalStyle["theme-color"]};
     opacity: 0.8;
   }
+  &:before{
+    border: none;
+  }
 `

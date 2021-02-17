@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { SongItem, SongList } from "./style"
 import { getName } from "utils"
 import { connect } from "react-redux"
-import { changePlayList, changeCurrentIndex } from "application/Player/store/actionCreator"
+import { changePlayList, changeCurrentIndex, changeSequecePlayList} from "application/Player/store/actionCreator"
 const SongListCom = React.forwardRef((props, refs) => {
   const { songs, collectCount, showCollect, musicAnimation } = props;
-  const { changePlayListDispatch, changeCurrentIndexDispatch } = props;
+  const { changePlayListDispatch, changeCurrentIndexDispatch, changeSequecePlayListDispatch } = props;
   const totalCount = songs.length;
   const selectItem = (e, index) => {
     changePlayListDispatch(songs);
+    changeSequecePlayListDispatch(songs)
     changeCurrentIndexDispatch(index);
     musicAnimation(e.nativeEvent.clientX, e.nativeEvent.clientY);
   }
@@ -65,6 +66,9 @@ const mapDispatchToProps = dispatch => ({
   },
   changeCurrentIndexDispatch(data) {
     dispatch(changeCurrentIndex(data));
+  },
+  changeSequecePlayListDispatch(data){
+    dispatch(changeSequecePlayList(data))
   }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(React.memo(SongListCom));

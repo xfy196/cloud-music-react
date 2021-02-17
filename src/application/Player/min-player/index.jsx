@@ -3,8 +3,8 @@ import { MiniPlayerContainer } from "./style"
 import { CSSTransition } from "react-transition-group"
 import ProgressCircle from "baseUI/progress-circle"
 function MiniPlayer(props) {
-  const { playing, song, percent } = props;
-  const { clickPlaying, handleTogglePlayList } = props;
+  const { playing, song, percent, full } = props;
+  const { clickPlaying, handleTogglePlayList, setFullScreen } = props;
   const miniPlayerContainer = useRef();
   const miniWrapperRef = useRef();
   const miniImageRef = useRef()
@@ -12,13 +12,17 @@ function MiniPlayer(props) {
   return (
     <>
       <CSSTransition
-        in={true}
+        in={!full}
         timeout={400}
         classNames="mini"
-        onEnter={() => { }}
-        onExited={() => { }}
+        onEnter={() => {
+          miniPlayerContainer.current.style.display = "flex"
+         }}
+        onExited={() => { 
+          miniPlayerContainer.current.style.display = "none"
+        }}
       >
-        <MiniPlayerContainer ref={miniPlayerContainer}>
+        <MiniPlayerContainer onClick={() => setFullScreen(true)} ref={miniPlayerContainer}>
           <div className="icon">
             <div className="imgWrapper" ref={miniWrapperRef}>
               <img className={`play ${playing ? "" : "pause"}`} ref={miniImageRef} src={song.al.picUrl} alt="img" />
@@ -35,7 +39,10 @@ function MiniPlayer(props) {
               }
             </ProgressCircle>
           </div>
-          <div className="control" onClick={handleTogglePlayList}>
+          <div className="control" onClick={(e) => {
+            e.stopPropagation()
+            handleTogglePlayList()
+          }}>
             <i className="iconfont">&#xe640;</i>
           </div>
         </MiniPlayerContainer>
