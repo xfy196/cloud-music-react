@@ -43,12 +43,12 @@ export default class Lyric {
     }
     // 初始化的文字线标
     _initLines() {
-        const lines = this.lrc.split("\n")
-        for (let i = 0; i < lines, length; i++) {
+        const lines = this.lrc.split('\n')
+        for (let i = 0; i < lines.length; i++) {
             const line = lines[i]
-            const result = timeExp.exec(line)
+            let result = timeExp.exec(line)
             if (result) {
-                const txt = line.replace(result, "").trim()
+                const txt = line.replace(timeExp, '').trim();
                 if (txt) {
                     if (result[3].length === 3) {
                         result[3] = result[3] / 10;
@@ -60,7 +60,7 @@ export default class Lyric {
                 }
             }
         }
-
+        
         this.lines.sort((a, b) => {
             return a.time - b.time
         })

@@ -2,7 +2,6 @@ import * as actionTypes from "./actionTypes"
 import { fromJS } from "immutable";
 import {findIndex} from "utils"
 import {playMode} from "../../../api/config"
-import { useCallback } from "react";
 const defaultState = fromJS({
   playList: [],
   currentIndex: -1,
@@ -24,7 +23,7 @@ const handleInsertSong = (state, song) => {
   const playList = JSON.parse(JSON.stringify(state.get('playList').toJS()));
   const sequenceList = JSON.parse(JSON.stringify(state.get('sequencePlayList').toJS()));
   let currentIndex = state.get('currentIndex');
-  //看看有没有同款
+  // 查询是否存在相同的歌曲
   let fpIndex = findIndex(song, playList);
   // 如果是当前歌曲直接不处理
   if (fpIndex === currentIndex && currentIndex !== -1) return state;
@@ -61,8 +60,11 @@ const handleInsertSong = (state, song) => {
 
 // 删除某一个歌曲
 const handleDeleteSong = (state, song) => {
-  console.log(state.get("playList").toJS())
-  return state
+let index = state.get("playList").findIndex((item => {
+    return item.get("id") === song.id
+  }))
+  
+  return state.set("playList", state.get("playList").delete(index))
 }
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -75,7 +77,7 @@ export default (state = defaultState, action) => {
     case actionTypes.CHANGE_PLAYING:
       return state.set("playing", action.data)
     case actionTypes.INSERT_SONG:
-      return handleInsertSong(state, action.data)
+      return handleInsertSong(state, action.data.toJS())
     case actionTypes.CHANGE_PLAY_LIST_STATUS:
       return state.set("playListStatus", action.data)
     case actionTypes.SET_SEQUECE_PLAYLIST:
@@ -86,6 +88,8 @@ export default (state = defaultState, action) => {
       return handleDeleteSong(state, action.data)
     case actionTypes.CHANGE_FULL_SCREEN:
       return state.set("fullScreen", action.data)
+    case actionTypes.CHANGE_SPEED:
+      return state.set("speed", action.data)
     default:
       return state;
   }

@@ -78,3 +78,10 @@ export const changeFullScreen = data => {
     data
   }
 }
+
+export const changeSpeed = data => {
+  return {
+    type: actionTypes.CHANGE_SPEED,
+    data
+  }
+}

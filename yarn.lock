@@ -2558,6 +2558,17 @@
     "safe-buffer" "^5.0.1"
     "sha.js" "^2.4.8"
 
+"create-keyframe-animation@^0.1.0":
+  "integrity" "sha1-Brjz4I7PtT+Afu2RBD5cocQNWYc="
+  "resolved" "https://registry.npm.taobao.org/create-keyframe-animation/download/create-keyframe-animation-0.1.0.tgz"
+  "version" "0.1.0"
+  dependencies:
+    "load-styles" "^2.0.0"
+    "lodash.defaults" "^3.1.2"
+    "native-promisify-if-present" "^1.0.1"
+    "prefixed-event" "^1.0.4"
+    "transform-property" "0.0.1"
+
 "create-react-class@^15.6.0":
   "integrity" "sha1-dJnXyi5pu1HRP69ZvQTwxlodbB4="
   "resolved" "https://registry.npm.taobao.org/create-react-class/download/create-react-class-15.7.0.tgz"
@@ -4428,6 +4439,11 @@
   "resolved" "https://registry.npm.taobao.org/is-fullwidth-code-point/download/is-fullwidth-code-point-2.0.0.tgz"
   "version" "2.0.0"
 
+"is-function@^1.0.1":
+  "integrity" "sha1-Twl/MKv2762smDOxfKXcA/gUTgg="
+  "resolved" "https://registry.npm.taobao.org/is-function/download/is-function-1.0.2.tgz"
+  "version" "1.0.2"
+
 "is-glob@^3.1.0":
   "integrity" "sha1-e6WuJCF4BKxwcHuWkiVnSGzD6Eo="
   "resolved" "https://registry.npm.taobao.org/is-glob/download/is-glob-3.1.0.tgz"
@@ -4800,6 +4816,11 @@
     "pinkie-promise" "^2.0.0"
     "strip-bom" "^2.0.0"
 
+"load-styles@^2.0.0":
+  "integrity" "sha1-oJAcj4DvDIaUVOtYC078LwvkhHE="
+  "resolved" "https://registry.npm.taobao.org/load-styles/download/load-styles-2.0.0.tgz"
+  "version" "2.0.0"
+
 "loader-runner@^2.4.0":
   "integrity" "sha1-7UcGa/5TTX6ExMe5mYwqdWB9k1c="
   "resolved" "https://registry.npm.taobao.org/loader-runner/download/loader-runner-2.4.0.tgz?cache=0&sync_timestamp=1610027938815&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Floader-runner%2Fdownload%2Floader-runner-2.4.0.tgz"
@@ -4838,10 +4859,88 @@
   dependencies:
     "p-locate" "^4.1.0"
 
+"lodash._baseassign@^3.0.0":
+  "integrity" "sha1-jDigmVAPIVrQnlnxci/QxSv+Ck4="
+  "resolved" "https://registry.npm.taobao.org/lodash._baseassign/download/lodash._baseassign-3.2.0.tgz"
+  "version" "3.2.0"
+  dependencies:
+    "lodash._basecopy" "^3.0.0"
+    "lodash.keys" "^3.0.0"
+
+"lodash._basecopy@^3.0.0":
+  "integrity" "sha1-jaDmqHbPNEwK2KVIghEd08XHyjY="
+  "resolved" "https://registry.npm.taobao.org/lodash._basecopy/download/lodash._basecopy-3.0.1.tgz"
+  "version" "3.0.1"
+
+"lodash._bindcallback@^3.0.0":
+  "integrity" "sha1-5THCdkTPi1epnhftlbNcdIeJOS4="
+  "resolved" "https://registry.npm.taobao.org/lodash._bindcallback/download/lodash._bindcallback-3.0.1.tgz"
+  "version" "3.0.1"
+
+"lodash._createassigner@^3.0.0":
+  "integrity" "sha1-g4pbri/aymOsIt7o4Z+k5taXCxE="
+  "resolved" "https://registry.npm.taobao.org/lodash._createassigner/download/lodash._createassigner-3.1.1.tgz"
+  "version" "3.1.1"
+  dependencies:
+    "lodash._bindcallback" "^3.0.0"
+    "lodash._isiterateecall" "^3.0.0"
+    "lodash.restparam" "^3.0.0"
+
+"lodash._getnative@^3.0.0":
+  "integrity" "sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U="
+  "resolved" "https://registry.npm.taobao.org/lodash._getnative/download/lodash._getnative-3.9.1.tgz"
+  "version" "3.9.1"
+
+"lodash._isiterateecall@^3.0.0":
+  "integrity" "sha1-UgOte6Ql+uhCRg5pbbnPPmqsBXw="
+  "resolved" "https://registry.npm.taobao.org/lodash._isiterateecall/download/lodash._isiterateecall-3.0.9.tgz"
+  "version" "3.0.9"
+
+"lodash.assign@^3.0.0":
+  "integrity" "sha1-POnwI0tLIiPilrj6CsH+6OvKZPo="
+  "resolved" "https://registry.npm.taobao.org/lodash.assign/download/lodash.assign-3.2.0.tgz"
+  "version" "3.2.0"
+  dependencies:
+    "lodash._baseassign" "^3.0.0"
+    "lodash._createassigner" "^3.0.0"
+    "lodash.keys" "^3.0.0"
+
+"lodash.defaults@^3.1.2":
+  "integrity" "sha1-xzCLGNv4vJNy1wGnNJPGEZK9Liw="
+  "resolved" "https://registry.npm.taobao.org/lodash.defaults/download/lodash.defaults-3.1.2.tgz"
+  "version" "3.1.2"
+  dependencies:
+    "lodash.assign" "^3.0.0"
+    "lodash.restparam" "^3.0.0"
+
+"lodash.isarguments@^3.0.0":
+  "integrity" "sha1-L1c9hcaiQon/AGY7SRwdM4/zRYo="
+  "resolved" "https://registry.npm.taobao.org/lodash.isarguments/download/lodash.isarguments-3.1.0.tgz"
+  "version" "3.1.0"
+
+"lodash.isarray@^3.0.0":
+  "integrity" "sha1-eeTriMNqgSKvhvhEqpvNhRtfu1U="
+  "resolved" "https://registry.npm.taobao.org/lodash.isarray/download/lodash.isarray-3.0.4.tgz"
+  "version" "3.0.4"
+
+"lodash.keys@^3.0.0":
+  "integrity" "sha1-TbwEcrFWvlCgsoaFXRvQsMZWCYo="
+  "resolved" "https://registry.npm.taobao.org/lodash.keys/download/lodash.keys-3.1.2.tgz"
+  "version" "3.1.2"
+  dependencies:
+    "lodash._getnative" "^3.0.0"
+    "lodash.isarguments" "^3.0.0"
+    "lodash.isarray" "^3.0.0"
+
 "lodash.memoize@^4.1.2":
   "integrity" "sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4="
   "resolved" "https://registry.npm.taobao.org/lodash.memoize/download/lodash.memoize-4.1.2.tgz"
   "version" "4.1.2"
+
+"lodash.restparam@^3.0.0":
+  "integrity" "sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU="
+  "resolved" "https://registry.npm.taobao.org/lodash.restparam/download/lodash.restparam-3.6.1.tgz"
+  "version" "3.6.1"
 
 "lodash.uniq@^4.5.0":
   "integrity" "sha1-0CJTc662Uq3BvILklFM5qEJ1R3M="
@@ -5194,6 +5293,13 @@
     "regex-not" "^1.0.0"
     "snapdragon" "^0.8.1"
     "to-regex" "^3.0.1"
+
+"native-promisify-if-present@^1.0.1":
+  "integrity" "sha1-eMebDcOcWpSzrQ9Gd9ZLcXD0guI="
+  "resolved" "https://registry.npm.taobao.org/native-promisify-if-present/download/native-promisify-if-present-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "is-function" "^1.0.1"
 
 "native-request@^1.0.5":
   "integrity" "sha1-j2a/YG4PfqJ8DlmV6y9dA+M65vs="
@@ -6149,6 +6255,11 @@
     "chalk" "^2.4.2"
     "source-map" "^0.6.1"
     "supports-color" "^6.1.0"
+
+"prefixed-event@^1.0.4":
+  "integrity" "sha1-I+klzfsQmq6qQeyR04yRxREEKqc="
+  "resolved" "https://registry.npm.taobao.org/prefixed-event/download/prefixed-event-1.0.4.tgz"
+  "version" "1.0.4"
 
 "prepend-http@^1.0.0":
   "integrity" "sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw="
@@ -7983,6 +8094,11 @@
   dependencies:
     "psl" "^1.1.28"
     "punycode" "^2.1.1"
+
+"transform-property@0.0.1":
+  "integrity" "sha1-SGNmL51eW7jwwAZI7/CL6xT9ZfI="
+  "resolved" "https://registry.npm.taobao.org/transform-property/download/transform-property-0.0.1.tgz"
+  "version" "0.0.1"
 
 "trim-newlines@^1.0.0":
   "integrity" "sha1-WIeWa7WCpFA6QetST301ARgVphM="
