@@ -6,7 +6,6 @@ export const SliderContainer = styled.div`
   width: 100%;
   height: 100%;
   margin: auto;
-  background: white;
 `
 export const Swipe = styled.div`
   width : 3.67rem;

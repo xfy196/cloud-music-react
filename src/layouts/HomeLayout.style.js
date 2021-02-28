@@ -25,6 +25,7 @@ export const Tab = styled.div`
   justify-content: space-around;
   background: ${style["theme-color"]};
   z-index: 10;
+  box-shadow: 0 -1px #d44439, 0 1px #d44439;
   a {
     flex: 1;
     font-size: .14rem;

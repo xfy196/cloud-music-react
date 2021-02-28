@@ -18,7 +18,7 @@ export default React.memo(function index(props) {
               <a
                 key={val}
                 href="#"
-                style={{ display: 'inline-block', width: '100%' }}
+                style={{display: 'inline-block', width: '100%' }}
               >
                 <img
                   src={val.imageUrl}
