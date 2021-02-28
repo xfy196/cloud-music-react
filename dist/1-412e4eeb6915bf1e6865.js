@@ -107,13 +107,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SongList", function() { return SongList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SongItem", function() { return SongItem; });
-/* harmony import */ var _Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var _Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var assets_global_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! assets/global-style */ "./src/assets/global-style.js");
 
 
 function _templateObject2() {
-  var data = Object(_Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  >li {\n    display : flex;\n    align-items : center;\n    height : .6rem;\n    .index {\n      font-size : .16rem;\n      flex-basis: .6rem;\n      width: .60rem;\n      height: .60rem;\n      line-height: .60rem;\n      text-align: center;\n    }\n    .info {\n      box-sizing : border-box;\n      flex: 1;\n      height : 100%;\n      display :flex;\n      flex-direction : column;\n      padding : .05rem 0;\n      justify-content : space-around;\n      border-bottom-style : solid;\n      border-bottom-color : ", ";\n      text-overflow: ellipsis;\n      overflow : hidden;\n      white-space : nowrap; \n      >span{\n        text-overflow : ellipsis;\n        overflow: hidden;\n        white-space : nowrap;\n        &:first-child {\n          font-size : .16rem;\n          color : ", ";\n        }\n        &:last-child {\n          font-size : .12rem;\n          color : ", ";\n        }\n      }\n    }\n  }\n"]);
+  var data = Object(_Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  >li {\n    display : flex;\n    align-items : center;\n    height : .6rem;\n    .index {\n      font-size : .16rem;\n      flex-basis: .6rem;\n      width: .60rem;\n      height: .60rem;\n      line-height: .60rem;\n      text-align: center;\n    }\n    .info {\n      box-sizing : border-box;\n      flex: 1;\n      height : 100%;\n      display :flex;\n      flex-direction : column;\n      padding : .05rem 0;\n      justify-content : space-around;\n      border-bottom-style : solid;\n      border-bottom-color : ", ";\n      text-overflow: ellipsis;\n      overflow : hidden;\n      white-space : nowrap; \n      >span{\n        text-overflow : ellipsis;\n        overflow: hidden;\n        white-space : nowrap;\n        &:first-child {\n          font-size : .16rem;\n          color : ", ";\n        }\n        &:last-child {\n          font-size : .12rem;\n          color : ", ";\n        }\n      }\n    }\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -123,7 +123,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = Object(_Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  background : #fff;\n  opacity: 0.98;\n  border-radius : .1rem;\n  .first_line {\n    display : flex;\n    box-sizing: border-box;\n    padding: .1rem 0;\n    margin-left: .1rem;\n    position: relative;\n    justify-content: space-between;\n    border-bottom-style: solid;\n    border-bottom-color: ", ";\n    .play_all {\n      display: inline-block;\n      line-height: .24rem;\n      color: ", ";\n      i{\n        font-size : .24rem;\n        margin-right: .1rem;\n        vertical-align: top;\n      }\n      >span{\n        vertical-align : top;\n        font-size : .16rem;\n      }\n      .sum {\n        font-size: .12rem;\n        color: ", ";\n      }\n    }\n    .add_list {\n      display : flex;\n      align-items: center;\n      position: absolute;\n      right: 0;\n      top: 0;\n      bottom: 0;\n      width: 1.3rem;\n      line-height: .34rem;\n      background: #d44439;\n      color: ", ";\n      font-size: 0;\n      border-radius: .03rem;\n      vertical-align: top;\n      i{\n        vertical-align: top;\n        font-size: .1rem;\n        margin: 0 .05rem 0 .1rem;\n      }\n      span {\n        font-size: .14rem;\n        line-height: .34rem;\n      }\n    }\n  }\n"]);
+  var data = Object(_Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  background : #fff;\n  opacity: 0.98;\n  border-radius : .1rem;\n  .first_line {\n    display : flex;\n    box-sizing: border-box;\n    padding: .1rem 0;\n    margin-left: .1rem;\n    position: relative;\n    justify-content: space-between;\n    border-bottom-style: solid;\n    border-bottom-color: ", ";\n    .play_all {\n      display: inline-block;\n      line-height: .24rem;\n      color: ", ";\n      i{\n        font-size : .24rem;\n        margin-right: .1rem;\n        vertical-align: top;\n      }\n      >span{\n        vertical-align : top;\n        font-size : .16rem;\n      }\n      .sum {\n        font-size: .12rem;\n        color: ", ";\n      }\n    }\n    .add_list {\n      display : flex;\n      align-items: center;\n      position: absolute;\n      right: 0;\n      top: 0;\n      bottom: 0;\n      width: 1.3rem;\n      line-height: .34rem;\n      background: #d44439;\n      color: ", ";\n      font-size: 0;\n      border-radius: .03rem;\n      vertical-align: top;\n      i{\n        vertical-align: top;\n        font-size: .1rem;\n        margin: 0 .05rem 0 .1rem;\n      }\n      span {\n        font-size: .14rem;\n        line-height: .34rem;\n      }\n    }\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -148,14 +148,14 @@ var SongItem = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].ul(_tem
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var _Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
 function _templateObject() {
-  var data = Object(_Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  position : fixed;\n  padding : .05rem .1rem;\n  padding-top : 0;\n  height : .44rem;\n  width : 100%;\n  z-index: 100;\n  display : flex;\n  line-height : .44rem;\n  color: #f1f1f1;\n  >i{\n    margin-right: .05rem;\n    font-size: .2rem;\n    width: .2rem;\n  }\n  h1{\n    font-size: .16rem;\n    font-weight: 700;\n    margin : 0;\n  }\n"]);
+  var data = Object(_Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  position : fixed;\n  padding : .05rem .1rem;\n  padding-top : 0;\n  height : .44rem;\n  width : 100%;\n  z-index: 100;\n  display : flex;\n  line-height : .44rem;\n  color: #f1f1f1;\n  >i{\n    margin-right: .05rem;\n    font-size: .2rem;\n    width: .2rem;\n  }\n  h1{\n    font-size: .16rem;\n    font-weight: 700;\n    margin : 0;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -196,7 +196,7 @@ Header.defaultProps = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var _Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
@@ -204,7 +204,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _templateObject() {
-  var data = Object(_Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  .icon_wrapper{\n    position: fixed;\n    z-index: 1000;\n    margin-top: -.1rem;\n    margin-left: -.1rem;\n    color: ", ";\n    font-size: .14rem;\n    display: none;\n    transition: transform 1s cubic-bezier(.62,-0.1,.86,.57);\n    transform: translate3d(0, 0, 0);\n    >div{\n      transition: transform 1s;\n    }\n  }\n"]);
+  var data = Object(_Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  .icon_wrapper{\n    position: fixed;\n    z-index: 1000;\n    margin-top: -.1rem;\n    margin-left: -.1rem;\n    color: ", ";\n    font-size: .14rem;\n    display: none;\n    transition: transform 1s cubic-bezier(.62,-0.1,.86,.57);\n    transform: translate3d(0, 0, 0);\n    >div{\n      transition: transform 1s;\n    }\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -328,14 +328,14 @@ var MusicNote = Object(react__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(functio
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var _Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function _templateObject() {
-  var data = Object(_Users_xufuying_Desktop_project_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    position: fixed;\n    left: 0; right: 0; top: 0; bottom: 0;\n    width: 1rem;\n    height: 1rem;\n    margin: auto;\n"]);
+  var data = Object(_Users_xufuying_Desktop_study_cloud_music_react_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    position: fixed;\n    left: 0; right: 0; top: 0; bottom: 0;\n    width: 1rem;\n    height: 1rem;\n    margin: auto;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -352,4 +352,4 @@ var EnterLoading = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div
 /***/ })
 
 }]);
-//# sourceMappingURL=1-7c13c57e803a574399a5.js.map
+//# sourceMappingURL=1-412e4eeb6915bf1e6865.js.map
