@@ -364,13 +364,12 @@ var LazyLoad = function (_Component) {
           height = _props2.height,
           children = _props2.children,
           placeholder = _props2.placeholder,
-          classNamePrefix = _props2.classNamePrefix,
-          style = _props2.style;
+          classNamePrefix = _props2.classNamePrefix;
 
 
       return _react2.default.createElement(
         'div',
-        { className: classNamePrefix + '-wrapper', ref: this.setRef, style: style },
+        { className: classNamePrefix + '-wrapper', ref: this.setRef },
         this.visible ? children : placeholder ? placeholder : _react2.default.createElement('div', {
           style: { height: height },
           className: classNamePrefix + '-placeholder'
@@ -395,8 +394,7 @@ LazyLoad.propTypes = {
   debounce: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.bool]),
   placeholder: _propTypes2.default.node,
   scrollContainer: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
-  unmountIfInvisible: _propTypes2.default.bool,
-  style: _propTypes2.default.object
+  unmountIfInvisible: _propTypes2.default.bool
 };
 
 LazyLoad.defaultProps = {
@@ -643,4 +641,4 @@ function throttle(fn, threshhold, scope) {
 /***/ })
 
 }]);
-//# sourceMappingURL=0-966a375309f348c539e0.js.map
+//# sourceMappingURL=0-a1db89e53381affee7b2.js.map
