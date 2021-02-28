@@ -58,3 +58,8 @@ export const getResultSongsListRequest = (query) => {
 export const getSongDetailRequest = id => {
   return axiosInstance.get(`/api/song/detail?ids=${id}`);
 };
+
+// 获取歌词
+export const getLyricRequest = id => {
+  return axiosInstance.get(`/api/lyric?id=${id}`);
+};

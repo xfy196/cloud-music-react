@@ -17,7 +17,7 @@ export const MiniPlayerContainer = Styled.div`
   align-items : center;
   z-index : 1000;
   width: 100%;
-  height: .6rem;
+  height: 60px;
   background : ${style["highlight-background-color"]};
   &.mini-enter {
     transform : translate3d(0,100%,0);
@@ -32,17 +32,17 @@ export const MiniPlayerContainer = Styled.div`
     transition : all 0.4s;
   }
   .icon {
-    flex : 0 0 .4rem;
-    width: .4rem;
-    height : .4rem;
-    padding : 0 .1rem 0 .2rem;
+    flex : 0 0 40px;
+    width: 40px;
+    height : 40px;
+    padding : 0 10px 0 20px;
     box-sizing : content-box;
     .imgWrapper {
       width: 100%;
       height: 100%;
       img {
-        width: .4rem;
-        height : .4rem;
+        width: 40px;
+        height : 40px;
         border-radius : 50%;
         &.play {
           animation : ${rotate} 10s infinite;
@@ -58,35 +58,33 @@ export const MiniPlayerContainer = Styled.div`
     flex-direction : column;
     flex : 1;
     justify-content : center;
-    line-height : .2rem;
+    line-height : 20px;
     overflow: hidden;
     .name {
-      margin-bottom: .02rem;
-      font-size : ${style["font-size-s"]};
+      margin-bottom: 2px;
+      font-size : 12px;
       color : ${style["font-size-desc-v2"]};
       ${style["nowrap"]};
     }
     .desc {
-      font-size: ${style["font-size-s"]};
+      font-size: 12px;
       color: ${style["font-color-desc-v2"]};
       ${style.noWrap()};
     }
   }
   .control {
-    flex : 0 0 .3rem;
-    padding : 0 .1rem;
+    flex : 0 0 30px;
+    padding : 0 10px;
     .iconfont, .icon-playlist {
-      font-size : .3rem;
+      font-size : 30px;
       color : ${style["theme-color"]}; 
     }
     .icon-mini {
-      font-size : .16rem;
+      font-size : 16px;
       position : absolute;
-      left: .08rem;
-      top: .08rem;
-      &.icon-play {
-        left : .09rem;
-      }
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-45%,-63%, 0)
     }
   }
 `

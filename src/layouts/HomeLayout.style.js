@@ -19,7 +19,7 @@ export const Top = styled.div`
   }
 `
 export const Tab = styled.div`
-  height: .44rem;
+  height: .45rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

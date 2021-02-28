@@ -7,7 +7,7 @@ export const ListWrapper = Styled.div`
     font-weight: 700;
     padding-left: .06rem;
     font-size: .14rem;
-    line-height: .6rem; 
+    line-height: .4rem; 
     color: ${style["font-color"]};
   }
 `
