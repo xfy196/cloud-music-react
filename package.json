@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "antd-mobile": "^2.3.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "better-scroll": "^1.15.2",
     "create-keyframe-animation": "^0.1.0",
     "fastclick": "^1.0.6",
