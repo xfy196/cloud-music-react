@@ -31,7 +31,7 @@ export const getSingerListRequest = (category, alpha, offset) => {
 export const getRankListRequest = () => {
   return axiosInstance.get(`/api/toplist/detail`);
 }
-// 获取歌单的请求接口
+// 获取歌单的请求接口s
 export const getAlbumListRequest = (id) => {
   return axiosInstance.get("/api/playlist/detail?id=" + id)
 }
@@ -63,3 +63,8 @@ export const getSongDetailRequest = id => {
 export const getLyricRequest = id => {
   return axiosInstance.get(`/api/lyric?id=${id}`);
 };
+
+// 获取mv列表
+export const getMvListRequest = (area) => {
+  return axiosInstance.get(`/api/mv/all${area ? `？area=${area}` : ``}`)
+}

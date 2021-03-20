@@ -3,10 +3,10 @@
 module.exports = (query, request) => {
   const data = {
     userId: query.uid,
-    offset: query.offset || 0,
     limit: query.limit || 30,
-    total: 'true'
-  };
+    time: query.before || 0,
+    total: 'true',
+  }
   return request(
     'POST',
     `https://music.163.com/api/msg/private/history`,
@@ -14,7 +14,8 @@ module.exports = (query, request) => {
     {
       crypto: 'weapi',
       cookie: query.cookie,
-      proxy: query.proxy
-    }
-  );
-};
+      proxy: query.proxy,
+      realIP: query.realIP,
+    },
+  )
+}

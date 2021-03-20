@@ -17,6 +17,7 @@ const RankComponent = lazy(() => import("application/Rank"));
 const AlbumComponent = lazy(() => import("application/Album"))
 const SingerComponent = lazy(() => import("application/Singer"))
 const SearchComponent = lazy(() => import("application/Search"))
+const MVComponent = lazy(() => import("application/MV"))
 // 导入路由
 export default [
   {
@@ -65,6 +66,10 @@ export default [
                 component : SuspenseComponent(AlbumComponent)
               }
             ]
+          },
+          {
+            path: "/mv",
+            component: SuspenseComponent(MVComponent),
           },
           {
             path : "/search",
