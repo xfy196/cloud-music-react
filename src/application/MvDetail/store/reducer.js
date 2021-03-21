@@ -6,7 +6,8 @@ const defaultState = fromJS({
   },
   url: {
     data: {}
-  }
+  },
+  enterLoading: true
 })
 
 export default (state = defaultState, action) => {
@@ -15,6 +16,8 @@ export default (state = defaultState, action) => {
       return state.set("mvDetail", action.data);
     case actionTypes.SET_MV_URL:
       return state.set("url", action.data)
+    case actionTypes.SET_ENTERLOADING:
+      return state.set("enterLoading", action.data)
     default:
       return state;
   }

@@ -192,7 +192,7 @@ function Player(props) {
   const handleError = () => {
     songReady.current = true
     handleNext()
-    AntdToast.fail("播放错误", 1000)
+    AntdToast.fail("播放错误", 1)
   }
 
 

@@ -20,6 +20,7 @@ export const getMvDetail = (id) => {
 
         dispatch(changeMvUrl(url))
       }
+      dispatch(changeEnterLoading(false))
     } catch (error) {
 
     }
@@ -43,5 +44,11 @@ export const changeMvUrl = (data) => {
   return {
     type: actionTypes.SET_MV_URL,
     data: fromJS(data)
+  }
+}
+export const changeEnterLoading = (data) => {
+  return {
+    type: actionTypes.SET_ENTERLOADING,
+    data
   }
 }

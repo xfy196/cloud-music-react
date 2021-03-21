@@ -88,6 +88,10 @@ export const SongItem = Styled.ul`
         text-overflow : ellipsis;
         overflow: hidden;
         white-space : nowrap;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        flex: 1;
         &:first-child {
           font-size : .16rem;
           color : ${style["font-color-desc"]};

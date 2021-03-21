@@ -3,10 +3,13 @@ import { connect } from "react-redux"
 import { CSSTransition } from "react-transition-group"
 import { MvDetailStyled } from "./style"
 import Header from "baseUI/header"
-import { getMvDetail } from './store/actionCreator'
+import { getMvDetail, changeEnterLoading } from './store/actionCreator'
+import EnterLoading from "utils/EnterLoading"
+import Loading from "baseUI/loading"
 
 function MvDetail(props) {
-    const { match, mvDetail: immuableMvDetail, url: immuableUrl } = props;
+    const { match, mvDetail: immuableMvDetail, url: immuableUrl, enterLoading } = props;
+    const {changeEnterLoadingDispatch} = props;
     let mvDetail = immuableMvDetail.toJS()
     let url = immuableUrl.toJS()
     const { getMvDetailDispatch } = props;
@@ -14,6 +17,8 @@ function MvDetail(props) {
     const headerRef = useRef()
     const handleBack = useCallback(() => {
         setShowStatus(false)
+        changeEnterLoadingDispatch(true)
+
     })
 
     /**
@@ -34,31 +39,40 @@ function MvDetail(props) {
             onExited={props.history.goBack}
         >
             <MvDetailStyled>
-                <>
-                    <Header
-                        handleClick={handleBack}
-                        title={mvDetail.data.name}
-                        ref={headerRef}
-                    ></Header>
-                    <div className="mvDetail">
-                        <video controls src={url.data.url}></video>
-                        <div className="mvInfo">
-                            <span className="mvName">{mvDetail.data.name}</span>
-                            <span className="artistName">{mvDetail.data.artistName}</span>
-                        </div>
-                    </div>
-                </>
+                {
+                    enterLoading ? <EnterLoading><Loading style={{ zIndex: 100 }}></Loading></EnterLoading> : (
+                        <>
+                            <Header
+                                handleClick={handleBack}
+                                title={mvDetail.data.name}
+                                ref={headerRef}
+                            ></Header>
+                            <div className="mvDetail">
+                                <video controls src={url.data.url}></video>
+                                <div className="mvInfo">
+                                    <span className="mvName">{mvDetail.data.name}</span>
+                                    <span className="artistName">{mvDetail.data.artistName}</span>
+                                </div>
+                            </div>
+                        </>
+                    )
+                }
+
             </MvDetailStyled>
         </CSSTransition>
     )
 }
 const mapStateToProps = state => ({
     mvDetail: state.getIn(["mvDetail", "mvDetail"]),
-    url: state.getIn(["mvDetail", "url"])
+    url: state.getIn(["mvDetail", "url"]),
+    enterLoading: state.getIn(["mvDetail", "enterLoading"])
 })
 const mapStateToDispatch = (dispatch) => ({
     getMvDetailDispatch(id) {
         dispatch(getMvDetail(id))
+    },
+    changeEnterLoadingDispatch(data){
+        dispatch(changeEnterLoading(data))
     }
 })
 export default connect(mapStateToProps, mapStateToDispatch)(React.memo(MvDetail))
