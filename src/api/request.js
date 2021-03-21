@@ -65,6 +65,13 @@ export const getLyricRequest = id => {
 };
 
 // 获取mv列表
-export const getMvListRequest = (area) => {
-  return axiosInstance.get(`/api/mv/all${area ? `？area=${area}` : ``}`)
+export const getMvListRequest = (area, offset, limit) => {
+  return axiosInstance.get(`/api/mv/all?area=${area}&offset=${offset}&limit=${limit}`)
+}
+// 获取mv的详情
+export const getMvDetailRequest = (id) => {
+  return axiosInstance.get(`/api/mv/detail?mvid=${id}`)
+}
+export const getMvUrl = (id) => {
+  return axiosInstance.get(`/api/mv/url?id=${id}`)
 }
