@@ -591,7 +591,7 @@ var Lyric = /*#__PURE__*/function () {
     this.lrc = lrc;
     this.tags = {};
     this.lines = [];
-    this.handler = handler;
+    this.handler = handler === false ? noop() : handler;
     this.state = STATE_PAUSE;
     this.curLineIndex = 0;
     this.speed = speed;
@@ -746,6 +746,15 @@ var Lyric = /*#__PURE__*/function () {
     key: "seek",
     value: function seek(offset) {
       this.play(offset, true);
+    }
+    /**
+     * 清空之前的歌词定时器
+     */
+
+  }, {
+    key: "reset",
+    value: function reset() {
+      clearTimeout(this.timer);
     }
   }]);
 
@@ -1583,8 +1592,8 @@ function Player(props) {
   var handleLyric = Object(react__WEBPACK_IMPORTED_MODULE_3__["useCallback"])(function (_ref) {
     var lineNum = _ref.lineNum,
         txt = _ref.txt;
+    console.log(lineNum, txt); // 不存在歌词的时候直接结束
 
-    // 不存在歌词的时候直接结束
     if (!currentLyric.current) {
       return;
     }
@@ -1600,7 +1609,7 @@ function Player(props) {
     var lyric = "";
 
     if (currentLyric.current) {
-      currentLyric.current.lrc = "";
+      // currentLyric.current.reset()
       currentLyric.current.stop();
     }
 
@@ -1697,7 +1706,6 @@ function Player(props) {
 
   var handleError = function handleError() {
     songReady.current = true;
-    currentLyric.current ? currentLyric.current.lrc = "" : "";
     handleNext();
 
     antd_mobile_lib_toast__WEBPACK_IMPORTED_MODULE_1___default.a.fail("播放错误", 1);
@@ -5816,4 +5824,4 @@ var trimPhone = function trimPhone(val) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index-cf0f11e821a7dffe25d6.js.map
+//# sourceMappingURL=index-794dfe790a09e3cdf476.js.map

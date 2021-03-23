@@ -21,7 +21,7 @@ export default class Lyric {
         this.lrc = lrc
         this.tags = {}
         this.lines = []
-        this.handler = handler
+        this.handler = handler === false ? noop() : handler
         this.state = STATE_PAUSE
         this.curLineIndex = 0
         this.speed = speed
@@ -142,5 +142,11 @@ export default class Lyric {
 
     seek(offset) {
         this.play(offset, true)
+    }
+    /**
+     * 清空之前的歌词定时器
+     */
+    reset(){
+        clearTimeout(this.timer)
     }
 }
