@@ -137,6 +137,7 @@ export default class Lyric {
     stop() {
         this.state = STATE_PAUSE
         this.offset = 0
+        this.lrc = ""
         clearTimeout(this.timer)
     }
 

@@ -740,6 +740,7 @@ var Lyric = /*#__PURE__*/function () {
     value: function stop() {
       this.state = STATE_PAUSE;
       this.offset = 0;
+      this.lrc = "";
       clearTimeout(this.timer);
     }
   }, {
@@ -1546,9 +1547,11 @@ function Player(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     if (!playList.length || currentIndex === -1 || playList[currentIndex].id === preSong.id || !playList[currentIndex] || !songReady.current) {
       return;
-    } // songReady.current = false;
+    }
 
+    songReady.current = false; // 每一次的重新改变歌曲的时候我都需要将之前的歌词的回到对象里面的定时器进行清除
 
+    currentLyric.current ? currentLyric.current.stop() : "";
     var current = playList[currentIndex];
     setPreSong(current);
     changeCurrentSongDispatch(current); // 设置歌词
@@ -1568,8 +1571,8 @@ function Player(props) {
     getLyric(current.id);
   }, [currentIndex, playList]);
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
-    playing ? audioRef.current.play() : audioRef.current.pause();
-  }, [playing]); // 当全屏变换的时候获取歌曲文字
+    playing && songReady ? audioRef.current.play() : audioRef.current.pause();
+  }, [playing, songReady]); // 当全屏变换的时候获取歌曲文字
 
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     if (!fullScreen) {
@@ -1609,13 +1612,9 @@ function Player(props) {
     var lyric = "";
 
     if (currentLyric.current) {
-      // currentLyric.current.reset()
       currentLyric.current.stop();
     }
 
-    setTimeout(function () {
-      songReady.current = true;
-    }, 3000);
     Object(api_request__WEBPACK_IMPORTED_MODULE_10__["getLyricRequest"])(id).then(function (data) {
       lyric = data.lrc && data.lrc.lyric;
 
@@ -1626,17 +1625,19 @@ function Player(props) {
 
 
       currentLyric.current = new api_lyric_parser__WEBPACK_IMPORTED_MODULE_11__["default"](lyric, handleLyric, speed);
+      songReady.current = true;
       currentLyric.current.play();
       currentLineNum.current = 0;
       currentLyric.current.seek(0);
     })["catch"](function () {
-      currentLyric.current = "";
+      currentLyric.current.stop();
+      currentLyric.current = null;
       songReady.current = true;
       audioRef.current.play();
     });
   });
   var clickPlaying = Object(react__WEBPACK_IMPORTED_MODULE_3__["useCallback"])(function (e, state) {
-    // 首先阻止事件毛毛
+    // 首先阻止事件冒泡
     e.stopPropagation();
     togglePlayingDispatch(state);
 
@@ -5824,4 +5825,4 @@ var trimPhone = function trimPhone(val) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index-794dfe790a09e3cdf476.js.map
+//# sourceMappingURL=index-ea32978e76074e527a5c.js.map
