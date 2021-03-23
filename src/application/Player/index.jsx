@@ -103,6 +103,7 @@ function Player(props) {
   const getLyric = useCallback((id) => {
     let lyric = "";
     if (currentLyric.current) {
+      currentLyric.current.lrc = ""
       currentLyric.current.stop()
     }
 
@@ -191,6 +192,7 @@ function Player(props) {
   */
   const handleError = () => {
     songReady.current = true
+    currentLyric.current ? currentLyric.current.lrc = "" : ""
     handleNext()
     AntdToast.fail("播放错误", 1)
   }
