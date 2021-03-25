@@ -128,7 +128,7 @@ function Player(props) {
     })
   })
   const clickPlaying = useCallback((e, state) => {
-    // 首先阻止事件毛毛
+    // 首先阻止事件冒泡
     e.stopPropagation()
     togglePlayingDispatch(state);
     if(currentLyric.current){
