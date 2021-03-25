@@ -7,6 +7,7 @@ import { renderRoutes } from "react-router-config"
 import Scroll from "baseUI/scroll"
 import Loading from "baseUI/loading"
 import EnterLoading from "utils/EnterLoading"
+import { forceCheck } from "react-lazyload"
 
 const Item = List.Item
 /**
@@ -45,6 +46,7 @@ function MV(props) {
         <>
             <ListContainer>
                 <Scroll
+                    onScroll={forceCheck}
                     pullUp={handlePullUp}
                     pullDown={handlePullDown}
                     pullDownLoading={pullDownLoading}
