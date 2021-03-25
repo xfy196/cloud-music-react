@@ -3,8 +3,10 @@ import { connect } from "react-redux"
 import { List, Button } from "antd-mobile"
 import { ListContainer } from "./style"
 import { getMvList, changeLoading, changePullUpLoding, getMvLoadingMore, setOffset } from "./store/actionCreator"
-import {renderRoutes} from "react-router-config"
+import { renderRoutes } from "react-router-config"
 import Scroll from "baseUI/scroll"
+import Loading from "baseUI/loading"
+import EnterLoading from "utils/EnterLoading"
 
 const Item = List.Item
 /**
@@ -13,7 +15,7 @@ const Item = List.Item
  */
 function MV(props) {
 
-    const { area, mvList, pullUpLoading, pullDownLoading, count, hasMore, offset, limit, history } = props
+    const { area, mvList, pullUpLoading, pullDownLoading, count, hasMore, offset, limit, history, enterLoading } = props
     const { getMvListDispatch, changeLoadingDispatch, changePullUpLoadingDispatch, setOffsetDispatch, getMvLoadingMoreDispatch } = props;
     useEffect(() => {
         getMvListDispatch(area)
@@ -41,53 +43,55 @@ function MV(props) {
     })
     return (
         <>
-        <ListContainer>
-            <Scroll
-                pullUp={handlePullUp}
-                pullDown={handlePullDown}
-                pullDownLoading={pullDownLoading}
-            >
-                <List className="mvList" renderHeader={() => area}>
-                    {
-                        mvList.map(item => {
-                            return (
-                                <Item
-                                onClick={() => {
-                                    history.push(`/mv/${item.id}`)
-                                }}
-                                    arrow="horizontal"
-                                    wrap={true}
-                                    multipleLine={true}
-                                    extra={
-                                        <div className="mvInfo">
+            <ListContainer>
+                <Scroll
+                    pullUp={handlePullUp}
+                    pullDown={handlePullDown}
+                    pullDownLoading={pullDownLoading}
+                >
+                    <List className="mvList" renderHeader={() => area}>
+                        {
+                            mvList.map(item => {
+                                return (
+                                    <Item
+                                        onClick={() => {
+                                            history.push(`/mv/${item.id}`)
+                                        }}
+                                        arrow="horizontal"
+                                        wrap={true}
+                                        multipleLine={true}
+                                        extra={
+                                            <div className="mvInfo">
 
-                                            <span className="name">{item.name}</span>
-                                        </div>
-                                    }
-                                    thumb={
-                                        <div className="img_wrapper">
-                                            <span className="playCount">
-                                                <i className="iconfont play">&#xe885;</i>
-                                                <span>{item.playCount}</span>
-                                            </span>
-                                            <img src={item.cover} alt="" />
-                                        </div>
-                                    }
-                                    key={item.id}>
+                                                <span className="name">{item.name}</span>
+                                            </div>
+                                        }
+                                        thumb={
+                                            <div className="img_wrapper">
+                                                <span className="playCount">
+                                                    <i className="iconfont play">&#xe885;</i>
+                                                    <span>{item.playCount}</span>
+                                                </span>
+                                                <img src={item.cover} alt="" />
+                                            </div>
+                                        }
+                                        key={item.id}>
 
-                                </Item>
-                            )
-                        })
-                    }
+                                    </Item>
+                                )
+                            })
+                        }
 
-                    {
-                        hasMore ? <Button onClick={handlePullUp} activeStyle={false} loading={pullUpLoading} className="moreBtn" size="small" inline type="primary">加载更多</Button> : ""
+                        {
+                            hasMore ? <Button onClick={handlePullUp} activeStyle={false} loading={pullUpLoading} className="moreBtn" size="small" inline type="primary">加载更多</Button> : ""
 
-                    }
-                </List>
-            </Scroll>
-        </ListContainer>
-        {renderRoutes(props.route.routes)}
+                        }
+                        {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
+
+                    </List>
+                </Scroll>
+            </ListContainer>
+            {renderRoutes(props.route.routes)}
         </>
     )
 }
@@ -99,7 +103,8 @@ const mapStateToProps = state => ({
     hasMore: state.getIn(["mv", "hasMore"]),
     count: state.getIn(["mv", "count"]),
     offset: state.getIn(["mv", "offset"]),
-    limit: state.getIn(["mv", "limit"])
+    limit: state.getIn(["mv", "limit"]),
+    enterLoading: state.getIn(["mv", "enterLoading"])
 })
 const mapStateToDispatch = (dispatch) => ({
     getMvListDispatch(area) {

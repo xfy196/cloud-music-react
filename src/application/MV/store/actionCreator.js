@@ -4,6 +4,7 @@ export const getMvList = (area, offset=0, limit=30) => {
   return async (dispatch) => {
     try {
       let data = await getMvListRequest(area, offset, limit);
+      dispatch(changeEnterLoading(false))
       if(data.code == 200){
 
         dispatch(changeMvList(data))
@@ -23,6 +24,17 @@ export const changeMvList = (data) => ({
 export const changeLoading = (data) => {
   return {
     type: actionTypes.CHNAGE_LOADING,
+    data
+  }
+}
+/**
+ *改变进场的加载动画 
+ * @param {*} data 
+ * @returns 
+ */
+export const changeEnterLoading = (data) => {
+  return {
+    type: actionTypes.CHANGE_ENTERLOADING,
     data
   }
 }
