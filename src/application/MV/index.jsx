@@ -5,6 +5,7 @@ import { ListContainer } from "./style"
 import { getMvList, changeLoading, changePullUpLoding, getMvLoadingMore, setOffset } from "./store/actionCreator"
 import {renderRoutes} from "react-router-config"
 import Scroll from "baseUI/scroll"
+import { forceCheck } from "react-lazyload"
 
 const Item = List.Item
 /**
@@ -43,6 +44,7 @@ function MV(props) {
         <>
         <ListContainer>
             <Scroll
+                onScroll={forceCheck}
                 pullUp={handlePullUp}
                 pullDown={handlePullDown}
                 pullDownLoading={pullDownLoading}
