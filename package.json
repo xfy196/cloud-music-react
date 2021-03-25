@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "antd-mobile": "^2.3.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "better-scroll": "^1.15.2",
     "create-keyframe-animation": "^0.1.0",
     "fastclick": "^1.0.6",
@@ -45,6 +45,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
     "react-lazyload": "^3.0.0",
     "react-redux": "^7.2.1",
     "react-router": "^5.2.0",

@@ -35,6 +35,11 @@ export default function HomeLayout(props) {
               <span>排行榜</span>
             </TabItem>
           </NavLink>
+          <NavLink to="/mv" activeClassName="selected">
+            <TabItem>
+              <span>MV</span>
+            </TabItem>
+          </NavLink>
         </Tab>
       {renderRoutes(route.routes)}
       <Player></Player>

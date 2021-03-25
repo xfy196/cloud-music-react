@@ -9,7 +9,7 @@ import Loading2 from "../loading-v2"
 const ScrollContainer = Styled.div`
     width: 100%;
     height: 100%;
-    overflow : hidden
+    overflow : auto
 `
 const PullUpLoading = Styled.div`
   position: absolute;

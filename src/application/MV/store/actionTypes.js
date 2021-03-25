@@ -1,0 +1,5 @@
+export const SET_MV_LIST = "mv/SET_MV_LIST" 
+export const CHNAGE_LOADING = "mv/CHNAGE_LOADING"
+export const CHANGE_PULL_UP_LOADING = "mv/CHANGE_PULL_UP_LOADING"
+export const GET_MORE = "mv/GET_MORE"
+export const SET_OFFSET = "mv/SET_OFFSET"

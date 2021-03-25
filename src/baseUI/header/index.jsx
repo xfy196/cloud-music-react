@@ -40,7 +40,7 @@ Header.defaultProps = {
   handleClick: () => {
 
   },
-  title: '标题',
+  title: '',
 }
 Header.propTypes = {
   handleClick: PropTypes.func,

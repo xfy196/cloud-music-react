@@ -9,11 +9,11 @@ import { getLyricRequest } from "api/request"
 import Lyric from 'api/lyric-parser'
 import Toast from "baseUI/toast"
 import { playMode } from 'api/config'
-import {Toast as AntdToast} from "antd-mobile"
+import { Toast as AntdToast } from "antd-mobile"
 function Player(props) {
   const { speed, playList: immutablePlayList, currentIndex, currentSong: immutableCurrentSong, playing, mode, fullScreen, sequencePlayList: immutableSequencePlayList } = props;
-  const { changeCurrentSongDispatch, togglePlayingDispatch, togglePlayListStatus, playListStatus, toggleFullScreenDispatch, changeSpeedDispatch,changePlayListDispatch, changeCurrentIndexDispatch, changeModeDispatch } = props;
-  
+  const { changeCurrentSongDispatch, togglePlayingDispatch, togglePlayListStatus, playListStatus, toggleFullScreenDispatch, changeSpeedDispatch, changePlayListDispatch, changeCurrentIndexDispatch, changeModeDispatch } = props;
+
   const sequencePlayList = immutableSequencePlayList.toJS()
 
   // 当前播放歌曲的数据
@@ -44,7 +44,9 @@ function Player(props) {
     if (!playList.length || currentIndex === -1 || playList[currentIndex].id === preSong.id || !playList[currentIndex] || !songReady.current) {
       return;
     }
-    // songReady.current = false;
+    songReady.current = false;
+    // 每一次的重新改变歌曲的时候我都需要将之前的歌词的回到对象里面的定时器进行清除
+    currentLyric.current ? currentLyric.current.stop() : ""
     let current = playList[currentIndex]
     setPreSong(current);
     changeCurrentSongDispatch(current);
@@ -66,8 +68,8 @@ function Player(props) {
   }, [currentIndex, playList])
 
   useEffect(() => {
-    playing ? audioRef.current.play() : audioRef.current.pause();
-  }, [playing]);
+    playing && songReady ? audioRef.current.play() : audioRef.current.pause();
+  }, [playing, songReady]);
 
 
   // 当全屏变换的时候获取歌曲文字
@@ -89,6 +91,7 @@ function Player(props) {
    * 处理歌曲歌词显示的函数
    */
   const handleLyric = useCallback(({ lineNum, txt }) => {
+    console.log(lineNum, txt)
     // 不存在歌词的时候直接结束
     if (!currentLyric.current) {
       return
@@ -106,10 +109,6 @@ function Player(props) {
       currentLyric.current.stop()
     }
 
-    setTimeout(() => {
-      songReady.current = true
-    }, 3000)
-
     getLyricRequest(id).then(data => {
       lyric = data.lrc && data.lrc.lyric;
       if (!lyric) {
@@ -118,11 +117,13 @@ function Player(props) {
       }
       // 创建歌词的对象
       currentLyric.current = new Lyric(lyric, handleLyric, speed)
+      songReady.current = true
       currentLyric.current.play()
       currentLineNum.current = 0
       currentLyric.current.seek(0)
     }).catch(() => {
-      currentLyric.current = ""
+      currentLyric.current.stop()
+      currentLyric.current = null
       songReady.current = true
       audioRef.current.play()
     })
@@ -131,7 +132,7 @@ function Player(props) {
     // 首先阻止事件冒泡
     e.stopPropagation()
     togglePlayingDispatch(state);
-    if(currentLyric.current){
+    if (currentLyric.current) {
       currentLyric.current.togglePlay(currentTime * 1000)
     }
   });
@@ -178,10 +179,10 @@ function Player(props) {
   */
   const handleEnd = () => {
     // 首先判断当前播放模式
-    if(mode === playMode.loop){
+    if (mode === playMode.loop) {
       // 循环模式
       handleLoop()
-    }else {
+    } else {
       handleNext()
     }
   }
@@ -192,7 +193,7 @@ function Player(props) {
   const handleError = () => {
     songReady.current = true
     handleNext()
-    AntdToast.fail("播放错误", 1000)
+    AntdToast.fail("播放错误", 1)
   }
 
 
@@ -202,14 +203,14 @@ function Player(props) {
     togglePlayingDispatch(true)
     audioRef.current.play()
     // 重新设置歌词对象的偏移量seek
-    if(currentLyric.current){
+    if (currentLyric.current) {
       currentLyric.current.seek(0)
     }
   })
 
   //   上一首
   const handlePrev = useCallback(() => {
-    if(playList.length === 1){
+    if (playList.length === 1) {
       // 执行歌曲循环
       handleLoop()
       return;
@@ -217,24 +218,24 @@ function Player(props) {
     // 如果超过一首歌曲
     let index = currentIndex - 1
     // 判断当前歌曲是否是播放状态
-    if(!playing){
+    if (!playing) {
       togglePlayingDispatch(true)
     }
     changeCurrentIndexDispatch(index)
   })
 
-//   下一首
+  //   下一首
   const handleNext = useCallback(() => {
-    if(playList.length === 1){
+    if (playList.length === 1) {
       handleLoop()
       return;
     }
     let index = currentIndex + 1
     // 如果下一首的index等于播放列表的长度重新设置index为第一首歌曲
-    if(index === playList.length){
+    if (index === playList.length) {
       index = 0
     }
-    if(!playing){
+    if (!playing) {
       togglePlayingDispatch(true)
     }
     changeCurrentIndexDispatch(index)
@@ -330,13 +331,13 @@ const mapDispatchToProps = dispatch => ({
   changePlayListDispatch(data) {
     dispatch(changeSequecePlayList(data))
   },
-  changeCurrentIndexDispatch(data){
+  changeCurrentIndexDispatch(data) {
     dispatch(changeCurrentIndex(data))
   },
   changeCurrentSongDispatch(data) {
     dispatch(changeCurrentSong(data))
   },
-  changeModeDispatch(data){
+  changeModeDispatch(data) {
     dispatch(changeMode(data))
   },
   togglePlayingDispatch(data) {

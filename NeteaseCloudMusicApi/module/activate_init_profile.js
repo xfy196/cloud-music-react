@@ -2,17 +2,18 @@
 
 module.exports = (query, request) => {
   const data = {
-    nickname: query.nickname
-  };
+    nickname: query.nickname,
+  }
   return request(
     'POST',
-    `http://music.163.com/eapi/activate/initProfile`,
+    `https://music.163.com/eapi/activate/initProfile`,
     data,
     {
       crypto: 'eapi',
       cookie: query.cookie,
       proxy: query.proxy,
-      url: '/api/activate/initProfile'
-    }
-  );
-};
+      realIP: query.realIP,
+      url: '/api/activate/initProfile',
+    },
+  )
+}
