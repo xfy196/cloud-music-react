@@ -11,7 +11,7 @@ export default class APP extends Component {
     return (
       <div>
         <Provider store={store}>
-          <HashRouter>
+          <HashRouter basename="/dist">
             <GlobalStyle></GlobalStyle>
             <IconStyle></IconStyle>
             {renderRoutes(routes)}
