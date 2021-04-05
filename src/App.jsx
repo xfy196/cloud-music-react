@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Provider } from "react-redux"
-import {HashRouter} from "react-router-dom"
+import {BrowserRouter} from "react-router-dom"
 import {GlobalStyle} from "./style"
 import {IconStyle} from "assets/iconfont/iconfont"
 import {renderRoutes} from "react-router-config" 
@@ -11,11 +11,11 @@ export default class APP extends Component {
     return (
       <div>
         <Provider store={store}>
-          <HashRouter basename="/dist">
+          <BrowserRouter>
             <GlobalStyle></GlobalStyle>
             <IconStyle></IconStyle>
             {renderRoutes(routes)}
-          </HashRouter>
+          </BrowserRouter>
         </Provider>
       </div>
     )
