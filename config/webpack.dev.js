@@ -9,10 +9,11 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       "/api": {
-        target : "http://localhost:3000",
+        // target : "http://localhost:3000",
+        target: "https://musicapi.xxytime.top",
         // target: "http://musicapi.leanapp.cn/",
         pathRewrite: {
-          "/api" : ""
+          "" : ""
         }
       }
     }
