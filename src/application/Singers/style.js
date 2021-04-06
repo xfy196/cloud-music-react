@@ -3,9 +3,9 @@ import style from "assets/global-style.js"
 export const NavContainer = Styled.div`
   box-sizing: border-box;
   position: fixed;
-  top: 95px;
+  top: 0.95rem;
   width: 100%;
-  padding: 5px;
+  padding: .05rem;
   overflow: hidden;
   display: flex;
   flex-direction: column; 

@@ -7,7 +7,6 @@ export const ListContainer = styled.div`
   width: 100%;
   overflow: hidden;
   .mvList {
-    height: 100%;
     .am-list-body {
       height: 100%;
       padding-top: 0.2rem;
