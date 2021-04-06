@@ -1,5 +1,5 @@
 import axios from "axios"
-export const baseURL = "https://music.xxytime.top";
+export const baseURL = "https://musicapi.xxytime.top";
 const axiosInstance = axios.create({
   baseURL
 });

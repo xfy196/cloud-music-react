@@ -18,7 +18,7 @@
     "invariant" "^2.2.4"
     "semver" "^5.5.0"
 
-"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.10.5":
+"@babel/core@^7.10.5":
   "integrity" "sha1-HxXizKitmh14o43bphL158270zA= sha512-O34LQooYVDXPl7QWCdW9p4NR+QlzOr7xShPPJz8GsuCU3/8ua/wqTr7gmnxXv+WBESiGU/G5s16i6tUvHkNb+w=="
   "resolved" "https://registry.npm.taobao.org/@babel/core/download/@babel/core-7.10.5.tgz"
   "version" "7.10.5"
@@ -1395,7 +1395,7 @@
   "resolved" "https://registry.npm.taobao.org/ajv-keywords/download/ajv-keywords-3.5.2.tgz?cache=0&sync_timestamp=1595907068923&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fajv-keywords%2Fdownload%2Fajv-keywords-3.5.2.tgz"
   "version" "3.5.2"
 
-"ajv@^6.1.0", "ajv@^6.10.2", "ajv@^6.12.2", "ajv@^6.5.5", "ajv@^6.9.1", "ajv@>=5.0.0":
+"ajv@^6.1.0", "ajv@^6.10.2", "ajv@^6.12.2", "ajv@^6.5.5":
   "integrity" "sha1-GMWvOKER3etPJpe9eNaKvByr1wY= sha512-4K0cK3L1hsqk9xIb2z9vs/XU+PGJZ9PNpJRDS9YLzmNdX6jmVPfamLvTJr0aDAusnHyCHO6MjzlkAsgtqp9teA=="
   "resolved" "https://registry.npm.taobao.org/ajv/download/ajv-6.12.3.tgz?cache=0&sync_timestamp=1593878551850&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fajv%2Fdownload%2Fajv-6.12.3.tgz"
   "version" "6.12.3"
@@ -1658,12 +1658,12 @@
   "resolved" "https://registry.npm.taobao.org/aws4/download/aws4-1.10.0.tgz"
   "version" "1.10.0"
 
-"axios@^0.19.2":
-  "integrity" "sha1-PqNsXYgY0NX4qKl6bTa4bNwAyyc="
-  "resolved" "https://registry.npm.taobao.org/axios/download/axios-0.19.2.tgz?cache=0&sync_timestamp=1594827603723&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxios%2Fdownload%2Faxios-0.19.2.tgz"
-  "version" "0.19.2"
+"axios@^0.21.1":
+  "integrity" "sha1-IlY0gZYvTWvemnbVFu8OXTwJsrg="
+  "resolved" "https://registry.npm.taobao.org/axios/download/axios-0.21.1.tgz?cache=0&sync_timestamp=1608611162952&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxios%2Fdownload%2Faxios-0.21.1.tgz"
+  "version" "0.21.1"
   dependencies:
-    "follow-redirects" "1.5.10"
+    "follow-redirects" "^1.10.0"
 
 "babel-loader@^8.1.0":
   "integrity" "sha1-xhHVESvVIJq+i5+oTD5NolJ18cM="
@@ -2193,8 +2193,6 @@
     "is-glob" "~4.0.1"
     "normalize-path" "~3.0.0"
     "readdirp" "~3.4.0"
-  optionalDependencies:
-    "fsevents" "~2.1.2"
 
 "chownr@^1.1.1":
   "integrity" "sha1-b8nXtC0ypYNZYzdmbn0ICE2izGs="
@@ -3474,7 +3472,7 @@
   "resolved" "https://registry.npm.taobao.org/figgy-pudding/download/figgy-pudding-3.5.2.tgz"
   "version" "3.5.2"
 
-"file-loader@*", "file-loader@^6.0.0":
+"file-loader@^6.0.0":
   "integrity" "sha1-l7v6q3okYMB7y9ctOmkiQH9nZJ8= sha512-/aMOAYEFXDdjG0wytpTL5YQLfZnnTmLNjn+AIrJ/6HVnTfDqLsVKUUwkDf4I4kgex36BvjuXEn/TX9B/1ESyqQ=="
   "resolved" "https://registry.npm.taobao.org/file-loader/download/file-loader-6.0.0.tgz"
   "version" "6.0.0"
@@ -3559,12 +3557,17 @@
     "inherits" "^2.0.3"
     "readable-stream" "^2.3.6"
 
-"follow-redirects@^1.0.0", "follow-redirects@1.5.10":
+"follow-redirects@^1.0.0":
   "integrity" "sha1-e3qfmuov3/NnhqlP9kPtB/T/Xio="
   "resolved" "https://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.5.10.tgz?cache=0&sync_timestamp=1592518530318&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffollow-redirects%2Fdownload%2Ffollow-redirects-1.5.10.tgz"
   "version" "1.5.10"
   dependencies:
     "debug" "=3.1.0"
+
+"follow-redirects@^1.10.0":
+  "integrity" "sha1-5VmK1QF0wbxOhyMB6CrCzZf5Amc="
+  "resolved" "https://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.13.3.tgz"
+  "version" "1.13.3"
 
 "for-in@^1.0.2":
   "integrity" "sha1-gQaNKVqBQuwKxybG4iAMMPttXoA="
@@ -4111,7 +4114,7 @@
   "resolved" "https://registry.npm.taobao.org/image-size/download/image-size-0.5.5.tgz"
   "version" "0.5.5"
 
-"immutable@^3.8.1 || ^4.0.0-rc.1", "immutable@^4.0.0-rc.12":
+"immutable@^4.0.0-rc.12":
   "integrity" "sha1-ylmn5MGa6Nm/dKl73w9uLypdAhc="
   "resolved" "https://registry.npm.taobao.org/immutable/download/immutable-4.0.0-rc.12.tgz"
   "version" "4.0.0-rc.12"
@@ -4701,11 +4704,7 @@
     "source-map" "~0.6.0"
     "tslib" "^1.10.0"
   optionalDependencies:
-    "errno" "^0.1.1"
-    "graceful-fs" "^4.1.2"
     "image-size" "~0.5.0"
-    "make-dir" "^2.1.0"
-    "mime" "^1.4.1"
     "native-request" "^1.0.5"
     "source-map" "~0.6.0"
 
@@ -5286,7 +5285,7 @@
   "resolved" "https://registry.npm.taobao.org/node-releases/download/node-releases-1.1.60.tgz?cache=0&sync_timestamp=1595485372345&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnode-releases%2Fdownload%2Fnode-releases-1.1.60.tgz"
   "version" "1.1.60"
 
-"node-sass@^4.0.0", "node-sass@^4.14.1":
+"node-sass@^4.14.1":
   "integrity" "sha1-mch+wu+3BH7WOPtMnbfzpC4iF7U="
   "resolved" "https://registry.npm.taobao.org/node-sass/download/node-sass-4.14.1.tgz"
   "version" "4.14.1"
@@ -6168,7 +6167,7 @@
   dependencies:
     "asap" "~2.0.3"
 
-"prop-types@^15.0.0", "prop-types@^15.5.10", "prop-types@^15.5.4", "prop-types@^15.5.6", "prop-types@^15.5.8", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@15.x":
+"prop-types@^15.5.10", "prop-types@^15.5.4", "prop-types@^15.5.6", "prop-types@^15.5.8", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@15.x":
   "integrity" "sha1-UsQedbjIfnK52TYOAga5ncv/psU="
   "resolved" "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -6433,7 +6432,7 @@
     "react-lifecycles-compat" "^3.0.4"
     "shallowequal" "^1.1.0"
 
-"react-dom@^0.14.0 || ^15.0.0 || ^16.0.0", "react-dom@^16.13.1", "react-dom@>= 16.8.0", "react-dom@>=16.6.0":
+"react-dom@^16.13.1":
   "integrity" "sha1-wb03MxoEhsB47lTEdAcgmTsuDn8="
   "resolved" "https://registry.npm.taobao.org/react-dom/download/react-dom-16.13.1.tgz"
   "version" "16.13.1"
@@ -6446,6 +6445,11 @@
 "react-is@^16.12.0":
   "integrity" "sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ="
   "resolved" "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1595004873699&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz"
+  "version" "16.13.1"
+
+"react-is@^16.13.1":
+  "integrity" "sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ="
+  "resolved" "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1615911500881&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz"
   "version" "16.13.1"
 
 "react-is@^16.6.0":
@@ -6467,11 +6471,6 @@
   "integrity" "sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ="
   "resolved" "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1595004873699&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz"
   "version" "16.13.1"
-
-"react-is@>= 16.8.0":
-  "integrity" "sha1-WzUxvXamRaTJ+25pPtNkGeMwEzk="
-  "resolved" "https://registry.npm.taobao.org/react-is/download/react-is-17.0.1.tgz?cache=0&sync_timestamp=1610380979729&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-17.0.1.tgz"
-  "version" "17.0.1"
 
 "react-lazyload@^3.0.0":
   "integrity" "sha1-+XQdqoI9ld203VlSfKa4hF0bTD4= sha512-wYR9iroanIUELPQ7YtgeHjl7KburmA1WxB2GurjAOs31B6IehxxvHEp/74pIaWJLv+o/ug952WoWqjFpDzl5Ig=="
@@ -6523,7 +6522,7 @@
     "tiny-invariant" "^1.0.2"
     "tiny-warning" "^1.0.0"
 
-"react-router@^5.2.0", "react-router@>=5", "react-router@5.2.0":
+"react-router@^5.2.0", "react-router@5.2.0":
   "integrity" "sha1-Qk51ZByodH+/duXsyml4GqN+opM="
   "resolved" "https://registry.npm.taobao.org/react-router/download/react-router-5.2.0.tgz"
   "version" "5.2.0"
@@ -6557,7 +6556,7 @@
     "raf" "^3.1.0"
     "tween-functions" "^1.0.1"
 
-"react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^16.13.1", "react@^16.8.3", "react@>= 16.8.0", "react@>=15", "react@>=16.6.0":
+"react@^16.13.1":
   "integrity" "sha1-LoGIIvGpdDEiwGPWQQ2FweOv5I4="
   "resolved" "https://registry.npm.taobao.org/react/download/react-16.13.1.tgz"
   "version" "16.13.1"
@@ -6662,7 +6661,7 @@
   "resolved" "https://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.3.0.tgz"
   "version" "2.3.0"
 
-"redux@^2.0.0 || ^3.0.0 || ^4.0.0-0", "redux@^3.1.0 || ^4.0.0", "redux@^4.0.5":
+"redux@^4.0.5":
   "integrity" "sha1-TbXeWBbheJHeioDEJCMtBvBR2T8="
   "resolved" "https://registry.npm.taobao.org/redux/download/redux-4.0.5.tgz"
   "version" "4.0.5"
@@ -7668,7 +7667,7 @@
     "loader-utils" "^2.0.0"
     "schema-utils" "^2.6.6"
 
-"styled-components@^5.1.1", "styled-components@>= 2":
+"styled-components@^5.1.1":
   "integrity" "sha1-lt+wKoAleUlghjuejjZeO2vlUY0= sha512-1ps8ZAYu2Husx+Vz8D+MvXwEwvMwFv+hqqUwhNlDN5ybg6A+3xyW1ECrAgywhvXapNfXiz79jJyU0x22z0FFTg=="
   "resolved" "https://registry.npm.taobao.org/styled-components/download/styled-components-5.1.1.tgz"
   "version" "5.1.1"
@@ -8257,7 +8256,7 @@
     "source-list-map" "^2.0.0"
     "source-map" "~0.6.1"
 
-"webpack@*", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.27.0 || ^5.0.0", "webpack@^4.36.0 || ^5.0.0", "webpack@^4.4.0", "webpack@^4.44.0", "webpack@>=2", "webpack@>=4.0.0 < 6.0.0", "webpack@4.x.x":
+"webpack@^4.44.0":
   "integrity" "sha1-Owj4iolHAXXwNvSpSWuKBChmiAI= sha512-wAuJxK123sqAw31SpkPiPW3iKHgFUiKvO7E7UZjtdExcsRe3fgav4mvoMM7vvpjLHVoJ6a0Mtp2fzkoA13e0Zw=="
   "resolved" "https://registry.npm.taobao.org/webpack/download/webpack-4.44.0.tgz"
   "version" "4.44.0"

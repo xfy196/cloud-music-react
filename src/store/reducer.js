@@ -6,6 +6,8 @@ import {reducer as albumReducer} from "application/Album/store"
 import {reducer as singerReducer} from "application/Singer/store"
 import {reducer as playerReducer} from "application/Player/store"
 import {reducer as searchReducer} from "application/Search/store"
+import {reducer as mvReducer} from "application/MV/store"
+import {reducer as mvDetailReducer} from "application/MvDetail/store"
 export default combineReducers({
   recommend : recommendReducer,
   singers : singersReducer,
@@ -13,5 +15,7 @@ export default combineReducers({
   album : albumReducer,
   singerInfo : singerReducer,
   player : playerReducer,
-  search : searchReducer
+  search : searchReducer,
+  mv: mvReducer,
+  mvDetail: mvDetailReducer
 })

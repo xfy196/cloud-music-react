@@ -1,6 +1,6 @@
 {
   "name": "cloud-music-xxy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -45,6 +45,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
     "react-lazyload": "^3.0.0",
     "react-redux": "^7.2.1",
     "react-router": "^5.2.0",

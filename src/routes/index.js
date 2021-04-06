@@ -17,6 +17,8 @@ const RankComponent = lazy(() => import("application/Rank"));
 const AlbumComponent = lazy(() => import("application/Album"))
 const SingerComponent = lazy(() => import("application/Singer"))
 const SearchComponent = lazy(() => import("application/Search"))
+const MVComponent = lazy(() => import("application/MV"))
+const MvDetailComponent = lazy(() => import("application/MvDetail"))
 // 导入路由
 export default [
   {
@@ -65,6 +67,15 @@ export default [
                 component : SuspenseComponent(AlbumComponent)
               }
             ]
+          },
+          {
+            path: "/mv",
+            component: SuspenseComponent(MVComponent),
+            routes: [{
+              path: "/mv/:id",
+              exact: true,
+              component: SuspenseComponent(MvDetailComponent)
+            }]
           },
           {
             path : "/search",
