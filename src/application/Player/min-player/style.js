@@ -19,6 +19,7 @@ export const MiniPlayerContainer = Styled.div`
   width: 100%;
   height: 60px;
   background : ${style["highlight-background-color"]};
+  border-top: 1px solid #ccc;
   &.mini-enter {
     transform : translate3d(0,100%,0);
     transition : all 0.4s;

@@ -13,7 +13,7 @@ export const Container = Styled.div`
   overflow : hidden;
   background: #fcfcfd;
   transform-origin: right bottom;
-  bottom : ${props => props.play > 0 ? ".6rem" : 0};
+  bottom : ${props => props.play > 0 ? "60px" : 0};
   &.fly-enter, &.fly-appear{
     opacity: 0;
     transform: translate3d(100%, 0, 0);

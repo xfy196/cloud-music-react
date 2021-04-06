@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ListContainer = styled.div`
   position: fixed;
   top: 0.94rem;
-  bottom: ${(props) => (props.play > 0 ? ".6rem" : 0)};
+  bottom: ${(props) => (props.play > 0 ? "60px" : 0)};
   width: 100%;
   overflow: hidden;
   .mvList {

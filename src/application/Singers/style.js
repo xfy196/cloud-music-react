@@ -15,7 +15,7 @@ export const ListContainer = Styled.div`
   position: fixed;
   top: 1.6rem;
   left: 0;
-  bottom: ${props => props.play ? ".6rem" : 0};
+  bottom: ${props => props.play ? "60px" : 0};
   overflow: hidden;
   width: 100%;
 `

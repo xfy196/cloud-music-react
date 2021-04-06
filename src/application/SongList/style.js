@@ -4,7 +4,8 @@ import style from "assets/global-style"
 export const SongList = Styled.div`
   background : #fff;
   opacity: 0.98;
-  border-radius : .1rem;
+  border-top-left-radius : .1rem;
+  border-top-right-radius : .1rem;
   .first_line {
     display : flex;
     box-sizing: border-box;
