@@ -75,3 +75,10 @@ export const getMvDetailRequest = (id) => {
 export const getMvUrl = (id) => {
   return axiosInstance.get(`/api/mv/url?id=${id}`)
 }
+/**
+ * 通过一组ids获取这一组ids所对应的所有的歌曲数据 
+ * @param {*} ids 
+ */
+export const getSongs = (ids) => {
+  return axiosInstance.get(`/api/song/detail?ids=${ids}`)
+}

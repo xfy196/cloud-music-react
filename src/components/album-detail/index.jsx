@@ -2,8 +2,7 @@ import React from 'react'
 import { TopDesc, Menu } from './style'
 import SongList from "application/SongList"
 function AlbumDetail(props) {
-  const { currentAlbum, musicAnimation } = props;
-  const tracks = currentAlbum.tracks || [];
+  const { currentAlbum, musicAnimation, songs } = props;
   const renderTopDesc = () => {
     return (
       <TopDesc background={currentAlbum.coverImgUrl} >
@@ -56,7 +55,7 @@ function AlbumDetail(props) {
   const renderSongList = () => {
     return (
       <SongList
-        songs={tracks} 
+        songs={songs} 
         collectCount={currentAlbum.subscribedCount}
         showCollect={true}
         musicAnimation={musicAnimation}

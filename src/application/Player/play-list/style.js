@@ -65,12 +65,12 @@ padding: 20px 30px 10px 20px;
 
 // 外层的滚动的盒子
 export const ScrollWrapper = styled.div`
-
+    overflow: auto;
+    height: 4rem;
 `
 
 export const ListContent = styled.div`
 overflow: hidden;
-height: 400px;
 .item{
     display: flex;
     align-items: center;
