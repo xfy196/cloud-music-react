@@ -49,7 +49,6 @@ function MV(props) {
                     onScroll={forceCheck}
                     pullUp={handlePullUp}
                     pullDown={handlePullDown}
-                    pullDownLoading={pullDownLoading}
                 >
                     <List className="mvList" renderHeader={() => area}>
                         {

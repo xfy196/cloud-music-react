@@ -5,6 +5,7 @@ export const ListContainer = styled.div`
   top: 0.94rem;
   bottom: ${(props) => (props.play > 0 ? ".6rem" : 0)};
   width: 100%;
+  overflow: hidden;
   .mvList {
     height: 100%;
     .am-list-body {
