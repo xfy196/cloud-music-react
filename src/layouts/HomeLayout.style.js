@@ -25,7 +25,7 @@ export const Tab = styled.div`
   justify-content: space-around;
   background: ${style["theme-color"]};
   z-index: 10;
-  box-shadow: 0 -1px #d44439, 0 1px #d44439;
+  box-shadow: 0 -1px ${style["theme-color"]}, 0 1px ${style["theme-color"]};
   a {
     flex: 1;
     font-size: .14rem;
@@ -48,3 +48,36 @@ export const TabItem = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const DrawerBox = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .headerBackground{
+    height: 44.44444vw;
+    text-align: center;
+    line-height: 44.44444vw;
+    background-color: var(--THEME);
+    opacity: .8;
+    background-position: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: ${(props) => {
+      return `url(${props.imgUrl})`
+    }}
+  }
+  .skinItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .16rem;
+    border-bottom: 1px solid #ccc;
+    line-height: .48rem;
+    span {
+      text-indent: .05rem;
+    }
+    .rightArrow{
+      margin-right: .05rem;
+    }
+  }
+`

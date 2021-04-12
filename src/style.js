@@ -1,6 +1,13 @@
 const { createGlobalStyle } = require("styled-components")
 
 export const GlobalStyle = createGlobalStyle`
+:root{
+	--THEME: var(--USER-THEME-COLOR,#d44439);
+    --THEME-COLOR: var(--USER-THEME-COLOR,#d44439);
+}
+html{
+	--USER-THEME-COLOR: #d44439;
+}
 html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	a, abbr, acronym, address, big, cite, code,
