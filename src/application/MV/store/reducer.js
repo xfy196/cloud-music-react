@@ -8,7 +8,8 @@ const defaultState = fromJS({
   pullUpLoading: false,
   pullDownLoading: true,
   offset: 0,
-  limit: 30
+  limit: 30,
+  enterLoading: true
 })
 
 export default (state = defaultState, action) => {
@@ -21,6 +22,8 @@ export default (state = defaultState, action) => {
       return state.set("pullUpLoading", action.data)
     case actionTypes.SET_OFFSET:
       return state.set("offset", action.data)
+    case actionTypes.CHANGE_ENTERLOADING:
+      return state.set("enterLoading", action.data)
     default:
       return state;
   }

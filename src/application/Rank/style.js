@@ -3,7 +3,7 @@ import style from "assets/global-style"
 export const Container = Styled.div`
   position: fixed;
   top: .94rem;
-  bottom: ${props => props.play > 0 ? ".6rem" : 0};
+  bottom: ${props => props.play > 0 ? "60px" : 0};
   width: 100%;
   .offical,.global {
     margin: .1rem .05rem;

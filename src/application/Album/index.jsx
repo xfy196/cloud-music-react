@@ -22,8 +22,9 @@ function Album(props) {
   const headEl = useRef();
   const musicNoteRef = useRef();
   const { getAlbumListDispatch } = props;
-  const { songsCount, pullUpLoading, currentAlbum, enterLoading } = props;
+  const { songsCount, pullUpLoading, currentAlbum, enterLoading, songs: songsJS } = props;
   const currentAlbumJS = currentAlbum.toJS();
+  const songs = songsJS.toJS()
   // 将immutable的数据转换出来
   const handleBack = useCallback(() => {
     setShowStatus(false);
@@ -85,7 +86,7 @@ function Album(props) {
                   pullUpLoading={pullUpLoading}
                   bounceTop={false}
                 >
-                  <AlbumDetail currentAlbum={currentAlbumJS} musicAnimation={musicAnimation}></AlbumDetail>
+                  <AlbumDetail songs={songs} currentAlbum={currentAlbumJS} musicAnimation={musicAnimation}></AlbumDetail>
                 </Scroll>)
               }
             </>
@@ -98,7 +99,8 @@ function Album(props) {
 const mapStateToProps = state => ({
   currentAlbum: state.getIn(["album", "currentAlbum"]),
   enterLoading: state.getIn(["album", "enterLoading"]),
-  songsCount : state.getIn(["player", "playList"]).size
+  songsCount : state.getIn(["player", "playList"]).size,
+  songs: state.getIn(["album", "songs"])
 })
 const mapDispatchToProps = (dispatch) => {
   return {

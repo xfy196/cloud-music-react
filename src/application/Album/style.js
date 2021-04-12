@@ -6,7 +6,7 @@ export const Container = Styled.div`
   top: 0;
   left: 0;
   right: 0;
-  bottom : ${props => props.play > 0 ? ".6rem" : 0};
+  bottom : ${props => props.play > 0 ? "60px" : 0};
   z-index: 100;
   width: 100%;
   overflow: hidden;

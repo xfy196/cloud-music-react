@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes"
-import {getAlbumListRequest} from "api/request"
+import {getAlbumListRequest, getSongs} from "api/request"
 import {fromJS} from "immutable"
 // 改变album的值
 export const changeAlbumList = (data) => {
@@ -14,11 +14,22 @@ export const changeEnterLoading = (data) => {
     data
   }
 }
+export const changeSongs = (data) => {
+  return {
+    type: actionTypes.CHANGE_ALBUM_SONGS,
+    data: fromJS(data)
+  }
+}
 // 请求album数据的异步操作
 export const getAlbumList = (id) => {
   return async(dispatch) => {
     try {
       let result = await getAlbumListRequest(id);
+      let ids = result.playlist.trackIds.reduce((prev, cur, index, arr) => {
+        return prev.concat(cur.id)
+      }, []).join(",")
+      let songs = await getSongs(ids)
+      dispatch(changeSongs(songs.songs))
       dispatch(changeAlbumList(result.playlist))
       dispatch(changeEnterLoading(false))
     } catch (error) {

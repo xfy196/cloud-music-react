@@ -3,9 +3,9 @@ import style from "assets/global-style.js"
 export const NavContainer = Styled.div`
   box-sizing: border-box;
   position: fixed;
-  top: 95px;
+  top: 0.95rem;
   width: 100%;
-  padding: 5px;
+  padding: .05rem;
   overflow: hidden;
   display: flex;
   flex-direction: column; 
@@ -15,7 +15,7 @@ export const ListContainer = Styled.div`
   position: fixed;
   top: 1.6rem;
   left: 0;
-  bottom: ${props => props.play ? ".6rem" : 0};
+  bottom: ${props => props.play ? "60px" : 0};
   overflow: hidden;
   width: 100%;
 `

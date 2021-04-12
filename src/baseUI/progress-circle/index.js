@@ -4,6 +4,8 @@ import style from "assets/global-style"
 
 const CircleWrapper = Styled.div`
   position : relative;
+  display: flex;
+  align-items: center;
   circle {
     stroke-width: 8px;
     transform-origin: center;
