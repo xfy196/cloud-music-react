@@ -1,4 +1,5 @@
 import axios from "axios"
+import {v4 as uuidv4} from "uuid"
 export const baseURL = "https://musicapi.xxytime.top";
 const axiosInstance = axios.create({
   baseURL
@@ -249,4 +250,42 @@ export const list = [
     key: 2,
     name: "x2"
   }
+]
+
+export const skins = [
+  {
+    id: uuidv4(),
+    name: "网易红",
+    color: "rgb(229, 71, 60)"
+  },
+  {
+    id: uuidv4(),
+    name: "企鹅绿",
+    color: "rgb(49, 194, 124)"
+  },
+  {
+    id: uuidv4(),
+    name: "酷狗蓝",
+    color: "rgb(12, 142, 217)"
+  },
+  {
+    id: uuidv4(),
+    name: "虾米橙",
+    color: "rgb(255, 102, 0)"
+  },
+  {
+    id: uuidv4(),
+    name: "炫酷黑",
+    color: "rgb(34, 34, 34)"
+  },
+  {
+    id: uuidv4(),
+    name: "可爱粉",
+    color: "rgb(255, 135, 180)"
+  },
+  {
+    id: uuidv4(),
+    name: "土豪金",
+    color: "rgb(250, 172, 98)"
+  },
 ]

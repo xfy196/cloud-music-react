@@ -7,11 +7,10 @@ module.exports = {
     compress: true,
     port: 8080,
     historyApiFallback: true,
+    open: true,
     proxy: {
       "/api": {
-        // target : "http://localhost:3000",
         target: "https://musicapi.xxytime.top",
-        // target: "http://musicapi.leanapp.cn/",
         pathRewrite: {
           "" : ""
         }
