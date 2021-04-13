@@ -45,10 +45,10 @@ const Scroll = forwardRef((props, ref) => {
         return debounce(pullDown, 500)
     }, [pullDown]);
 
-    const scrollContaninerRef = useRef();
+    const scrollContainerRef = useRef();
 
     useEffect(() => {
-        const scroll = new BScroll(scrollContaninerRef.current, {
+        const scroll = new BScroll(scrollContainerRef.current, {
             scrollX: direction === "horizental",
             scrollY: direction === "vertical",
             probeType: 3,
@@ -117,12 +117,13 @@ const Scroll = forwardRef((props, ref) => {
             if (bScroll) {
                 return bScroll;
             }
-        }
+        },
+        scrollContainerRef
     }));
     const PullUpDisplayStyle = pullUpLoading ? { display: "" } : { display: "none" };
     const PullDownDisplayStyle = pullDownLoading ? { display: "" } : { display: "none" };
     return (
-        <ScrollContainer ref={scrollContaninerRef} >
+        <ScrollContainer ref={scrollContainerRef} >
             {props.children}
             {/* 滑到底部加载动画 */}
             <PullUpLoading style={PullUpDisplayStyle}><Loading></Loading></PullUpLoading>

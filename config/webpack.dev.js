@@ -10,9 +10,9 @@ module.exports = {
     open: true,
     proxy: {
       "/api": {
-        target: "https://musicapi.xxytime.top",
+        target: "http://localhost:3001/",
         pathRewrite: {
-          "" : ""
+          "^/api" : "/"
         }
       }
     }

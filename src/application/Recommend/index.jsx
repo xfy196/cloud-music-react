@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { connect } from "react-redux"
 import * as actionCreator from "./store/actionCreator"
 import Slider from "@/slider"
@@ -13,6 +13,9 @@ import EnterLoading from "utils/EnterLoading"
 function index(props) {
   const { bannerList, recommendList, songsCount, enterLoading } = props;
   const { getBannerDataDispatch, getRecommendDataDispatch } = props;
+  const scrollRef = useRef({
+    scrollContainerRef: {}
+  })
   useEffect(() => {
     // 如果轮播图的数据不为零说明已经存在这些数据了
     if (!bannerList.size) {
@@ -28,10 +31,10 @@ function index(props) {
   return (
     <>
       <Content play={songsCount}>
-        <Scroll onScroll={forceCheck}>
+        <Scroll ref={scrollRef} onScroll={forceCheck}>
           <div>
             <Slider bannerList={bannerListJS}></Slider>
-            <RecommendList recommendList={recommendListJS}></RecommendList>
+            <RecommendList scrollRef={scrollRef} recommendList={recommendListJS}></RecommendList>
           </div>
         </Scroll>
         {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
