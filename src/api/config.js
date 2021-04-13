@@ -1,6 +1,6 @@
 import axios from "axios"
 import {v4 as uuidv4} from "uuid"
-export const baseURL = process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://musicapi.xxytime.top";
+export const baseURL = "https://musicapi.xxytime.top";
 const axiosInstance = axios.create({
   baseURL
 });
