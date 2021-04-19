@@ -42,7 +42,7 @@ export const SongList = Styled.div`
       bottom: 0;
       width: 1.3rem;
       line-height: .34rem;
-      background: #d44439;
+      background: ${style["theme-color"]};
       color: ${style["font-color-light"]};
       font-size: 0;
       border-radius: .03rem;

@@ -10,6 +10,7 @@ const ContainerHeader = Styled.header`
   z-index: 100;
   display : flex;
   line-height : .44rem;
+  background: ${({color}) => color ? color: ""};
   color: #f1f1f1;
   >i{
     margin-right: .05rem;
@@ -23,9 +24,9 @@ const ContainerHeader = Styled.header`
   }
 `
 const Header = forwardRef((props, ref) => {
-  const { title, handleClick, isMarquee } = props;
+  const { title, handleClick, isMarquee, color} = props;
   return (
-    <ContainerHeader ref={ref}>
+    <ContainerHeader color={color} ref={ref}>
       <i className="iconfont back" onClick={handleClick}>&#xe655;</i>
       {
         // eslint-disable-next-line

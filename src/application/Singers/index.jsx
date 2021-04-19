@@ -69,7 +69,7 @@ function Singers(props) {
             return (
               <ListItem key={item.id} className="border-bottom" onClick={() => enterDetail(item.id)}>
                 <div className="img_container">
-                  <LazyLoad placeholder={<img src={singerLazyLoadImg} alt="歌手" width="100%" height="100%" />}>
+                  <LazyLoad overflow={true} placeholder={<img src={singerLazyLoadImg} alt="歌手" width="100%" height="100%" />}>
                     <img src={`${item.picUrl}?param=300x300`} width="100%" height="100%" alt="歌手" />
                   </LazyLoad>
                 </div>

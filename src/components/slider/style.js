@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import globalStyle from "assets/global-style"
 export const SliderContainer = styled.div`
   position: relative;
   box-sizing: border-box;
@@ -28,5 +28,5 @@ export const Before = styled.div`
   top: -3rem;
   height: 4rem;
   width: 100%;
-  background: #d44439;
+  background: ${globalStyle["theme-color"]};
 `

@@ -19,6 +19,7 @@ const SingerComponent = lazy(() => import("application/Singer"))
 const SearchComponent = lazy(() => import("application/Search"))
 const MVComponent = lazy(() => import("application/MV"))
 const MvDetailComponent = lazy(() => import("application/MvDetail"))
+const SkinsCom = lazy(() => import("application/Skins"))
 // 导入路由
 export default [
   {
@@ -81,6 +82,11 @@ export default [
             path : "/search",
             exact : true,
             component : SuspenseComponent(SearchComponent)
+          },
+          {
+            path: "/changeSkins",
+            exact: true,
+            component: SuspenseComponent(SkinsCom)
           }
         ]
       },
