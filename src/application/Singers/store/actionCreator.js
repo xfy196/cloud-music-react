@@ -2,9 +2,9 @@ import * as actionTypes from "./actionTypes"
 import { getSingerListRequest, getHotSingerListRequest } from "api/request"
 
 // 改变歌手分类的方法
-export const changeCategory = (data) => ({
+export const changeCategory = (type, area) => ({
   type: actionTypes.CHANGE_CATEGORY,
-  data
+  data : type + "-" + area
 })
 
 export const changeAlpha = (data) => ({
@@ -45,7 +45,10 @@ export const getSingerList = () => {
     const offset = getState().getIn(["singers", "listOffset"]);
     try {
 
-      const result = await getSingerListRequest(category, alpha, offset)
+      let cates = category.split("-")
+      let type = cates[0]
+      let area = cates[1]
+      const result = await getSingerListRequest(type, area, alpha, offset)
       const data = result.artists;
       // 派发数据
       dispatch(changeSingerList(data));

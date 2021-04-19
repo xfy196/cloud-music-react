@@ -31,7 +31,12 @@ function Horizen(props) {
 
   const { title, list, handleClick, currentKey } = props;
   const clickHandle = (item) => {
-    handleClick(item.key)
+    if(item.hasOwnProperty("type") && item.hasOwnProperty("area")){
+      handleClick(item.type, item.area)
+    }else {
+
+      handleClick(item.key)
+    }
   }
   return (
     <Scroll direction={"horizental"} refresh={true}>
@@ -42,7 +47,7 @@ function Horizen(props) {
             list.map(item => (
               <ListItem key={item.key}
                 onClick={() => clickHandle(item)}
-                className={ currentKey===item.key ? "selected border" : ""}
+                className={ currentKey===( item.hasOwnProperty("type") && item.hasOwnProperty("area") ? item.type + "-" + item.area : item.key) ? "selected border" : ""}
               >
                 {item.name}
               </ListItem>
@@ -61,6 +66,6 @@ Horizen.defaultProps = {
 Horizen.PropTypes = {
   list: PropTypes.Array,
   title: PropTypes.string,
-  handleCLick: PropTypes.func
+  handleClick: PropTypes.func
 }
 export default memo(Horizen);

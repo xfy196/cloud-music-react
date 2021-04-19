@@ -23,8 +23,8 @@ export const getHotSingerListRequest = (offset) => {
 /* 
  通过分类信息和姓名首字母和页码数获取歌手数据
 */
-export const getSingerListRequest = (category, alpha, offset) => {
-  return axiosInstance.get(`/api/artist/list?cat=${category}&initial=${alpha.toLowerCase()}&offset=${offset}`);
+export const getSingerListRequest = (type, area, alpha, offset) => {
+  return axiosInstance.get(`/api/artist/list?type=${type}&area=${area}&initial=${alpha.toLowerCase()}&offset=${offset}`);
 }
 
 // 排行榜请求接口
