@@ -10,13 +10,14 @@ const SongListCom = React.forwardRef((props, refs) => {
   const totalCount = songs.length;
   const selectItem = (e, index, id) => {
     // 在选中之前我们需要检测一下这首歌到底能不能播放
-    checkSong(id).then(res => {
-      if(res.success){
+    // TODO 暂时还没有搞懂网易云音乐这个检查是什么意思，好像不完全是无法播放的接口
+    // checkSong(id).then(res => {
+      // if(res.success){
         changePlayListDispatch(songs);
         changeSequecePlayListDispatch(songs)
         changeCurrentIndexDispatch(index);
-      }
-    })
+      // }
+    // })
     musicAnimation(e.nativeEvent.clientX, e.nativeEvent.clientY);
   }
   const renderSongItem = (list) => {

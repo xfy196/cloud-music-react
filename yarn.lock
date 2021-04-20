@@ -5122,6 +5122,11 @@
   dependencies:
     "minimist" "^1.2.5"
 
+"mooviejs@^1.1.5":
+  "integrity" "sha1-8OBulvv94ob4SfFVFHpNTVp0LyI="
+  "resolved" "https://registry.nlark.com/mooviejs/download/mooviejs-1.1.5.tgz"
+  "version" "1.1.5"
+
 "move-concurrently@^1.0.1":
   "integrity" "sha1-viwAX9oy4LKa8fBdfEszIUxwH5I="
   "resolved" "https://registry.npm.taobao.org/move-concurrently/download/move-concurrently-1.0.1.tgz"
