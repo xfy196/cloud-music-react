@@ -82,3 +82,12 @@ export const getMvUrl = (id) => {
 export const getSongs = (ids) => {
   return axiosInstance.get(`/api/song/detail?ids=${ids}`)
 }
+
+/**
+ * 检查歌曲是否可用
+ * @param {*} id 
+ * @returns 
+ */
+export const checkSong = (id) => {
+  return axiosInstance.get(`/api/check/music?id=${id}`)
+}

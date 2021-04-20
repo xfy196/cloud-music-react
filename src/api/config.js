@@ -1,6 +1,7 @@
 import axios from "axios"
 import {v4 as uuidv4} from "uuid"
 export const baseURL = "https://musicapi.xxytime.top";
+import {Toast as AntdToast} from "antd-mobile"
 const axiosInstance = axios.create({
   baseURL
 });
@@ -8,9 +9,24 @@ const axiosInstance = axios.create({
 配置拦截器 响应的结果正确是什么结果错误又是什么结果
 */
 axiosInstance.interceptors.response.use(
-  res => res.data,
+  response => {
+    if(response.status == 200){
+      return Promise.resolve(response.data)
+    }else {
+      return Promise.reject(response.data)
+    }
+  },
   err => {
-    console.log(err, "网络错误");
+    if(err.response.status){
+      switch(err.response.status){
+        case 404:
+          AntdToast.fail(err.response.data.message)
+          break;
+        default:
+          break;
+      }
+    }
+    return Promise.reject(err.response)
   }
 );
 export { axiosInstance };
