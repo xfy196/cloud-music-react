@@ -25,6 +25,7 @@ const ContainerHeader = Styled.header`
 `
 const Header = forwardRef((props, ref) => {
   const { title, handleClick, isMarquee, color} = props;
+  console.log(isMarquee)
   return (
     <ContainerHeader color={color} ref={ref}>
       <i className="iconfont back" onClick={handleClick}>&#xe655;</i>
