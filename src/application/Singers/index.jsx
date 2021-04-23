@@ -24,12 +24,12 @@ function Singers(props) {
   /* 
     处理点击分类获取的key将这个key值重新放入props中然后通过这个值和分类列表的key进行比较保证点击的分类高亮显示
   */
-  const handleUpdateCategory = (key) => {
+  const handleUpdateCategory = (type, area) => {
     // 如果key值和上次当前选中的值相等直接return不需要再次触发dispatch方法
-    if (category === key) {
+    if (category === (type + "-" + area)) {
       return;
     }
-    updateCategory(key);
+    updateCategory(type, area);
 
     //对应明星的数据加载功能为实现
   }
@@ -84,7 +84,7 @@ function Singers(props) {
   return (
     <>
       <NavContainer>
-        <Horizen title={"分类(默认热门):"} handleClick={(key) => handleUpdateCategory(key)} list={categoryTypes} currentKey={category}></Horizen>
+        <Horizen title={"分类(默认热门):"} handleClick={(type, area) => handleUpdateCategory(type, area)} list={categoryTypes} currentKey={category}></Horizen>
         <Horizen title={"首字母:"} handleClick={(key) => handleUpdateAlpha(key)} list={alphaTypes} currentKey={alpha}></Horizen>
       </NavContainer>
       <ListContainer play={songsCount}>
@@ -116,9 +116,9 @@ const mapStateToProps = state => ({
   songsCount : state.getIn(["player", "playList"]).size
 })
 const mapDispatchTProps = dispatch => ({
-  updateCategory(id) {
+  updateCategory(type, area) {
     // 派发更新分类数据
-    dispatch(changeCategory(id));
+    dispatch(changeCategory(type, area));
     // 重新派发获取对应分类的歌手的数据
     dispatch(getSingerList());
   },

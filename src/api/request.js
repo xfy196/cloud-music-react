@@ -23,8 +23,8 @@ export const getHotSingerListRequest = (offset) => {
 /* 
  通过分类信息和姓名首字母和页码数获取歌手数据
 */
-export const getSingerListRequest = (category, alpha, offset) => {
-  return axiosInstance.get(`/api/artist/list?cat=${category}&initial=${alpha.toLowerCase()}&offset=${offset}`);
+export const getSingerListRequest = (type, area, alpha, offset) => {
+  return axiosInstance.get(`/api/artist/list?type=${type}&area=${area}&initial=${alpha.toLowerCase()}&offset=${offset}`);
 }
 
 // 排行榜请求接口
@@ -81,4 +81,13 @@ export const getMvUrl = (id) => {
  */
 export const getSongs = (ids) => {
   return axiosInstance.get(`/api/song/detail?ids=${ids}`)
+}
+
+/**
+ * 检查歌曲是否可用
+ * @param {*} id 
+ * @returns 
+ */
+export const checkSong = (id) => {
+  return axiosInstance.get(`/api/check/music?id=${id}`)
 }

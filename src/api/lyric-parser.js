@@ -107,6 +107,7 @@ export default class Lyric {
     }
 
     play(offset = 0, isSeek = false) {
+        this.reset()
         if (!this.lines.length) {
             return
         }
