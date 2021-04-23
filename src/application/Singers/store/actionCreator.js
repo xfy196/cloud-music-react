@@ -45,9 +45,14 @@ export const getSingerList = () => {
     const offset = getState().getIn(["singers", "listOffset"]);
     try {
 
-      let cates = category.split("-")
-      let type = cates[0]
-      let area = cates[1]
+      let type = ''
+      let area = ''
+      if(category){
+
+        let cates = category.split("-")
+        type = cates[0]
+        area = cates[1]
+      }
       const result = await getSingerListRequest(type, area, alpha, offset)
       const data = result.artists;
       // 派发数据

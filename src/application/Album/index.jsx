@@ -14,7 +14,7 @@ import MusicNote from "baseUI/music-note"
 function Album(props) {
   // 默认开始的时候为true但是点击返回的上一层的时候为false
   const [showStatus, setShowStatus] = useState(true);
-  const [title, setTitle] = useState("推荐歌单")
+  const [title, setTitle] = useState("歌单")
   // 这只滚动的时候header是否文字滚动
   const [marquee, setMarquee] = useState(false);
   // 拿到传过来的id值
@@ -59,7 +59,7 @@ function Album(props) {
       headDOM.style.backgroundColor = '';
       headDOM.style.opacity = 1;
       // 设置title的值
-      setTitle("推荐歌单");
+      setTitle("歌单");
       setMarquee(false);
     }
   })
