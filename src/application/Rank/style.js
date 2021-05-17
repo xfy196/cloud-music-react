@@ -5,6 +5,7 @@ export const Container = Styled.div`
   top: .94rem;
   bottom: ${props => props.play > 0 ? "60px" : 0};
   width: 100%;
+  overflow: hidden;
   .offical,.global {
     margin: .1rem .05rem;
     padding-top : .15rem;
