@@ -91,7 +91,6 @@ function Player(props) {
    * 处理歌曲歌词显示的函数
    */
   const handleLyric = useCallback(({ lineNum, txt }) => {
-    console.log(lineNum, txt)
     // 不存在歌词的时候直接结束
     if (!currentLyric.current) {
       return

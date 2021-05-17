@@ -88,7 +88,7 @@ export default class Lyric {
         let line = this.lines[this.curLineIndex]
         let delay;
         if (isSeek) {
-            delay = line.time - (+new Date() - this.startStamp);
+            delay = line.time - (new Date() - this.startStamp);
         } else {
             //拿到上一行的歌词开始时间，算间隔
             let preTime = this.lines[this.curLineIndex - 1] ? this.lines[this.curLineIndex - 1].time : 0;
@@ -107,7 +107,6 @@ export default class Lyric {
     }
 
     play(offset = 0, isSeek = false) {
-        this.reset()
         if (!this.lines.length) {
             return
         }
@@ -117,10 +116,10 @@ export default class Lyric {
         //现在正处于第this.curLineIndex-1行
         this._callHandler(this.curLineIndex - 1)
         this.offset = offset
-        this.startStamp = +new Date() - offset
+        this.startStamp = new Date() - offset
 
         if (this.curLineIndex < this.lines.length) {
-            clearTimeout(this.timer)
+            this.reset()
             this._playRest(isSeek)
         }
     }
@@ -139,7 +138,7 @@ export default class Lyric {
         this.state = STATE_PAUSE
         this.offset = 0
         this.lrc = ""
-        clearTimeout(this.timer)
+        this.reset()
     }
 
     seek(offset) {
