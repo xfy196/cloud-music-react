@@ -60,14 +60,12 @@ function Rank(props) {
   return (
     <Container>
       <Scroll>
-        <div>
           <h2 className="offical">官方榜</h2>
           {renderRankList(officalList)}
           <h2 className="global">全球榜</h2>
           {renderRankList(globalList, true)}
           {/* 判断是否载入动画 */}
           {loading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
-        </div>
       </Scroll>
       {renderRoutes(props.route.routes)}
 
