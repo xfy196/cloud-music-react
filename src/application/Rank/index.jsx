@@ -67,14 +67,17 @@ function Rank(props) {
   let globalList = rankList.slice(globalStartIndex);
   return (
     <Container>
-      <Scroll>
+      {/* <Scroll> */}
+      <div style={{overflow: "auto", height: "100%"}}>
+
           <h2 className="offical">官方榜</h2>
           {renderRankList(officalList)}
           <h2 className="global">全球榜</h2>
           {renderRankList(globalList, true)}
           {/* 判断是否载入动画 */}
           {loading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
-      </Scroll>
+      </div>
+      {/* </Scroll> */}
       {renderRoutes(props.route.routes)}
     </Container>
   );
