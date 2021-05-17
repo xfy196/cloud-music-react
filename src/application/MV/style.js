@@ -15,6 +15,13 @@ export const ListContainer = styled.div`
   }
   .img_wrapper {
     position: relative;
+    .decorate{
+      position: absolute;
+      width: 100%;
+      height: .35rem;
+      bottom: 0;
+      background: linear-gradient(hsla(0,0%,43%,.4),hsla(0,0%,60%,1));
+    }
     .playCount {
       color: #ddd;
       font-size: 14px;

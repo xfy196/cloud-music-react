@@ -86,6 +86,7 @@ function MV(props) {
                   }
                   thumb={
                     <div className="img_wrapper">
+                      <div className="decorate"></div>
                       <span className="playCount">
                         <i className="iconfont play">&#xe885;</i>
                         <span>{item.playCount}</span>

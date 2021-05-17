@@ -9,7 +9,7 @@ import Scroll from "baseUI/scroll"
 import { forceCheck } from "react-lazyload"
 import Loading from "baseUI/loading-v2"
 import EnterLoading from "utils/EnterLoading"
-
+import BackTop from "@/BackTop/index"
 function index(props) {
   const { bannerList, recommendList, songsCount, enterLoading } = props;
   const { getBannerDataDispatch, getRecommendDataDispatch } = props;
@@ -36,6 +36,8 @@ function index(props) {
             <Slider bannerList={bannerListJS}></Slider>
             <RecommendList scrollRef={scrollRef} recommendList={recommendListJS}></RecommendList>
           </div>
+          {/* TODO 后期优化返回头部的功能 */}
+        {/* <BackTop></BackTop> */}
         </Scroll>
         {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
         {renderRoutes(props.route.routes)}
