@@ -59,7 +59,7 @@ function NormalPlayer(props) {
             }
         })
         animations.runAnimation(cdWrapperRef.current, "move")
-    })
+    }, [])
 
     const afterEnter = useCallback(() => {
         // 离开之后解绑之前的animations对象注册的动画
