@@ -189,7 +189,7 @@ export const CDWrapper = styled.div`
     }
 `
 // 歌词布局
-export const LyricCintainer = styled.div`
+export const LyricContainer = styled.div`
    position: absolute;
    top: 0;
    left: 0;

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { CSSTransition } from "react-transition-group"
 import Scroll from "baseUI/scroll"
-import { NormalPlayerContainer, Top, Middle, CDWrapper, LyricCintainer, LyricWrapper, Bottom, List, ListItem, ProgressWrapper, Operators } from "./style"
+import { NormalPlayerContainer, Top, Middle, CDWrapper, LyricContainer, LyricWrapper, Bottom, List, ListItem, ProgressWrapper, Operators } from "./style"
 import { getName } from "utils/index"
 import animations from "create-keyframe-animation"
 import { prefixStyle, formatPlayTime } from "utils"
@@ -187,7 +187,7 @@ function NormalPlayer(props) {
                         className="fade"
                         in={currentState === "lyric"}
                     >
-                        <LyricCintainer>
+                        <LyricContainer>
                             <Scroll
                                 ref={lyricScrollRef}
                             >
@@ -216,7 +216,7 @@ function NormalPlayer(props) {
                                             : <p className="text pure">纯音乐，请欣赏。</p>}
                                 </LyricWrapper>
                             </Scroll>
-                        </LyricCintainer>
+                        </LyricContainer>
                     </CSSTransition>
                 </Middle>
                 <Bottom className="bottom">
