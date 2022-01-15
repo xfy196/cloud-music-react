@@ -74,7 +74,7 @@ export default function HomeLayout(props) {
         open={open}
         sidebarStyle={{width: "80%", background: "#fff"}}
         onOpenChange={handleOpenDrawer}
-      ></Drawer>
+      > </Drawer>
       <Player></Player>
     </>
   );
