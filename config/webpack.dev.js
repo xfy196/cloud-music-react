@@ -6,6 +6,8 @@ module.exports = {
     contentBase: path.resolve(__dirname, "../build"),
     compress: true,
     port: 8080,
+    disableHostCheck: true,
+    host: "0.0.0.0",
     historyApiFallback: true,
     open: true,
     proxy: {
