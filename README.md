@@ -31,19 +31,17 @@ $ npm run start
 
 说明:本项目参考网易云音乐安卓端app界面开发，基础UI绝大多数自己来构建，算是对自己的一个挑战，在这个过程也学到了不少设计经验。
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c80048984d1af3?w=1423&h=1092&f=png&s=407282)
-
 ### 功能介绍
 
 #### 1、推荐部分
 
 首页推荐:
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c7f735b83a0d15?w=372&h=668&f=gif&s=2856467)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272039132.png)
 
 推荐歌单详情:
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c7f75ca0469552?w=372&h=668&f=gif&s=1862466)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272041321.png)
 
 空中切入切出效果，另外还有随着滑动会产生和标题跑马灯效果。
 在歌单中歌曲数量过多的情况下，做了分页处理，随着滚动不断进行上拉加载，防止大量DOM加载导致的页面卡顿。
@@ -51,40 +49,40 @@ $ npm run start
 #### 2、歌手部分
 歌手列表:
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c7f793e8a1524b?w=372&h=668&f=gif&s=1224668)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272041236.png)
 
 这里做了异步加载的处理，上拉到底进行新数据的获取，下拉则进行数据的重新加载。
 
 歌手详情:
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c7f7ea74fffa11?w=372&h=668&f=gif&s=2435912)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272041026.png)
 
 
 #### 3、排行榜
 
 榜单页:
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c7f811ec0f7375?w=372&h=668&f=gif&s=2334445)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272042319.png)
 
 榜单详情:
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c7f82639a1dc34?w=372&h=668&f=gif&s=2162917)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272042036.png)
 
 #### 4、播放器
 
 播放器内核:
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c7f8a5687ebb93?w=372&h=668&f=gif&s=3339773)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272043780.png)
 
 播放列表:
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c7f98711c43ae3?w=372&h=667&f=gif&s=2223620)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272043849.png)
 
 会有移动端app一样的反弹效果。
 
 #### 5、搜索部分
 
-![](https://user-gold-cdn.xitu.io/2019/8/11/16c804bd87a2dbbe?w=372&h=667&f=gif&s=1275414)
+![](https://cdn.jsdelivr.net/gh/xfy196/images@main/202202272043884.png)
 
 
 ### 项目部分模块分享
