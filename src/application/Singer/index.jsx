@@ -39,8 +39,8 @@ function Singer(props) {
       let h = imgWrapperRef.current.offsetHeight;
       initialHeight.current = h;
       // 需要为滚动区域的list设置top值
-      scrollSongWrapperRef.current.style.top = `${(h - OFFSET) / 100}rem`
-      layRef.current.style.top = `${(h - OFFSET) / 100}rem`
+      scrollSongWrapperRef.current.style.top = `${(h - OFFSET)}px`
+      layRef.current.style.top = `${(h - OFFSET)}px`
       songsRef.current.refresh();
     }
   }, [enterLoading])
@@ -73,24 +73,24 @@ function Singer(props) {
       // transform:scale变大
       imageDom.style.transform = `scale(${1 + percent})`;
       // button按钮的文职也需要向下移动
-      buttonDom.style.transform = `translate3d(0, ${newY / 100}rem, 0)`;
+      buttonDom.style.transform = `translate3d(0, ${newY}px, 0)`;
       // layDom文职也需要改变
-      layDom.style.top = `${(height - OFFSET + Math.abs(newY)) / 100}rem`
+      layDom.style.top = `${(height - OFFSET + Math.abs(newY))}px`
 
     } else if (newY >= minScrollY) {
       //  y轴的坐标大于最小可滚动的值，
-      layDom.style.top = `${(height - OFFSET - Math.abs(newY)) / 100}rem`;
+      layDom.style.top = `${(height - OFFSET - Math.abs(newY))}px`;
       imageDom.style.paddingTop = "75%";
       imageDom.style.height = 0;
       imageDom.style.zIndex = -1;
       // button按钮的动画效果
-      buttonDom.style.transform = `translate3d(0, ${newY / 100}rem, 0)`;
+      buttonDom.style.transform = `translate3d(0, ${newY}px, 0)`;
       buttonDom.style.opacity = `${1 - percent * 2}`;
     } else if (newY < minScrollY) {
       // 说明达到我这是的最大滚动的距离这个时候需要让header显示
       headerDom.style.zIndex = 100;
       imageDom.style.paddingTop = 0;
-      imageDom.style.height = `${headerDom.getBoundingClientRect().height / 100}rem`;
+      imageDom.style.height = `${headerDom.getBoundingClientRect().height}px`;
       imageDom.style.zIndex = 99;
     }
   }

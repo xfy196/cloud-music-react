@@ -30,7 +30,6 @@ export const Container = Styled.div`
 export const ImgWrapper = Styled.div`
   position : relative;
   width: 100%;
-  height: 0;
   padding-top : 75%;
   transform-origin: top;
   background: url(${props => props.background});
@@ -87,7 +86,7 @@ export const SongListWrapper = Styled.div`
   z-index: 50;
   top: 0;
   left: 0;
-  bottom: ${props => props.play ? "60pz" : 0};
+  bottom: ${props => props.play ? "60px" : 0};
   right: 0;
   >div{
     position: absolute;
