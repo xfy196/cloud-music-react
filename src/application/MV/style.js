@@ -9,8 +9,8 @@ export const ListContainer = styled.div`
   .mvList {
     .am-list-body {
       height: 100%;
-      padding-top: 0.2rem;
-      padding-bottom: 0.2rem;
+      padding-top: ${(props) => props.mvList.length > 0 ? '0.2rem': '0'};
+      padding-bottom: ${(props) => props.mvList.length > 0 ? '0.2rem': '0'};
     }
   }
   .img_wrapper {

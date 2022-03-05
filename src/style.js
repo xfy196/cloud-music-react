@@ -1,9 +1,10 @@
-const { createGlobalStyle } = require("styled-components")
+const { createGlobalStyle } = require("styled-components");
 
 export const GlobalStyle = createGlobalStyle`
 :root{
 	--THEME: var(--USER-THEME-COLOR,#d44439);
     --THEME-COLOR: var(--USER-THEME-COLOR,#d44439);
+	--plyr-color-main: var(--THEME);
 }
 html{
 	--USER-THEME-COLOR: #d44439;
@@ -56,4 +57,4 @@ html, body, div, span, applet, object, iframe,
 		text-decoration: none;
 		color: #fff;
 	}
-`
+`;

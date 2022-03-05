@@ -9,7 +9,7 @@ export default React.memo(function index(props) {
       <Before></Before>
       <SwipeStyle>
         {
-          bannerList.length && <Carousel
+          bannerList.length > 0 && <Carousel
             autoplay={true}
             infinite={true}
             dotActiveStyle={{ backgroundColor: globalStyle["theme-color"] }}

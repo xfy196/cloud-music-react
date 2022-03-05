@@ -27,6 +27,7 @@ function MV(props) {
     pullUpLoading,
     pullDownLoading,
     count,
+    songsCount,
     hasMore,
     offset,
     limit,
@@ -63,7 +64,7 @@ function MV(props) {
   });
   return (
     <>
-      <ListContainer>
+      <ListContainer play={songsCount} mvList={mvList}>
         <Scroll
           onScroll={forceCheck}
           pullUp={handlePullUp}
@@ -135,6 +136,7 @@ const mapStateToProps = (state) => ({
   count: state.getIn(["mv", "count"]),
   offset: state.getIn(["mv", "offset"]),
   limit: state.getIn(["mv", "limit"]),
+  songsCount : state.getIn(["player", "playList"]).size,
   enterLoading: state.getIn(["mv", "enterLoading"]),
 });
 const mapStateToDispatch = (dispatch) => ({

@@ -6,6 +6,8 @@ import Header from "baseUI/header";
 import { getMvDetail, changeEnterLoading } from "./store/actionCreator";
 import EnterLoading from "utils/EnterLoading";
 import Loading from "baseUI/loading";
+import plyr from "plyr";
+import "plyr/dist/plyr.css";
 function MvDetail(props) {
   const {
     match,
@@ -19,6 +21,7 @@ function MvDetail(props) {
   const { getMvDetailDispatch } = props;
   const [showStatus, setShowStatus] = useState(true);
   const headerRef = useRef();
+  const videoRef = useRef();
   const handleBack = useCallback(() => {
     setShowStatus(false);
     changeEnterLoadingDispatch(true);
@@ -30,6 +33,13 @@ function MvDetail(props) {
   useEffect(() => {
     getMvDetailDispatch(match.params.id);
   }, [match.params.id]);
+  useEffect(() => {
+    if (videoRef.current) {
+      const player = new plyr(videoRef.current, {
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
+      });
+    }
+  }, [url]);
   return (
     <CSSTransition
       in={showStatus}
@@ -53,7 +63,11 @@ function MvDetail(props) {
               ref={headerRef}
             ></Header>
             <div className="mvDetail">
-              <video id="video" controls src={url.data.url}></video>
+              <video
+                ref={videoRef}
+                id="video"
+                src={url.data.url}
+              ></video>
               <div className="mvInfo">
                 <span className="mvName">{mvDetail.data.name}</span>
                 <span className="artistName">{mvDetail.data.artistName}</span>

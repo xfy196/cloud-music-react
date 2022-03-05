@@ -7,7 +7,7 @@ module.exports = {
     compress: true,
     port: 8080,
     disableHostCheck: true,
-    host: "0.0.0.0",
+    host: "127.0.0.1",
     historyApiFallback: true,
     open: true,
     proxy: {
