@@ -36,8 +36,22 @@ function MvDetail(props) {
   useEffect(() => {
     if (videoRef.current) {
       const player = new plyr(videoRef.current, {
+        fullscreen: {
+          iosNative: true
+        },
+        tooltips: {
+          controls: true,
+        },
         controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
       });
+      player.source = {
+        type: "video",
+        sources: [
+          {
+            src: url.data.url
+          }
+        ]
+      }
     }
   }, [url]);
   return (
@@ -66,7 +80,6 @@ function MvDetail(props) {
               <video
                 ref={videoRef}
                 id="video"
-                src={url.data.url}
               ></video>
               <div className="mvInfo">
                 <span className="mvName">{mvDetail.data.name}</span>
