@@ -43,8 +43,8 @@ export const getAlbumList = (id) => {
           limit: result.playlist.trackIds.length,
           offset: 0,
         });
+        dispatch(changeSongs(songs.songs));
       }
-      dispatch(changeSongs(songs.songs));
     } catch (error) {
       console.log("获取歌单数据失败");
     }
