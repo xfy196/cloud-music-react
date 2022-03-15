@@ -25,14 +25,11 @@ function Album(props) {
   const { songsCount, pullUpLoading, currentAlbum, enterLoading, songs: songsJS } = props;
   const currentAlbumJS = currentAlbum.toJS();
   const songs = songsJS.toJS()
+  const songsRef = useRef(null)
   // 将immutable的数据转换出来
   const handleBack = useCallback(() => {
     setShowStatus(false);
   }, []);
-
-  const handlePullUp = () => {
-
-  }
 
   /* 
     点击歌曲出现的动画
@@ -81,8 +78,8 @@ function Album(props) {
               <Header ref={headEl} title={title} isMarquee={marquee} handleClick={handleBack}></Header>
               {
                 !isEmptyObject(currentAlbumJS) && (<Scroll
+                  ref={songsRef}
                   onScroll={handleScroll}
-                  pullUp={handlePullUp}
                   pullUpLoading={pullUpLoading}
                   bounceTop={false}
                 >
