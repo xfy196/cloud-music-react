@@ -31,17 +31,19 @@ export const getAlbumList = (id) => {
       // let songs = await getSongs(ids)
       let songs = await getTrackSongs({
         id,
-        limit: 10,
+        limit: result.playlist.trackIds.length > 20 ? 20 : result.playlist.trackIds.length,
         offset: 0,
       });
       dispatch(changeSongs(songs.songs));
       dispatch(changeAlbumList(result.playlist));
       dispatch(changeEnterLoading(false));
-      songs = await getTrackSongs({
-        id,
-        limit: result.playlist.trackIds.length,
-        offset: 0,
-      });
+      if(result.playlist.trackIds.length > 20){
+        songs = await getTrackSongs({
+          id,
+          limit: result.playlist.trackIds.length,
+          offset: 0,
+        });
+      }
       dispatch(changeSongs(songs.songs));
     } catch (error) {
       console.log("获取歌单数据失败");
