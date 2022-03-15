@@ -84,6 +84,15 @@ export const getSongs = (ids) => {
 }
 
 /**
+ * 获取收藏里的歌曲数据
+ */
+export const getTrackSongs = (params) => {
+  return axiosInstance.get('/api/playlist/track/all', {
+    params
+  })
+}
+
+/**
  * 检查歌曲是否可用
  * @param {*} id 
  * @returns 
