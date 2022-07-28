@@ -9,18 +9,19 @@ export const ListContainer = styled.div`
   .mvList {
     .am-list-body {
       height: 100%;
-      padding-top: ${(props) => props.mvList.length > 0 ? '0.2rem': '0'};
-      padding-bottom: ${(props) => props.mvList.length > 0 ? '0.2rem': '0'};
+      box-sizing: border-box;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
     }
   }
   .img_wrapper {
     position: relative;
-    .decorate{
+    .decorate {
       position: absolute;
       width: 100%;
-      height: .35rem;
+      height: 0.35rem;
       bottom: 0;
-      background: linear-gradient(hsla(0,0%,43%,.4),hsla(0,0%,60%,1));
+      background: linear-gradient(hsla(0, 0%, 43%, 0.4), hsla(0, 0%, 60%, 1));
     }
     .playCount {
       color: #ddd;
@@ -65,5 +66,9 @@ export const ListContainer = styled.div`
     width: 1.2rem;
     top: 0.12rem;
     background: #d44439;
+    border: none;
+    &::before {
+      border: none !important;
+    }
   }
 `;

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { connect } from "react-redux";
-import { List, Button } from "antd-mobile";
+import { List, Button, Icon } from "antd-mobile";
 import { ListContainer } from "./style";
 import {
   getMvList,
@@ -136,7 +136,7 @@ const mapStateToProps = (state) => ({
   count: state.getIn(["mv", "count"]),
   offset: state.getIn(["mv", "offset"]),
   limit: state.getIn(["mv", "limit"]),
-  songsCount : state.getIn(["player", "playList"]).size,
+  songsCount: state.getIn(["player", "playList"]).size,
   enterLoading: state.getIn(["mv", "enterLoading"]),
 });
 const mapStateToDispatch = (dispatch) => ({
