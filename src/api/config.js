@@ -28,7 +28,9 @@ const removePending = (config) => {
 
 axiosInstance.interceptors.request.use((config) => {
   removePending(config);
+
   addPending(config);
+  
   return config;
 });
 
