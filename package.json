@@ -39,6 +39,7 @@
     "antd-mobile": "^2.3.4",
     "axios": "^0.21.1",
     "better-scroll": "^1.15.2",
+    "caniuse-lite": "^1.0.30001546",
     "create-keyframe-animation": "^0.1.0",
     "fastclick": "^1.0.6",
     "immutable": "^4.0.0-rc.12",
@@ -58,6 +59,9 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.1",
     "uuid": "^3.4.0"
+  },
+  "engines": {
+    "node": "14.18.3"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
