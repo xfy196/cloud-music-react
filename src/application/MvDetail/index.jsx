@@ -6,8 +6,9 @@ import Header from "baseUI/header";
 import { getMvDetail, changeEnterLoading } from "./store/actionCreator";
 import EnterLoading from "utils/EnterLoading";
 import Loading from "baseUI/loading";
-import plyr from "plyr";
-import "plyr/dist/plyr.css";
+import { VideoPlayer, VideoPlayerProps, VideoPlayerState } from '@videojs-player/react'
+import videojs from "video.js"
+import "video.js/dist/video-js.css"
 function MvDetail(props) {
   const {
     match,
@@ -22,6 +23,21 @@ function MvDetail(props) {
   const [showStatus, setShowStatus] = useState(true);
   const headerRef = useRef();
   const videoRef = useRef();
+  const [playerState, setPlayerState] = useState()
+  const [config, setConfig] = useState(() => ({
+    url: url.data.url,
+    playbackRates: [0.75, 1, 1.5, 2, 3],
+    volume: 0.6
+  }))
+  useEffect(() => {
+    if(url.data.url) {
+      console.log(1111)
+      setConfig({
+        ...config,
+        url: url.data.url
+      })
+    }
+  }, [url.data.url])
   const handleBack = useCallback(() => {
     setShowStatus(false);
     changeEnterLoadingDispatch(true);
@@ -33,27 +49,13 @@ function MvDetail(props) {
   useEffect(() => {
     getMvDetailDispatch(match.params.id);
   }, [match.params.id]);
-  useEffect(() => {
-    if (videoRef.current) {
-      const player = new plyr(videoRef.current, {
-        fullscreen: {
-          iosNative: true
-        },
-        tooltips: {
-          controls: true,
-        },
-        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
-      });
-      player.source = {
-        type: "video",
-        sources: [
-          {
-            src: url.data.url
-          }
-        ]
-      }
-    }
-  }, [url]);
+  const handleMounted = (payload) => {
+    videoRef.current = payload.player
+    setPlayerState(payload.state)
+  }
+  const handleStateChange = (state) => {
+    setPlayerState(state)
+  }
   return (
     <CSSTransition
       in={showStatus}
@@ -76,16 +78,24 @@ function MvDetail(props) {
               title={mvDetail.data.name}
               ref={headerRef}
             ></Header>
-            <div className="mvDetail">
-              <video
-                ref={videoRef}
-                id="video"
-              ></video>
+            {config.url && <div className="mvDetail">
+              <VideoPlayer
+              className="video"
+                crossorigin="anonymous"
+                playsinline
+                controls
+                src={config.url}
+                volume={config.volume}
+                playbackRates={config.playbackRates}
+                onMounted={handleMounted}
+                onStateChange={handleStateChange}
+              ></VideoPlayer>
               <div className="mvInfo">
                 <span className="mvName">{mvDetail.data.name}</span>
                 <span className="artistName">{mvDetail.data.artistName}</span>
               </div>
             </div>
+            }
           </>
         )}
       </MvDetailStyled>

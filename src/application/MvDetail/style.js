@@ -16,9 +16,9 @@ export const MvDetailStyled = styled.div`
   }
   .mvDetail{
       padding-top: 0.49rem;
-      video{
-          width: 100%;
-          height: auto;
+      .video {
+        width: 100%;
+        height: 320px;
       }
       .mvInfo{
           display: flex;
