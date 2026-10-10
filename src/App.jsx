@@ -5,6 +5,7 @@ import { GlobalStyle } from "./style";
 import { IconStyle } from "assets/iconfont/iconfont";
 import AppRoutes from "./routes";
 import store from "./store/index";
+import ApiDisclaimer from "@/api-disclaimer";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <GlobalStyle />
         <IconStyle />
         <AppRoutes />
+        <ApiDisclaimer />
       </BrowserRouter>
     </Provider>
   );

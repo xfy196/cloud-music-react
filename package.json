@@ -2,7 +2,7 @@
   "name": "cloud-music-xxy",
   "version": "1.0.1",
   "main": "index.js",
-  "license": "MIT",
+  "license": "CC-BY-NC-4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
