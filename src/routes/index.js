@@ -1,95 +1,111 @@
-import React, { lazy, Suspense } from "react"
-import { Redirect } from "react-router-dom"
-import HomeLayout from "layouts/HomeLayout"
-import BlankLayout from "layouts/BlankLayout"
-
-const SuspenseComponent = Component => props => {
-  return (
-    <Suspense fallback={null}>
-      <Component {...props}></Component>
-    </Suspense>
-  )
-}
+import React, { lazy, Suspense } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import HomeLayout from "layouts/HomeLayout";
 
 const RecommendComponent = lazy(() => import("application/Recommend"));
 const SingersComponent = lazy(() => import("application/Singers"));
 const RankComponent = lazy(() => import("application/Rank"));
-const AlbumComponent = lazy(() => import("application/Album"))
-const SingerComponent = lazy(() => import("application/Singer"))
-const SearchComponent = lazy(() => import("application/Search"))
-const MVComponent = lazy(() => import("application/MV"))
-const MvDetailComponent = lazy(() => import("application/MvDetail"))
-const SkinsCom = lazy(() => import("application/Skins"))
-// 导入路由
-export default [
-  {
-    component: BlankLayout,
-    routes: [
-      {
-        path: "/",
-        component: HomeLayout,
-        routes: [
-          {
-            path: "/",
-            exact: true,
-            render: () => <Redirect to={"/recommend"} />
+const AlbumComponent = lazy(() => import("application/Album"));
+const SingerComponent = lazy(() => import("application/Singer"));
+const SearchComponent = lazy(() => import("application/Search"));
+const MVComponent = lazy(() => import("application/MV"));
+const MvDetailComponent = lazy(() => import("application/MvDetail"));
+const SkinsComponent = lazy(() => import("application/Skins"));
 
-          },
-          {
-            path: '/recommend',
-            component: SuspenseComponent(RecommendComponent),
-            routes: [
-              {
-                path: "/recommend/:id",
-                exact : true,
-                component: SuspenseComponent(AlbumComponent)
-              }
-            ]
-          },
-          {
-            path: "/singers",
-            component: SuspenseComponent(SingersComponent),
-            routes : [
-              {
-                path : "/singers/:id",
-                exact : true,
-                component : SuspenseComponent(SingerComponent)
-              }
-            ]
-          },
-          {
-            path: "/rank",
-            component: SuspenseComponent(RankComponent),
-            routes : [
-              {
+function LazyPage({ children }) {
+  return <Suspense fallback={null}>{children}</Suspense>;
+}
 
-                path : "/rank/:id",
-                exact : true,
-                component : SuspenseComponent(AlbumComponent)
-              }
-            ]
-          },
-          {
-            path: "/mv",
-            component: SuspenseComponent(MVComponent),
-            routes: [{
-              path: "/mv/:id",
-              exact: true,
-              component: SuspenseComponent(MvDetailComponent)
-            }]
-          },
-          {
-            path : "/search",
-            exact : true,
-            component : SuspenseComponent(SearchComponent)
-          },
-          {
-            path: "/changeSkins",
-            exact: true,
-            component: SuspenseComponent(SkinsCom)
+export default function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomeLayout />}>
+        <Route index element={<Navigate to="/recommend" replace />} />
+        <Route
+          path="recommend"
+          element={
+            <LazyPage>
+              <RecommendComponent />
+            </LazyPage>
           }
-        ]
-      },
-    ]
-  }
-]
+        >
+          <Route
+            path=":id"
+            element={
+              <LazyPage>
+                <AlbumComponent />
+              </LazyPage>
+            }
+          />
+        </Route>
+        <Route
+          path="singers"
+          element={
+            <LazyPage>
+              <SingersComponent />
+            </LazyPage>
+          }
+        >
+          <Route
+            path=":id"
+            element={
+              <LazyPage>
+                <SingerComponent />
+              </LazyPage>
+            }
+          />
+        </Route>
+        <Route
+          path="rank"
+          element={
+            <LazyPage>
+              <RankComponent />
+            </LazyPage>
+          }
+        >
+          <Route
+            path=":id"
+            element={
+              <LazyPage>
+                <AlbumComponent />
+              </LazyPage>
+            }
+          />
+        </Route>
+        <Route
+          path="mv"
+          element={
+            <LazyPage>
+              <MVComponent />
+            </LazyPage>
+          }
+        >
+          <Route
+            path=":id"
+            element={
+              <LazyPage>
+                <MvDetailComponent />
+              </LazyPage>
+            }
+          />
+        </Route>
+        <Route
+          path="search"
+          element={
+            <LazyPage>
+              <SearchComponent />
+            </LazyPage>
+          }
+        />
+        <Route
+          path="changeSkins"
+          element={
+            <LazyPage>
+              <SkinsComponent />
+            </LazyPage>
+          }
+        />
+      </Route>
+    </Routes>
+  );
+}

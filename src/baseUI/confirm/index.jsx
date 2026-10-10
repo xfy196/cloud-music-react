@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useState } from "react"
+import React, { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import { CSSTransition } from "react-transition-group"
 import styled, {keyframes} from "styled-components"
 import style from "assets/global-style"
@@ -75,6 +75,7 @@ const ConfirmWrapper = styled.div`
 
 const Confirm = forwardRef((props, ref) => {
     const [show, setShow] = useState(false)
+    const nodeRef = useRef(null)
     const { text, cancelBtnText, confirmBtnText } = props;
     const { handleConfirm } = props;
 
@@ -91,8 +92,9 @@ const Confirm = forwardRef((props, ref) => {
             appear={true}
             in={show}
             classNames="confirm-fade"
+            nodeRef={nodeRef}
         >
-            <ConfirmWrapper style={{ display: show ? "block" : "none" }} onClick={e => e.stopPropagation()}>
+            <ConfirmWrapper ref={nodeRef} style={{ display: show ? "block" : "none" }} onClick={e => e.stopPropagation()}>
                 <div>
                     <div className="confirm_content">
                         <p className="text">{text}</p>

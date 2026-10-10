@@ -37,6 +37,7 @@ function PlayList(props) {
 
   // 弹框的实例对象
   const confirmRef = useRef()
+  const playListWrapperRef = useRef(null)
   // 动画进入的回调
 
   const transform = prefixStyle("transform")
@@ -215,6 +216,7 @@ function PlayList(props) {
       in={showPlayList}
       timeout={300}
       classNames="list-fade"
+      nodeRef={playListWrapperRef}
       onEnter={onEnterCB}
       onEntering={onEnteringCB}
       onEntered={onEnteredCB}
@@ -223,6 +225,7 @@ function PlayList(props) {
       onExiting={onExitingCB}
     >
       <PlayListWrapper
+        ref={playListWrapperRef}
         onClick={() => {
           togglePlayListDispatch(false)
           setIsShow(false)

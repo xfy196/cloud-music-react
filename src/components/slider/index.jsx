@@ -1,41 +1,51 @@
-import React from 'react'
-import { Carousel } from "antd-mobile"
-import { Swipe as SwipeStyle, Before, SliderContainer } from "./style"
-import globalStyle from "assets/global-style"
-export default React.memo(function index(props) {
-  const { bannerList } = props
+import React, { useEffect, useState } from "react";
+import {
+  Swipe as SwipeStyle,
+  Before,
+  SliderContainer,
+  SlideTrack,
+  SlideItem,
+  Dots,
+  Dot,
+} from "./style";
+export default React.memo(function Slider(props) {
+  const { bannerList } = props;
+  const [index, setIndex] = useState(0);
+  const count = bannerList.length;
+
+  useEffect(() => {
+    if (count <= 1) return undefined;
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % count);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [count]);
+
+  if (!count) return null;
+
   return (
     <SliderContainer>
       <Before></Before>
       <SwipeStyle>
-        {
-          bannerList.length > 0 && <Carousel
-            autoplay={true}
-            infinite={true}
-            dotActiveStyle={{ backgroundColor: globalStyle["theme-color"] }}
-            dotStyle={{ background: "#000", opacity: .2 }}
-          >
-            {bannerList.map(val => (
-              <a
-                key={val}
-                href="#"
-                style={{display: 'inline-block', width: '100%' }}
-              >
-                <img
-                  src={val.imageUrl}
-                  alt="推荐"
-                  style={{ width: '100%', verticalAlign: 'top' }}
-                  onLoad={() => {
-                    window.dispatchEvent(new Event('resize'));
-                  }}
-                />
+        <SlideTrack $index={index}>
+          {bannerList.map((val) => (
+            <SlideItem key={val.imageUrl || val.encodeId || val.targetId}>
+              <a href="#" onClick={(e) => e.preventDefault()}>
+                <img src={val.imageUrl} alt="推荐" />
               </a>
-            ))}
-          </Carousel>
-        }
-
+            </SlideItem>
+          ))}
+        </SlideTrack>
+        <Dots>
+          {bannerList.map((val, i) => (
+            <Dot
+              key={val.imageUrl || i}
+              $active={i === index}
+              onClick={() => setIndex(i)}
+            />
+          ))}
+        </Dots>
       </SwipeStyle>
     </SliderContainer>
-  )
-}
-)
+  );
+});

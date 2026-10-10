@@ -48,6 +48,33 @@ export const TabItem = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const DrawerMask = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: ${(props) => (props.$open ? 1 : 0)};
+  visibility: ${(props) => (props.$open ? "visible" : "hidden")};
+  pointer-events: ${(props) => (props.$open ? "auto" : "none")};
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+`;
+
+export const DrawerPanel = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 201;
+  width: 80%;
+  max-width: 3.2rem;
+  background: #fff;
+  transform: translate3d(${(props) => (props.$open ? "0" : "-100%")}, 0, 0);
+  transition: transform 0.25s ease;
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: ${(props) => (props.$open ? "auto" : "none")};
+`;
+
 export const DrawerBox = styled.div`
   width: 100%;
   height: 100%;
@@ -73,11 +100,11 @@ export const DrawerBox = styled.div`
     font-size: .16rem;
     border-bottom: 1px solid #ccc;
     line-height: .48rem;
-    span {
-      text-indent: .05rem;
-    }
+    padding: 0 .15rem;
     .rightArrow{
-      margin-right: .05rem;
+      color: #999;
+      font-size: .16rem;
+      font-weight: bold;
     }
   }
 `

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { CSSTransition } from "react-transition-group"
 import { connect } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { Container, ShortcutWrapper, HotKey, List, ListItem } from "./style"
 import { SongItem } from "application/SongList/style"
 import SearchBox from "baseUI/search-box"
@@ -16,10 +17,12 @@ import {getSongsDetail} from "../Player/store/actionCreator"
 function Search(props) {
   const [show, setShow] = useState(false);
   const [query, setQuery] = useState('');
+  const navigate = useNavigate();
   const { hotList, suggestList, songsList, enterLoading, songsCount } = props;
   const { getHotKeyWordsDispatch, getSuggestListDispatch,getSongsDetailDispatch  } = props;
 
   const musicNoteRef = useRef();
+  const nodeRef = useRef(null);
 
   const suggests = suggestList.toJS();
   const songs = songsList.toJS();
@@ -119,9 +122,10 @@ function Search(props) {
       appear={true}
       classNames="fly"
       unmountOnExit
-      onExit={() => props.history.goBack()}
+      nodeRef={nodeRef}
+      onExit={() => navigate(-1)}
     >
-      <Container play={songsCount}>
+      <Container ref={nodeRef} play={songsCount}>
 
         <div className="search_box_wrapper">
           <SearchBox

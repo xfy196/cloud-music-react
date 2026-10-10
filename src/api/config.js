@@ -46,7 +46,10 @@ axiosInstance.interceptors.response.use(
     }
   },
   (err) => {
-    if (err.response.status) {
+    if (axios.isCancel(err)) {
+      return Promise.reject(err);
+    }
+    if (err.response?.status) {
       switch (err.response.status) {
         case 404:
           AntdToast.fail(err.response.data.message);
@@ -331,36 +334,43 @@ export const skins = [
   {
     id: uuidv4(),
     name: "网易红",
-    color: "rgb(229, 71, 60)",
+    tag: "经典",
+    color: "#d44439",
   },
   {
     id: uuidv4(),
     name: "企鹅绿",
-    color: "rgb(49, 194, 124)",
+    tag: "清新",
+    color: "#31c27c",
   },
   {
     id: uuidv4(),
     name: "酷狗蓝",
-    color: "rgb(12, 142, 217)",
+    tag: "沉浸",
+    color: "#0c8ed9",
   },
   {
     id: uuidv4(),
     name: "虾米橙",
-    color: "rgb(255, 102, 0)",
+    tag: "活力",
+    color: "#ff6600",
   },
   {
     id: uuidv4(),
     name: "炫酷黑",
-    color: "rgb(34, 34, 34)",
+    tag: "夜间",
+    color: "#222222",
   },
   {
     id: uuidv4(),
     name: "可爱粉",
-    color: "rgb(255, 135, 180)",
+    tag: "甜美",
+    color: "#ff87b4",
   },
   {
     id: uuidv4(),
     name: "土豪金",
-    color: "rgb(250, 172, 98)",
+    tag: "质感",
+    color: "#faac62",
   },
 ];

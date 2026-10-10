@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { connect } from "react-redux"
+import { useNavigate, useParams } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import Header from "baseUI/header"
 import { Container } from "./style"
@@ -18,9 +19,11 @@ function Album(props) {
   // 这只滚动的时候header是否文字滚动
   const [marquee, setMarquee] = useState(false);
   // 拿到传过来的id值
-  const id = props.match.params.id;
+  const { id } = useParams();
+  const navigate = useNavigate();
   const headEl = useRef();
   const musicNoteRef = useRef();
+  const nodeRef = useRef(null);
   const { getAlbumListDispatch } = props;
   const { songsCount, pullUpLoading, currentAlbum, enterLoading, songs: songsJS } = props;
   const currentAlbumJS = currentAlbum.toJS();
@@ -68,10 +71,11 @@ function Album(props) {
       classNames="fly"
       mountOnEnter
       unmountOnExit
-      onExited={props.history.goBack}
+      nodeRef={nodeRef}
+      onExited={() => navigate(-1)}
     >
       {/* 整个内容区域 */}
-      <Container play={songsCount}>
+      <Container ref={nodeRef} play={songsCount}>
         {
           enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> :
             <>

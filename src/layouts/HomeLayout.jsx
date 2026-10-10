@@ -1,36 +1,28 @@
 import React, { useCallback, useState } from "react";
-import { renderRoutes } from "react-router-config";
-import { Top, Tab, TabItem } from "./HomeLayout.style";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import {
+  Top,
+  Tab,
+  TabItem,
+  DrawerBox,
+  DrawerMask,
+  DrawerPanel,
+} from "./HomeLayout.style";
 import Player from "application/Player";
-import { Drawer, Icon } from "antd-mobile";
-import {DrawerBox} from "./HomeLayout.style.js"
-import imgUrl from "../assets/images/huanfu.png"
-export default function HomeLayout(props) {
+import imgUrl from "../assets/images/huanfu.png";
+
+export default function HomeLayout() {
   const [open, setOpen] = useState(false);
-  /**
-   * 打开抽屉
-   */
+  const navigate = useNavigate();
+
   const handleOpenDrawer = useCallback(() => {
-    setOpen(!open);
-  });
+    setOpen((prev) => !prev);
+  }, []);
 
-  let { route,history } = props;
+  const closeDrawer = useCallback(() => {
+    setOpen(false);
+  }, []);
 
-  const renderSidebar = useCallback(() => {
-    return (
-        <DrawerBox imgUrl={imgUrl}>
-          <div className="headerBackground"></div>
-          <div onClick={() => {
-            setOpen(false)
-            history.push("/changeSkins")
-          }} className="skinItem">
-            <span>皮肤中心</span>
-            <Icon className="rightArrow" type="right"></Icon>
-          </div>
-        </DrawerBox>
-    );
-  });
   return (
     <>
       <Top>
@@ -40,41 +32,62 @@ export default function HomeLayout(props) {
         <span className="title">云音乐</span>
         <span
           className="iconfont search"
-          onClick={() => props.history.push("/search")}
+          onClick={() => navigate("/search")}
         >
           &#xe62b;
         </span>
       </Top>
       <Tab>
-        <NavLink to="/recommend" activeClassName="selected">
+        <NavLink
+          to="/recommend"
+          className={({ isActive }) => (isActive ? "selected" : undefined)}
+        >
           <TabItem>
             <span>推荐</span>
           </TabItem>
         </NavLink>
-        <NavLink to="/singers" activeClassName="selected">
+        <NavLink
+          to="/singers"
+          className={({ isActive }) => (isActive ? "selected" : undefined)}
+        >
           <TabItem>
             <span>歌手</span>
           </TabItem>
         </NavLink>
-        <NavLink to="/rank" activeClassName="selected">
+        <NavLink
+          to="/rank"
+          className={({ isActive }) => (isActive ? "selected" : undefined)}
+        >
           <TabItem>
             <span>排行榜</span>
           </TabItem>
         </NavLink>
-        <NavLink to="/mv" activeClassName="selected">
+        <NavLink
+          to="/mv"
+          className={({ isActive }) => (isActive ? "selected" : undefined)}
+        >
           <TabItem>
             <span>MV</span>
           </TabItem>
         </NavLink>
       </Tab>
-      {renderRoutes(route.routes)}
-      <Drawer
-        sidebar={renderSidebar()}
-        style={open ? { display: "block" } : { display: "none" }}
-        open={open}
-        sidebarStyle={{width: "80%", background: "#fff"}}
-        onOpenChange={handleOpenDrawer}
-      > </Drawer>
+      <Outlet />
+      <DrawerMask $open={open} onClick={closeDrawer} />
+      <DrawerPanel $open={open}>
+        <DrawerBox imgUrl={imgUrl}>
+          <div className="headerBackground"></div>
+          <div
+            onClick={() => {
+              closeDrawer();
+              navigate("/changeSkins");
+            }}
+            className="skinItem"
+          >
+            <span>皮肤中心</span>
+            <i className="iconfont rightArrow">&#xe662;</i>
+          </div>
+        </DrawerBox>
+      </DrawerPanel>
       <Player></Player>
     </>
   );

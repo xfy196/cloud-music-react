@@ -29,8 +29,14 @@ function Horizen(props) {
     setRefreshCategoryScroll(true);
   }, [refreshCategoryScroll]);
 
-  const { title, list, handleClick, currentKey } = props;
+  const {
+    title = "",
+    list = [],
+    handleClick = null,
+    currentKey,
+  } = props;
   const clickHandle = (item) => {
+    if (!handleClick) return;
     if(item.hasOwnProperty("type") && item.hasOwnProperty("area")){
       handleClick(item.type, item.area)
     }else {
@@ -58,13 +64,8 @@ function Horizen(props) {
     </Scroll>
   )
 }
-Horizen.defaultProps = {
-  list: [],
-  handleClick: null,
-  title: ""
-}
-Horizen.PropTypes = {
-  list: PropTypes.Array,
+Horizen.propTypes = {
+  list: PropTypes.array,
   title: PropTypes.string,
   handleClick: PropTypes.func
 }

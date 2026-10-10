@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { connect } from "react-redux"
+import { useNavigate, useParams } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import { Container, ImgWrapper, CollectionButton, BgLayer, SongListWrapper } from "./style"
 import { getSingerInfo, changeSingerEnterLoading } from "./store/actionCreator"
@@ -15,7 +16,8 @@ function Singer(props) {
   const initialHeight = useRef(0);
   const [showStatus, setShowStatus] = useState(true);
   const OFFSET = 5;
-  const id = props.match.params.id
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const { artist, hotSongs, songsCount, enterLoading } = props;
   const { getSingerDataDispatch } = props;
@@ -29,6 +31,7 @@ function Singer(props) {
   const collectionButtonRef = useRef();
   const songsRef = useRef();
   const musicNoteRef = useRef();
+  const nodeRef = useRef(null);
   useEffect(() => {
     getSingerDataDispatch(id);
   }, [getSingerDataDispatch, id]);
@@ -105,10 +108,11 @@ function Singer(props) {
       classNames="fly"
       mountOnEnter
       unmountOnExit
-      onExited={props.history.goBack}
+      nodeRef={nodeRef}
+      onExited={() => navigate(-1)}
     >
       {/* 整个内容区域 */}
-      <Container play={songsCount}>
+      <Container ref={nodeRef} play={songsCount}>
         {
           enterLoading ? <EnterLoading><Loading style={{ zIndex: 100 }}></Loading></EnterLoading> : (
             <>

@@ -1,6 +1,6 @@
 import React from "react";
-import { renderRoutes } from "react-router-config";
+import { Outlet } from "react-router-dom";
 
-const Layout = ({ route }) => <>{renderRoutes(route.routes)}</>;
+const Layout = () => <Outlet />;
 
 export default Layout;

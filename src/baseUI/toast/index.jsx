@@ -1,4 +1,4 @@
-import React, {forwardRef, useState, useImperativeHandle, useCallback} from "react"
+import React, {forwardRef, useState, useImperativeHandle, useRef} from "react"
 import {CSSTransition} from "react-transition-group"
 import styled from "styled-components"
 import style from "assets/global-style"
@@ -37,6 +37,7 @@ const ToastWrapper = styled.div`
 const Toast = forwardRef((props, ref) => {
     const [show, setShow] = useState(false)
     const [timer, setTimer] = useState("")
+    const nodeRef = useRef(null)
     const {text} = props
     useImperativeHandle(ref, () => ({
         show(){
@@ -55,8 +56,9 @@ const Toast = forwardRef((props, ref) => {
         timeout={300}
         classNames="drop"
         unmountOnExit
+        nodeRef={nodeRef}
         >
-            <ToastWrapper>
+            <ToastWrapper ref={nodeRef}>
                 <div className="text">{text}</div>
             </ToastWrapper>
         </CSSTransition>

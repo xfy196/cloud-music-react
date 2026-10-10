@@ -6,10 +6,11 @@ import { getRankList } from "./store/actionCreator";
 import { filterIndex } from "utils";
 import Loading from "baseUI/loading";
 import EnterLoading from "utils/EnterLoading";
-import { renderRoutes } from "react-router-config";
+import { Outlet, useNavigate } from "react-router-dom";
 function Rank(props) {
   const { rankList, loading } = props;
   const { getRankListDispatch } = props;
+  const navigate = useNavigate();
   useEffect(() => {
     if (!rankList.length) {
       getRankListDispatch();
@@ -19,7 +20,7 @@ function Rank(props) {
     };
   }, []);
   const enterDetail = (id) => {
-    props.history.push(`/rank/${id}`);
+    navigate(`/rank/${id}`);
   };
   const renderSongList = (list) => {
     return (
@@ -79,7 +80,7 @@ function Rank(props) {
           {loading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
       </div>
       </Scroll>
-      {renderRoutes(props.route.routes)}
+      <Outlet />
     </Container>
   );
 }

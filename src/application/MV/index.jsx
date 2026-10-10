@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from "react";
 import { connect } from "react-redux";
-import { List, Button, Icon } from "antd-mobile";
 import { ListContainer } from "./style";
 import {
   getMvList,
@@ -9,30 +8,37 @@ import {
   getMvLoadingMore,
   setOffset,
 } from "./store/actionCreator";
-import { renderRoutes } from "react-router-config";
+import { Outlet, useNavigate } from "react-router-dom";
 import Scroll from "baseUI/scroll";
 import Loading from "baseUI/loading";
 import EnterLoading from "utils/EnterLoading";
 import { forceCheck } from "react-lazyload";
+import { formatPlayTime } from "utils";
 
-const Item = List.Item;
+const formatPlayCount = (count = 0) => {
+  if (count < 10000) return String(count);
+  if (count < 100000000) {
+    const value = count / 10000;
+    return `${value >= 100 ? Math.floor(value) : value.toFixed(1).replace(/\.0$/, "")}万`;
+  }
+  return `${(count / 100000000).toFixed(1).replace(/\.0$/, "")}亿`;
+};
+
 /**
  * 推荐MV的组件
  * @returns
  */
 function MV(props) {
+  const navigate = useNavigate();
   const {
     area,
     mvList,
     pullUpLoading,
-    pullDownLoading,
-    count,
-    songsCount,
     hasMore,
     offset,
     limit,
-    history,
     enterLoading,
+    songsCount,
   } = props;
   const {
     getMvListDispatch,
@@ -41,109 +47,132 @@ function MV(props) {
     setOffsetDispatch,
     getMvLoadingMoreDispatch,
   } = props;
+
   useEffect(() => {
     getMvListDispatch(area);
   }, []);
-  /**
-   * 上拉
-   */
+
   const handlePullUp = useCallback(() => {
-    if (!pullUpLoading) {
+    if (!pullUpLoading && hasMore) {
       setOffsetDispatch(offset + limit);
       changePullUpLoadingDispatch(true);
       getMvLoadingMoreDispatch(area, offset + limit, limit);
     }
-  });
-  /**
-   * 下拉
-   */
+  }, [
+    area,
+    hasMore,
+    limit,
+    offset,
+    pullUpLoading,
+    changePullUpLoadingDispatch,
+    getMvLoadingMoreDispatch,
+    setOffsetDispatch,
+  ]);
+
   const handlePullDown = useCallback(() => {
     setOffsetDispatch(0);
     changeLoadingDispatch(true);
     getMvListDispatch(area);
-  });
+  }, [area, changeLoadingDispatch, getMvListDispatch, setOffsetDispatch]);
+
   return (
     <>
-      <ListContainer play={songsCount} mvList={mvList}>
+      <ListContainer play={songsCount}>
         <Scroll
           onScroll={forceCheck}
           pullUp={handlePullUp}
           pullDown={handlePullDown}
         >
-          <List className="mvList" renderHeader={() => area}>
-            {mvList.map((item) => {
-              return (
-                <Item
-                  onClick={() => {
-                    history.push(`/mv/${item.id}`);
-                  }}
-                  arrow="horizontal"
-                  wrap={true}
-                  multipleLine={true}
-                  extra={
-                    <div className="mvInfo">
-                      <span className="name">{item.name}</span>
-                    </div>
-                  }
-                  thumb={
-                    <div className="img_wrapper">
-                      <div className="decorate"></div>
-                      <span className="playCount">
-                        <i className="iconfont play">&#xe885;</i>
-                        <span>{item.playCount}</span>
-                      </span>
-                      <img src={item.cover} alt="" />
-                    </div>
-                  }
+          <div className="scroll-content">
+            <div className="section-head">
+              <h2 className="section-title">{area}</h2>
+              <span className="section-sub">MUSIC VIDEO</span>
+            </div>
+            <div className="mv-list">
+              {mvList.map((item, index) => (
+                <article
                   key={item.id}
-                ></Item>
-              );
-            })}
-
+                  className="mv-card"
+                  style={{ "--stagger": `${Math.min(index, 10) * 40}ms` }}
+                  onClick={() => navigate(`/mv/${item.id}`)}
+                >
+                  <div className="poster">
+                    <img
+                      className="poster-img"
+                      src={item.cover}
+                      alt={item.name}
+                    />
+                    <div className="poster-shade" />
+                    <span className="play-badge" aria-hidden="true" />
+                    <span className="play-count">
+                      <i className="iconfont play">&#xe885;</i>
+                      <span>{formatPlayCount(item.playCount)}</span>
+                    </span>
+                  </div>
+                  <div className="mv-body">
+                    <div className="mv-copy">
+                      <h3 className="mv-name">{item.name}</h3>
+                      <div className="mv-meta">
+                        {item.artistName ? (
+                          <span className="mv-artist">{item.artistName}</span>
+                        ) : null}
+                        {item.duration ? (
+                          <span className="mv-duration">
+                            {formatPlayTime(item.duration / 1000)}
+                          </span>
+                        ) : null}
+                      </div>
+                    </div>
+                    <i className="iconfont mv-arrow">&#xe662;</i>
+                  </div>
+                </article>
+              ))}
+            </div>
             {hasMore ? (
-              <Button
+              <button
+                type="button"
+                className="more-btn"
+                disabled={pullUpLoading}
                 onClick={handlePullUp}
-                activeStyle={false}
-                loading={pullUpLoading}
-                className="moreBtn"
-                size="small"
-                inline
-                type="primary"
               >
-                加载更多
-              </Button>
-            ) : (
-              ""
-            )}
+                {pullUpLoading ? "加载中…" : "加载更多"}
+              </button>
+            ) : mvList.length > 0 ? (
+              <p className="list-end">已经到底了</p>
+            ) : null}
             {enterLoading ? (
               <EnterLoading>
                 <Loading></Loading>
               </EnterLoading>
             ) : null}
-          </List>
+          </div>
         </Scroll>
       </ListContainer>
-      {renderRoutes(props.route.routes)}
+      <Outlet />
     </>
   );
 }
-const mapStateToProps = (state) => ({
-  area: state.getIn(["mv", "area"]),
-  mvList: state.getIn(["mv", "mvList"]),
-  pullDownLoading: state.getIn(["mv", "pullDownLoading"]),
-  pullUpLoading: state.getIn(["mv", "pullUpLoading"]),
-  hasMore: state.getIn(["mv", "hasMore"]),
-  count: state.getIn(["mv", "count"]),
-  offset: state.getIn(["mv", "offset"]),
-  limit: state.getIn(["mv", "limit"]),
-  songsCount: state.getIn(["player", "playList"]).size,
-  enterLoading: state.getIn(["mv", "enterLoading"]),
-});
+
+const mapStateToProps = (state) => {
+  const mvList = state.getIn(["mv", "mvList"]);
+  return {
+    area: state.getIn(["mv", "area"]),
+    mvList: mvList?.toJS ? mvList.toJS() : mvList || [],
+    pullDownLoading: state.getIn(["mv", "pullDownLoading"]),
+    pullUpLoading: state.getIn(["mv", "pullUpLoading"]),
+    hasMore: state.getIn(["mv", "hasMore"]),
+    count: state.getIn(["mv", "count"]),
+    offset: state.getIn(["mv", "offset"]),
+    limit: state.getIn(["mv", "limit"]),
+    songsCount: state.getIn(["player", "playList"]).size,
+    enterLoading: state.getIn(["mv", "enterLoading"]),
+  };
+};
+
 const mapStateToDispatch = (dispatch) => ({
   getMvListDispatch(area) {
     dispatch(getMvList(area));
   },
-  // 改变下拉刷新列表数据
   changeLoadingDispatch(data) {
     dispatch(changeLoading(data));
   },

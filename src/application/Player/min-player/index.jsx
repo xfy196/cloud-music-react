@@ -15,6 +15,7 @@ function MiniPlayer(props) {
         in={!full}
         timeout={400}
         classNames="mini"
+        nodeRef={miniPlayerContainer}
         onEnter={() => {
           miniPlayerContainer.current.style.display = "flex"
          }}

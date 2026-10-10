@@ -16,6 +16,10 @@ function NormalPlayer(props) {
 
     const cdWrapperRef = useRef()
 
+    const cdTransitionRef = useRef(null)
+
+    const lyricTransitionRef = useRef(null)
+
     const lyricLineRefs = useRef([])
 
     const lyricScrollRef = useRef()
@@ -141,6 +145,7 @@ function NormalPlayer(props) {
             in={full}
             timeout={400}
             mountOnEnter
+            nodeRef={normalPlayerRef}
             onEnter={enter}
             onEntered={afterEnter}
             onExit={exit}
@@ -168,8 +173,10 @@ function NormalPlayer(props) {
                         timeout={400}
                         classNames="fade"
                         in={currentState !== "lyric"}
+                        nodeRef={cdTransitionRef}
                     >
                         <CDWrapper
+                            ref={cdTransitionRef}
                             style={{
                                 visibility: currentState !== "lyric" ? "visible" : "hidden"
                             }}
@@ -184,10 +191,11 @@ function NormalPlayer(props) {
                     </CSSTransition>
                     <CSSTransition
                         timeout={400}
-                        className="fade"
+                        classNames="fade"
                         in={currentState === "lyric"}
+                        nodeRef={lyricTransitionRef}
                     >
-                        <LyricContainer>
+                        <LyricContainer ref={lyricTransitionRef}>
                             <Scroll
                                 ref={lyricScrollRef}
                             >

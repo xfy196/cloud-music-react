@@ -4,7 +4,7 @@ import * as actionCreator from "./store/actionCreator"
 import Slider from "@/slider"
 import RecommendList from "@/list"
 import { Content } from "./style"
-import { renderRoutes } from "react-router-config"
+import { Outlet } from "react-router-dom"
 import Scroll from "baseUI/scroll"
 import { forceCheck } from "react-lazyload"
 import Loading from "baseUI/loading-v2"
@@ -40,7 +40,7 @@ function index(props) {
         {/* <BackTop></BackTop> */}
         </Scroll>
         {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
-        {renderRoutes(props.route.routes)}
+        <Outlet />
       </Content>
     </>
   )

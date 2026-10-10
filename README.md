@@ -11,20 +11,27 @@ $ git clone https://github.com/xfy196/cloud-music-react.git
 $ cd cloud-music-react
 $ npm install
 
-// 下载子模块
+// 下载 API 子项目（本仓库前端升级不改动该目录）
 $ git submodule update --init --recursive
 $ cd NeteaseCloudMusicApi
-$ npm install 
+$ npm install
+$ npm start
 $ cd ../  (注意: 一定要返回到上一层)
 ```
-接下来，要记得把`src/api/config.js`中把`baseUrl`改成接口的地址。（一定要记得,不然报404!）
+接下来，要记得把`src/api/config.js`中把`baseURL`改成接口的地址。（一定要记得,不然报404!）
 
-2. 运行
+2. 运行前端（Vite，默认 8080 端口）
 ```shell
 $ npm run start
+# 或
+$ npm run dev
 ```
 
-现在就在本地的8080端口访问了。如果要打包到线上，执行`npm run build`即可。
+打包到线上：
+```shell
+$ npm run build
+```
+产物输出到 `build/` 目录。
 
 
 项目介绍:

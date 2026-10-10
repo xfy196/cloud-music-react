@@ -9,10 +9,11 @@ import LazyLoad, { forceCheck } from "react-lazyload"
 import singerLazyLoadImg from "./singer.png"
 import Loading from "baseUI/loading"
 import EnterLoading from "utils/EnterLoading"
-import {renderRoutes} from "react-router-config"
+import { Outlet, useNavigate } from "react-router-dom"
 function Singers(props) {
 
   const scrollRef = useRef(null);
+  const navigate = useNavigate();
   const { category, alpha, songsCount, enterLoading, pullUpLoading, pullDownLoading } = props;
   const { updateCategory, getHotSinger, updateAlpha, pullUpRefresh, pullDownRefresh } = props;
   useEffect(() => {
@@ -55,8 +56,8 @@ function Singers(props) {
 
   // 进入详情页面的函数
   const enterDetail = useCallback((id) => {
-    props.history.push(`/singers/${id}`)
-  })
+    navigate(`/singers/${id}`)
+  }, [navigate])
   // 渲染歌手的数据
   const renderSingerList = () => {
     // 拿到歌手的数据
@@ -102,7 +103,7 @@ function Singers(props) {
         </Scroll>
       </ListContainer>
       {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
-      {renderRoutes(props.route.routes)}
+      <Outlet />
     </>
   )
 }

@@ -34,8 +34,19 @@ export const PullDownLoading = Styled.div`
 const Scroll = forwardRef((props, ref) => {
     /* 可以通过dispatch派发BScroll的对象 然后通过useState拿到这个BScroll对象 */
     const [bScroll, setBScroll] = useState();
-    const { direction, click, refresh, pullUpLoading, pullDownLoading, bounceTop, bounceBottom } = props
-    const { pullUp, pullDown, onScroll } = props;
+    const {
+        direction = "vertical",
+        click = true,
+        refresh = true,
+        pullUpLoading = false,
+        pullDownLoading = false,
+        bounceTop = true,
+        bounceBottom = true,
+        pullUp = null,
+        pullDown = null,
+        onScroll = null,
+        children,
+    } = props;
 
     let pullUpDebounce = useMemo(() => {
         return debounce(pullUp, 500)
@@ -125,7 +136,7 @@ const Scroll = forwardRef((props, ref) => {
     const PullDownDisplayStyle = pullDownLoading ? { display: "" } : { display: "none" };
     return (
         <ScrollContainer ref={scrollContainerRef} >
-            {props.children}
+            {children}
             {/* 滑到底部加载动画 */}
             <PullUpLoading style={PullUpDisplayStyle}><Loading></Loading></PullUpLoading>
             {/* 顶部下拉刷新动画 */}
@@ -134,18 +145,6 @@ const Scroll = forwardRef((props, ref) => {
     )
 
 });
-Scroll.defaultProps = {
-    direction: "vertical",
-    click: true,
-    refresh: true,
-    onScroll: null,
-    pullUpLoading: false,
-    pullDownLoading: false,
-    pullUp: null,
-    pullDown: null,
-    bounceTop: true,
-    bounceBottom: true
-}
 Scroll.propTypes = {
     direction: PropTypes.oneOf(['vertical', 'horizental']),
     refresh: PropTypes.bool,
