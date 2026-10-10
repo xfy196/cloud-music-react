@@ -46,7 +46,7 @@ export default defineConfig({
       },
     },
   },
-  build: {
-    outDir: "build",
-  },
+  // build: {
+  //   outDir: "build",
+  // },
 });
